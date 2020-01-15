@@ -24,11 +24,10 @@ public class VanillaCompat implements ITorchSlabCompat
 	@Override
 	public void registerBlocks(RegistryEvent.Register<Block> event)
 	{
-
 		event.getRegistry().register(new BlockTorchSlab(Block.Properties.create(Material.MISCELLANEOUS).doesNotBlockMovement().hardnessAndResistance(0.0F).lightValue(14).sound(SoundType.WOOD).lootFrom(Blocks.TORCH)).setRegistryName(new ResourceLocation(TorchSlabsMod.MODID, "torch")));
 		event.getRegistry().register(new BlockRedstoneTorchSlab(Block.Properties.create(Material.MISCELLANEOUS).doesNotBlockMovement().hardnessAndResistance(0.0F).lightValue(7).sound(SoundType.WOOD).lootFrom(Blocks.REDSTONE_TORCH)).setRegistryName(new ResourceLocation(TorchSlabsMod.MODID, "redstone_torch")));
 											  
-		event.getRegistry().register(new BlockLanternSlab(Block.Properties.create(Material.IRON).hardnessAndResistance(3.5F).sound(SoundType.LANTERN).lightValue(15).func_226896_b_().lootFrom(Blocks.LANTERN)).setRegistryName(new ResourceLocation(TorchSlabsMod.MODID, "lantern")));
+		event.getRegistry().register(new BlockLanternSlab(Block.Properties.create(Material.IRON).hardnessAndResistance(3.5F).sound(SoundType.LANTERN).lightValue(15).lootFrom(Blocks.LANTERN)).setRegistryName(new ResourceLocation(TorchSlabsMod.MODID, "lantern")));
 	}
 
 	@Override

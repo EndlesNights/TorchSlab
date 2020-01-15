@@ -10,6 +10,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.state.properties.SlabType;
 import net.minecraft.util.Direction;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.shapes.ISelectionContext;
@@ -68,6 +69,7 @@ public class BlockLanternSlab extends LanternBlock
 			return  (world.getBlockState(pos.offset(Direction.UP)).getProperties().contains(SlabBlock.TYPE) 
 					&& world.getBlockState(pos.offset(Direction.UP)).get(SlabBlock.TYPE) == SlabType.TOP);
 	}
+	
 	
 	@Override
 	public ItemStack getPickBlock(BlockState state, RayTraceResult target, IBlockReader world, BlockPos pos, PlayerEntity player)

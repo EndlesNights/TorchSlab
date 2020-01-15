@@ -40,13 +40,12 @@ public class PlaceHandlerBottomSlab
 		BlockPos pos = event.getPos();
 		Direction face = event.getFace();
 		BlockPos placeAt = pos.offset(face);
-		World world = event.getWorld();		
+		World world = event.getWorld();	
 		
 		if(world.getBlockState(pos).getProperties().contains(SlabBlock.TYPE)
 				&& world.getBlockState(pos).get(SlabBlock.TYPE) == SlabType.BOTTOM 
 				&& face == Direction.UP && (world.isAirBlock(placeAt) || world.getFluidState(placeAt).getFluid() == Fluids.WATER) )
 		{	
-			
 			if (block instanceof IWaterLoggable)
 				world.setBlockState(placeAt, block.getDefaultState().with(BlockStateProperties.WATERLOGGED, (world.getFluidState(placeAt).getFluid() == Fluids.WATER) ));
 			else
@@ -54,6 +53,9 @@ public class PlaceHandlerBottomSlab
 
 			world.playSound(null, pos.getX(), pos.getY(), pos.getZ(), block.getSoundType(world.getBlockState(pos)).getPlaceSound(), SoundCategory.BLOCKS, 1.0F, 1.0F);
 			event.getPlayer().swingArm(event.getHand());
+
+			if(!event.getPlayer().isCreative())
+				held.shrink(1);
 		}
 	}
 

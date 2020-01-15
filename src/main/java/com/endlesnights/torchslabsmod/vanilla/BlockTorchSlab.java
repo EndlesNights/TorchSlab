@@ -49,7 +49,7 @@ public class BlockTorchSlab extends TorchBlock
 	public boolean isValidPosition(BlockState state, IWorldReader world, BlockPos pos)
 	{
 		return (world.getBlockState(pos.offset(Direction.DOWN)).getProperties().contains(SlabBlock.TYPE) 
-				&& world.getBlockState(pos.offset(Direction.DOWN)).get(SlabBlock.TYPE) == SlabType.BOTTOM);
+				&& world.getBlockState(pos.offset(Direction.DOWN)).get(SlabBlock.TYPE) == SlabType.BOTTOM);	
 	}
 
 	@Override
