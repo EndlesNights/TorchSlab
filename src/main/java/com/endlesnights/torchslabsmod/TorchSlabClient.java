@@ -15,11 +15,11 @@ public class TorchSlabClient
 	@SubscribeEvent
 	public static void onInterModProcess(InterModProcessEvent event)
 	{
-		for(Block b : PlaceHandlerBottomSlab.getPlaceEntryBlocks())
+		for(Block b : PlaceHandlerTorchSlab.getPlaceEntryBlocks())
 		{
 			RenderTypeLookup.setRenderLayer(b, RenderType.func_228641_d_());
 		}
-		for(Block b : PlaceHandlerDuelSlab.getPlaceEntryBlocks())
+		for(Block b : PlaceHandlerLanternSlab.getPlaceEntryBlocks())
 		{
 			RenderTypeLookup.setRenderLayer(b, RenderType.func_228641_d_());
 		}

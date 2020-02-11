@@ -21,7 +21,6 @@ import net.minecraft.world.IBlockReader;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.IWorldReader;
 
-
 public class BlockLanternSlab extends LanternBlock
 {
 	protected static final VoxelShape SLAB_BOTTOM_SHAPE = VoxelShapes.combine(

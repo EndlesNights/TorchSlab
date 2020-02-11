@@ -14,7 +14,6 @@ import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
 import net.minecraftforge.fml.event.lifecycle.InterModEnqueueEvent;
 
-
 @Mod(TorchSlabsMod.MODID)
 @EventBusSubscriber(bus=Bus.MOD)
 public class TorchSlabsMod
