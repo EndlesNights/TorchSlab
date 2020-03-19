@@ -4,11 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Supplier;
 
-import com.endlesnights.torchslabsmod.vanilla.VanillaCompat;
+import com.endlesnights.torchslabsmod.blocks.buzzierbees.BuzzierBeesCompat;
+import com.endlesnights.torchslabsmod.blocks.vanilla.VanillaCompat;
 
 import net.minecraft.block.Block;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
@@ -26,6 +28,11 @@ public class TorchSlabsMod
 	{
 		compatList.add(VanillaCompat::new);
 
+		if(ModList.get().isLoaded("buzzierbees"))
+		{
+			System.out.println("BuzzierBees DETECTED AND LOADED TORCHSLAB COMPAT");
+			compatList.add(BuzzierBeesCompat::new);
+		}
 	}
 
 	@SubscribeEvent

@@ -1,0 +1,52 @@
+{
+    "ambientocclusion": false,
+    "elements": [
+        {   "from": [ 5, 0.25, 5 ],
+            "to": [ 11, 7.25, 11 ],
+            "faces": {
+                "up":    { "uv": [  0, 9,  6, 15 ], "texture": "#lamp" },
+                "north": { "uv": [ 0, 2, 6,  9 ], "texture": "#lamp" },
+                "south": { "uv": [ 0, 2, 6,  9 ], "texture": "#lamp" },
+                "west":  { "uv": [ 0, 2, 6,  9 ], "texture": "#lamp" },
+                "east":  { "uv": [ 0, 2, 6,  9 ], "texture": "#lamp" }
+            }
+        },
+        {   "from": [ 6, 7.25, 6 ],
+            "to": [ 10, 9.25, 10 ],
+            "faces": {
+                "up":    { "uv": [  1, 10,  5, 14 ], "texture": "#lamp" },
+                "north": { "uv": [ 1, 0, 5,  2 ], "texture": "#lamp" },
+                "south": { "uv": [ 1, 0, 5,  2 ], "texture": "#lamp" },
+                "west":  { "uv": [ 1, 0, 5,  2 ], "texture": "#lamp" },
+                "east":  { "uv": [ 1, 0, 5,  2 ], "texture": "#lamp" }
+            }
+        },
+        {
+            "from": [ 6.5, 9.25, 8 ],
+            "to": [ 9.5, 11.25, 8 ],
+            "rotation": { "origin": [ 8, 8, 8 ], "axis": "y", "angle": 45},
+            "shade": false,
+            "faces": {
+                "north": { "uv": [ 11, 1, 14, 3 ], "texture": "#lamp" },
+                "south": { "uv": [ 11, 1, 14, 3 ], "texture": "#lamp" }
+            }
+        },
+        {
+            "from": [ 8, 9.25, 6.5 ],
+            "to": [ 8, 11.25, 9.5 ],
+            "rotation": { "origin": [ 8, 8, 8 ], "axis": "y", "angle": 45},
+            "shade": false,
+            "faces": {
+                "west": { "uv": [ 11, 10, 14, 12 ], "texture": "#lamp" },
+                "east": { "uv": [ 11, 10, 14, 12 ], "texture": "#lamp" }
+            }
+        },
+        {   "from": [ 0, 0.25, 0 ],
+            "to": [ 16, 0.25, 16 ],
+            "faces": {
+                "down":  { "uv": [ 16, 16, 0,  0 ], "texture": "#pad", "tintindex": 0 },
+                "up":    { "uv": [ 16,  0, 0, 16 ], "texture": "#pad", "tintindex": 0 }
+            }
+        }
+    ]
+}

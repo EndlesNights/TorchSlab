@@ -1,0 +1,7 @@
+{
+    "parent": "torchslabmod:block/template_candle_one_slab",
+    "textures": {
+        "all": "buzzierbees:block/white_tulip_scented_candle",
+		"particle": "buzzierbees:block/white_tulip_scented_candle"
+    }
+}

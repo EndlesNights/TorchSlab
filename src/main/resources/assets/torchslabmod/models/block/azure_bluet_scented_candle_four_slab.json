@@ -1,0 +1,7 @@
+{
+    "parent": "torchslabmod:block/template_candle_four_slab",
+    "textures": {
+        "all": "buzzierbees:block/azure_bluet_scented_candle",
+		"particle": "buzzierbees:block/azure_bluet_scented_candle"
+    }
+}

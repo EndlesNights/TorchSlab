@@ -1,0 +1,10 @@
+{
+    "variants": {
+        "": [
+            { "model": "torchslabmod:block/pad_torch" },
+            { "model": "torchslabmod:block/pad_torch", "y": 90 },
+            { "model": "torchslabmod:block/pad_torch", "y": 180 },
+            { "model": "torchslabmod:block/pad_torch", "y": 270 }
+        ]
+    }
+}

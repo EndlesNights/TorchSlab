@@ -1,5 +1,8 @@
 package com.endlesnights.torchslabsmod;
 
+import com.endlesnights.torchslabsmod.event.PlaceHandlerLanternSlab;
+import com.endlesnights.torchslabsmod.event.PlaceHandlerTorchSlab;
+
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.RenderTypeLookup;
