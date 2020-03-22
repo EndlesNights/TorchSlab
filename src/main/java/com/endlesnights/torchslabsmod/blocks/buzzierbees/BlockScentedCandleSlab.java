@@ -2,7 +2,7 @@ package com.endlesnights.torchslabsmod.blocks.buzzierbees;
 
 import javax.annotation.Nullable;
 
-import com.bagel.buzzierbees.core.registry.BBTileEntities;
+import com.endlesnights.torchslabsmod.blocks.buzzierbees.tileentity.BBTileEntities;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -30,25 +30,26 @@ public class BlockScentedCandleSlab extends BlockCandleSlab implements IWaterLog
 		this.candleEffectInstance = candleEffectInstance;	
 		this.duration = duration;
 		this.level = level;
+		
 	}
 
-   @Override
-   public boolean hasTileEntity(BlockState state) {
-	   return true;
-   }
+	@Override
+	public boolean hasTileEntity(BlockState state) {
+		return true;
+	}
    
-   @Nullable
-   @Override
-   public TileEntity createTileEntity(BlockState state, IBlockReader world) {
-	   return BBTileEntities.SCENTED_CANDLE.get().create();
-   }
+	@Nullable
+	@Override
+	public TileEntity createTileEntity(BlockState state, IBlockReader world){
+		return BBTileEntities.SCENTED_CANDLE_SLAB.get().create();
+	}
+	
+	@Override
+	public float getEnchantPowerBonus(BlockState state, IWorldReader world, BlockPos pos) {
+		return (0.2F * state.get(CANDLES));	
+	}
    
-   @Override
-   public float getEnchantPowerBonus(BlockState state, IWorldReader world, BlockPos pos) {
-	   return (0.2F * state.get(CANDLES));	
-   }
-   
-   //@Override
+	@Override
 	public ActionResultType onBlockActivated(BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit) {
 		return ActionResultType.FAIL;	
 	}

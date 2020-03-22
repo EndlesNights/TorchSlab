@@ -45,7 +45,7 @@ public class VanillaCompat implements ITorchSlabCompat
 		event.getRegistry().register(new BlockTorchSlab(Block.Properties.create(Material.MISCELLANEOUS).doesNotBlockMovement().hardnessAndResistance(0.0F).lightValue(14).sound(SoundType.WOOD).lootFrom(Blocks.TORCH)).setRegistryName(new ResourceLocation(TorchSlabsMod.MODID, "torch")));
 		event.getRegistry().register(new BlockRedstoneTorchSlab(Block.Properties.create(Material.MISCELLANEOUS).doesNotBlockMovement().hardnessAndResistance(0.0F).lightValue(7).sound(SoundType.WOOD).lootFrom(Blocks.REDSTONE_TORCH)).setRegistryName(new ResourceLocation(TorchSlabsMod.MODID, "redstone_torch")));
 					
-		event.getRegistry().register(new BlockLanternSlab(Block.Properties.create(Material.IRON).hardnessAndResistance(3.5F).sound(SoundType.LANTERN).lightValue(15).func_226896_b_().lootFrom(Blocks.LANTERN)).setRegistryName(new ResourceLocation(TorchSlabsMod.MODID, "lantern")));
+		event.getRegistry().register(new BlockLanternSlab(Block.Properties.create(Material.IRON).hardnessAndResistance(3.5F).sound(SoundType.LANTERN).lightValue(15).notSolid().lootFrom(Blocks.LANTERN)).setRegistryName(new ResourceLocation(TorchSlabsMod.MODID, "lantern")));
 	
 		wall_torch_slab = registerBlock(new BlockWallTorchSlab(Block.Properties.from(Blocks.WALL_TORCH).lootFrom(Blocks.TORCH)), "wall_torch_slab");
 		wall_lantern = registerBlock(new BlockWallLanternSlab(Block.Properties.from(Blocks.LANTERN).lootFrom(Blocks.LANTERN)), "wall_lantern" );
@@ -56,7 +56,7 @@ public class VanillaCompat implements ITorchSlabCompat
 		
 		if (FMLEnvironment.dist == Dist.CLIENT)
         {
-            RenderType transparentRenderType = RenderType.func_228641_d_();
+            RenderType transparentRenderType = RenderType.getCutoutMipped();
             
             RenderTypeLookup.setRenderLayer(wall_torch_slab, transparentRenderType);
             RenderTypeLookup.setRenderLayer(wall_lantern, transparentRenderType);

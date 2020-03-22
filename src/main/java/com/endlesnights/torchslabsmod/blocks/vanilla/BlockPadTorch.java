@@ -112,7 +112,7 @@ public class BlockPadTorch extends TorchBlock
 		{
 			if(reader != null && blockPos != null)
 			{
-				return BiomeColors.func_228358_a_(reader, blockPos);
+				return BiomeColors.getFoliageColor(reader, blockPos);
 			}
 			return GrassColors.get(0.5D, 1.0D);
 		}

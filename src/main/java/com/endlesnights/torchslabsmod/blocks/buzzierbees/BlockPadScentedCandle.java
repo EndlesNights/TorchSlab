@@ -2,7 +2,7 @@ package com.endlesnights.torchslabsmod.blocks.buzzierbees;
 
 import javax.annotation.Nullable;
 
-import com.bagel.buzzierbees.core.registry.BBTileEntities;
+import com.endlesnights.torchslabsmod.blocks.buzzierbees.tileentity.BBTileEntities;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -39,7 +39,7 @@ public class BlockPadScentedCandle extends BlockPadCandle
    @Nullable
    @Override
    public TileEntity createTileEntity(BlockState state, IBlockReader world) {
-	   return BBTileEntities.SCENTED_CANDLE.get().create();
+	   return BBTileEntities.SCENTED_CANDLE_PAD.get().create();
    }
    
    @Override
@@ -47,7 +47,7 @@ public class BlockPadScentedCandle extends BlockPadCandle
 	   return (0.2F * state.get(CANDLES));	
    }
    
-   //@Override
+	@Override
 	public ActionResultType onBlockActivated(BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit) {
 		return ActionResultType.FAIL;	
 	}

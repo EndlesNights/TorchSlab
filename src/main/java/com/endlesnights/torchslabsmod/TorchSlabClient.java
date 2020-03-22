@@ -20,11 +20,11 @@ public class TorchSlabClient
 	{
 		for(Block b : PlaceHandlerTorchSlab.getPlaceEntryBlocks())
 		{
-			RenderTypeLookup.setRenderLayer(b, RenderType.func_228641_d_());
+			RenderTypeLookup.setRenderLayer(b, RenderType.getCutoutMipped());
 		}
 		for(Block b : PlaceHandlerLanternSlab.getPlaceEntryBlocks())
 		{
-			RenderTypeLookup.setRenderLayer(b, RenderType.func_228641_d_());
+			RenderTypeLookup.setRenderLayer(b, RenderType.getCutoutMipped());
 		}
 	}
 }

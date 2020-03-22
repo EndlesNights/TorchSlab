@@ -9,7 +9,6 @@ import com.endlesnights.torchslabsmod.event.buzziebees.PlaceHandlerCandleSlab;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.RenderTypeLookup;
-import net.minecraft.potion.Effect;
 import net.minecraft.potion.Effects;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.event.RegistryEvent;
@@ -115,6 +114,24 @@ public class BuzzierBeesCompat implements ITorchSlabCompat
 	public static Block pad_red_tulip_scented_candle = null;
 	public static Block pad_wither_rose_scented_candle = null;
 	
+	public static Block cartwheel_scented_candle_slab = null;
+	public static Block bluebell_scented_candle_slab = null;
+	public static Block daybloom_scented_candle_slab = null;
+	public static Block violet_scented_candle_slab = null;
+	public static Block jolyce_scented_candle_slab = null;
+	public static Block columbine_scented_candle_slab = null;
+	public static Block white_clover_scented_candle_slab = null;
+	public static Block pink_clover_scented_candle_slab = null;
+	
+	public static Block pad_cartwheel_scented_candle = null;
+	public static Block pad_bluebell_scented_candle = null;
+	public static Block pad_daybloom_scented_candle = null;
+	public static Block pad_violet_scented_candle = null;
+	public static Block pad_jolyce_scented_candle = null;
+	public static Block pad_columbine_scented_candle = null;
+	public static Block pad_white_clover_scented_candle = null;
+	public static Block pad_pink_clover_scented_candle = null;
+	
 	@Override
 	public void registerBlocks(RegistryEvent.Register<Block> event)
 	{	
@@ -125,12 +142,12 @@ public class BuzzierBeesCompat implements ITorchSlabCompat
 		white_candle_slab = registerBlock(new BlockCandleSlab(PropertyUtils.CANDLE, BBBlocks.WHITE_CANDLE.get(), pad_white_candle), "white_candle_slab");
 		orange_candle_slab = registerBlock(new BlockCandleSlab(PropertyUtils.CANDLE, BBBlocks.ORANGE_CANDLE.get(), pad_orange_candle), "orange_candle_slab");
 		magenta_candle_slab = registerBlock(new BlockCandleSlab(PropertyUtils.CANDLE, BBBlocks.MAGENTA_CANDLE.get(), pad_magenta_candle), "magenta_candle_slab");
-		light_blue_candle_slab = registerBlock(new BlockCandleSlab(PropertyUtils.CANDLE, BBBlocks.LIGHT_BLUE_CANDLE.get(), pad_light_blue_candle), "light_bluecandle_slab");
+		light_blue_candle_slab = registerBlock(new BlockCandleSlab(PropertyUtils.CANDLE, BBBlocks.LIGHT_BLUE_CANDLE.get(), pad_light_blue_candle), "light_blue_candle_slab");
 		yellow_candle_slab = registerBlock(new BlockCandleSlab(PropertyUtils.CANDLE, BBBlocks.YELLOW_CANDLE.get(), pad_yellow_candle), "yellow_candle_slab");
 		lime_candle_slab = registerBlock(new BlockCandleSlab(PropertyUtils.CANDLE, BBBlocks.LIME_CANDLE.get(), pad_lime_candle), "lime_candle_slab");
 		pink_candle_slab = registerBlock(new BlockCandleSlab(PropertyUtils.CANDLE, BBBlocks.PINK_CANDLE.get(), pad_pink_candle), "pink_candle_slab");
 		gray_candle_slab = registerBlock(new BlockCandleSlab(PropertyUtils.CANDLE, BBBlocks.GRAY_CANDLE.get(), pad_gray_candle), "gray_candle_slab");
-		light_gray_candle_slab = registerBlock(new BlockCandleSlab(PropertyUtils.CANDLE, BBBlocks.LIGHT_GRAY_CANDLE.get(), pad_light_gray_candle), "light_graycandle_slab");
+		light_gray_candle_slab = registerBlock(new BlockCandleSlab(PropertyUtils.CANDLE, BBBlocks.LIGHT_GRAY_CANDLE.get(), pad_light_gray_candle), "light_gray_candle_slab");
 		cyan_candle_slab = registerBlock(new BlockCandleSlab(PropertyUtils.CANDLE, BBBlocks.CYAN_CANDLE.get(), pad_cyan_candle), "cyan_candle_slab");
 		purple_candle_slab = registerBlock(new BlockCandleSlab(PropertyUtils.CANDLE, BBBlocks.PURPLE_CANDLE.get(), pad_purple_candle), "purple_candle_slab");
 		blue_candle_slab = registerBlock(new BlockCandleSlab(PropertyUtils.CANDLE, BBBlocks.BLUE_CANDLE.get(), pad_blue_candle), "blue_candle_slab");
@@ -158,12 +175,12 @@ public class BuzzierBeesCompat implements ITorchSlabCompat
 		pad_white_candle = registerBlock(new BlockPadCandle(PropertyUtils.CANDLE.hardnessAndResistance(0.0F), BBBlocks.WHITE_CANDLE.get()), "pad_white_candle");
 		pad_orange_candle = registerBlock(new BlockPadCandle(PropertyUtils.CANDLE.hardnessAndResistance(0.0F), BBBlocks.ORANGE_CANDLE.get()), "pad_orange_candle");
 		pad_magenta_candle = registerBlock(new BlockPadCandle(PropertyUtils.CANDLE.hardnessAndResistance(0.0F), BBBlocks.MAGENTA_CANDLE.get()), "pad_magenta_candle");
-		pad_light_blue_candle = registerBlock(new BlockPadCandle(PropertyUtils.CANDLE.hardnessAndResistance(0.0F), BBBlocks.LIGHT_BLUE_CANDLE.get()), "pad_light_bluecandle");
+		pad_light_blue_candle = registerBlock(new BlockPadCandle(PropertyUtils.CANDLE.hardnessAndResistance(0.0F), BBBlocks.LIGHT_BLUE_CANDLE.get()), "pad_light_blue_candle");
 		pad_yellow_candle = registerBlock(new BlockPadCandle(PropertyUtils.CANDLE.hardnessAndResistance(0.0F), BBBlocks.YELLOW_CANDLE.get()), "pad_yellow_candle");
 		pad_lime_candle = registerBlock(new BlockPadCandle(PropertyUtils.CANDLE.hardnessAndResistance(0.0F), BBBlocks.LIME_CANDLE.get()), "pad_lime_candle");
 		pad_pink_candle = registerBlock(new BlockPadCandle(PropertyUtils.CANDLE.hardnessAndResistance(0.0F), BBBlocks.PINK_CANDLE.get()), "pad_pink_candle");
 		pad_gray_candle = registerBlock(new BlockPadCandle(PropertyUtils.CANDLE.hardnessAndResistance(0.0F), BBBlocks.GRAY_CANDLE.get()), "pad_gray_candle");
-		pad_light_gray_candle = registerBlock(new BlockPadCandle(PropertyUtils.CANDLE.hardnessAndResistance(0.0F), BBBlocks.LIGHT_GRAY_CANDLE.get()), "pad_light_graycandle");
+		pad_light_gray_candle = registerBlock(new BlockPadCandle(PropertyUtils.CANDLE.hardnessAndResistance(0.0F), BBBlocks.LIGHT_GRAY_CANDLE.get()), "pad_light_gray_candle");
 		pad_cyan_candle = registerBlock(new BlockPadCandle(PropertyUtils.CANDLE.hardnessAndResistance(0.0F), BBBlocks.CYAN_CANDLE.get()), "pad_cyan_candle");
 		pad_purple_candle = registerBlock(new BlockPadCandle(PropertyUtils.CANDLE.hardnessAndResistance(0.0F), BBBlocks.PURPLE_CANDLE.get()), "pad_purple_candle");
 		pad_blue_candle = registerBlock(new BlockPadCandle(PropertyUtils.CANDLE.hardnessAndResistance(0.0F), BBBlocks.BLUE_CANDLE.get()), "pad_blue_candle");
@@ -216,9 +233,27 @@ public class BuzzierBeesCompat implements ITorchSlabCompat
 		pad_red_tulip_scented_candle = registerBlock(new BlockPadScentedCandle(Effects.WEAKNESS, 70, 0,PropertyUtils.CANDLE.hardnessAndResistance(0.0F), BBBlocks.RED_TULIP_SCENTED_CANDLE.get()), "pad_red_tulip_scented_candle");
 		pad_wither_rose_scented_candle = registerBlock(new BlockPadScentedCandle(Effects.WITHER, 70, 0,PropertyUtils.CANDLE.hardnessAndResistance(0.0F), BBBlocks.WITHER_ROSE_SCENTED_CANDLE.get()), "pad_wither_rose_scented_candle");
 
+		cartwheel_scented_candle_slab = registerBlock(new BlockScentedCandleSlab(Effects.SPEED, 70, 0, PropertyUtils.CANDLE, BBBlocks.CARTWHEEL_SCENTED_CANDLE.get(), pad_cartwheel_scented_candle), "cartwheel_scented_candle_slab");
+		bluebell_scented_candle_slab = registerBlock(new BlockScentedCandleSlab(Effects.WATER_BREATHING, 70, 0, PropertyUtils.CANDLE, BBBlocks.BLUEBELL_SCENTED_CANDLE.get(), pad_bluebell_scented_candle), "bluebell_scented_candle_slab");
+		daybloom_scented_candle_slab = registerBlock(new BlockScentedCandleSlab(Effects.GLOWING, 70, 0, PropertyUtils.CANDLE, BBBlocks.DAYBLOOM_SCENTED_CANDLE.get(), pad_daybloom_scented_candle), "daybloom_scented_candle_slab");
+		violet_scented_candle_slab = registerBlock(new BlockScentedCandleSlab(Effects.INVISIBILITY, 70, 0,PropertyUtils.CANDLE, BBBlocks.VIOLET_SCENTED_CANDLE.get(), pad_violet_scented_candle), "violet_scented_candle_slab");
+		jolyce_scented_candle_slab = registerBlock(new BlockScentedCandleSlab(Effects.STRENGTH, 70, 0,PropertyUtils.CANDLE, BBBlocks.JOLYCE_SCENTED_CANDLE.get(), pad_jolyce_scented_candle), "jolyce_scented_candle_slab");
+		columbine_scented_candle_slab = registerBlock(new BlockScentedCandleSlab(Effects.MINING_FATIGUE, 70, 0,PropertyUtils.CANDLE, BBBlocks.COLUMBINE_SCENTED_CANDLE.get(), pad_columbine_scented_candle), "columbine_scented_candle_slab");
+		white_clover_scented_candle_slab = registerBlock(new BlockScentedCandleSlab(Effects.UNLUCK, 70, 0,PropertyUtils.CANDLE, BBBlocks.WHITE_CLOVER_SCENTED_CANDLE.get(), pad_white_clover_scented_candle), "white_clover_scented_candle_slab");
+		pink_clover_scented_candle_slab= registerBlock(new BlockScentedCandleSlab(Effects.UNLUCK, 70, 0,PropertyUtils.CANDLE, BBBlocks.PINK_CLOVER_SCENTED_CANDLE.get(), pad_pink_clover_scented_candle), "pink_clover_scented_candle_slab");
+		
+		pad_cartwheel_scented_candle = registerBlock(new BlockPadScentedCandle(Effects.SPEED, 70, 0, PropertyUtils.CANDLE.hardnessAndResistance(0.0F), BBBlocks.CARTWHEEL_SCENTED_CANDLE.get()), "pad_cartwheel_scented_candle");
+		pad_bluebell_scented_candle = registerBlock(new BlockPadScentedCandle(Effects.WATER_BREATHING, 70, 0, PropertyUtils.CANDLE.hardnessAndResistance(0.0F), BBBlocks.BLUEBELL_SCENTED_CANDLE.get()), "pad_bluebell_scented_candle");
+		pad_daybloom_scented_candle = registerBlock(new BlockPadScentedCandle(Effects.GLOWING, 70, 0, PropertyUtils.CANDLE.hardnessAndResistance(0.0F), BBBlocks.DAYBLOOM_SCENTED_CANDLE.get()), "pad_daybloom_scented_candle");
+		pad_violet_scented_candle = registerBlock(new BlockPadScentedCandle(Effects.INVISIBILITY, 70, 0,PropertyUtils.CANDLE.hardnessAndResistance(0.0F), BBBlocks.VIOLET_SCENTED_CANDLE.get()), "pad_violet_scented_candle");
+		pad_jolyce_scented_candle = registerBlock(new BlockPadScentedCandle(Effects.STRENGTH, 70, 0,PropertyUtils.CANDLE.hardnessAndResistance(0.0F), BBBlocks.JOLYCE_SCENTED_CANDLE.get()), "pad_jolyce_scented_candle");
+		pad_columbine_scented_candle = registerBlock(new BlockPadScentedCandle(Effects.MINING_FATIGUE, 70, 0,PropertyUtils.CANDLE.hardnessAndResistance(0.0F), BBBlocks.COLUMBINE_SCENTED_CANDLE.get()), "pad_columbine_scented_candle");
+		pad_white_clover_scented_candle = registerBlock(new BlockPadScentedCandle(Effects.UNLUCK, 70, 0,PropertyUtils.CANDLE.hardnessAndResistance(0.0F), BBBlocks.WHITE_CLOVER_SCENTED_CANDLE.get()), "pad_white_clover_scented_candle");
+		pad_pink_clover_scented_candle = registerBlock(new BlockPadScentedCandle(Effects.UNLUCK, 70, 0,PropertyUtils.CANDLE.hardnessAndResistance(0.0F), BBBlocks.PINK_CLOVER_SCENTED_CANDLE.get()), "pad_pink_clover_scented_candle");
+		
 		if (FMLEnvironment.dist == Dist.CLIENT)
         {
-            RenderType transparentRenderType = RenderType.func_228641_d_();
+            RenderType transparentRenderType = RenderType.getCutoutMipped();
             
             RenderTypeLookup.setRenderLayer(pad_candle, transparentRenderType);
             
@@ -268,6 +303,16 @@ public class BuzzierBeesCompat implements ITorchSlabCompat
             RenderTypeLookup.setRenderLayer(pad_pink_tulip_scented_candle, transparentRenderType);
             RenderTypeLookup.setRenderLayer(pad_red_tulip_scented_candle, transparentRenderType);
             RenderTypeLookup.setRenderLayer(pad_wither_rose_scented_candle, transparentRenderType);
+            
+            RenderTypeLookup.setRenderLayer(pad_cartwheel_scented_candle, transparentRenderType);
+            RenderTypeLookup.setRenderLayer(pad_bluebell_scented_candle, transparentRenderType);
+            RenderTypeLookup.setRenderLayer(pad_daybloom_scented_candle, transparentRenderType);
+            RenderTypeLookup.setRenderLayer(pad_violet_scented_candle, transparentRenderType);
+            RenderTypeLookup.setRenderLayer(pad_jolyce_scented_candle, transparentRenderType);
+            RenderTypeLookup.setRenderLayer(pad_columbine_scented_candle, transparentRenderType);
+            RenderTypeLookup.setRenderLayer(pad_white_clover_scented_candle, transparentRenderType);
+            RenderTypeLookup.setRenderLayer(pad_pink_clover_scented_candle, transparentRenderType);
+            
         }
 	}
 	
@@ -370,6 +415,24 @@ public class BuzzierBeesCompat implements ITorchSlabCompat
 		PlaceHandlerCandlePad.registerPlaceEntry(BBBlocks.PINK_TULIP_SCENTED_CANDLE.getId(), pad_pink_tulip_scented_candle);
 		PlaceHandlerCandlePad.registerPlaceEntry(BBBlocks.RED_TULIP_SCENTED_CANDLE.getId(), pad_red_tulip_scented_candle);
 		PlaceHandlerCandlePad.registerPlaceEntry(BBBlocks.WITHER_ROSE_SCENTED_CANDLE.getId(), pad_wither_rose_scented_candle);
+		
+		PlaceHandlerCandleSlab.registerPlaceEntry(BBBlocks.CARTWHEEL_SCENTED_CANDLE.getId(), cartwheel_scented_candle_slab);
+		PlaceHandlerCandleSlab.registerPlaceEntry(BBBlocks.BLUEBELL_SCENTED_CANDLE.getId(), bluebell_scented_candle_slab);
+		PlaceHandlerCandleSlab.registerPlaceEntry(BBBlocks.DAYBLOOM_SCENTED_CANDLE.getId(), daybloom_scented_candle_slab);
+		PlaceHandlerCandleSlab.registerPlaceEntry(BBBlocks.VIOLET_SCENTED_CANDLE.getId(), violet_scented_candle_slab);
+		PlaceHandlerCandleSlab.registerPlaceEntry(BBBlocks.JOLYCE_SCENTED_CANDLE.getId(), jolyce_scented_candle_slab);
+		PlaceHandlerCandleSlab.registerPlaceEntry(BBBlocks.COLUMBINE_SCENTED_CANDLE.getId(), columbine_scented_candle_slab);
+		PlaceHandlerCandleSlab.registerPlaceEntry(BBBlocks.WHITE_CLOVER_SCENTED_CANDLE.getId(), white_clover_scented_candle_slab);
+		PlaceHandlerCandleSlab.registerPlaceEntry(BBBlocks.PINK_CLOVER_SCENTED_CANDLE.getId(), pink_clover_scented_candle_slab);
+		
+		PlaceHandlerCandlePad.registerPlaceEntry(BBBlocks.CARTWHEEL_SCENTED_CANDLE.getId(), pad_cartwheel_scented_candle);
+		PlaceHandlerCandlePad.registerPlaceEntry(BBBlocks.BLUEBELL_SCENTED_CANDLE.getId(), pad_bluebell_scented_candle);
+		PlaceHandlerCandlePad.registerPlaceEntry(BBBlocks.DAYBLOOM_SCENTED_CANDLE.getId(), pad_daybloom_scented_candle);
+		PlaceHandlerCandlePad.registerPlaceEntry(BBBlocks.VIOLET_SCENTED_CANDLE.getId(), pad_violet_scented_candle);
+		PlaceHandlerCandlePad.registerPlaceEntry(BBBlocks.JOLYCE_SCENTED_CANDLE.getId(), pad_jolyce_scented_candle);
+		PlaceHandlerCandlePad.registerPlaceEntry(BBBlocks.COLUMBINE_SCENTED_CANDLE.getId(), pad_columbine_scented_candle);
+		PlaceHandlerCandlePad.registerPlaceEntry(BBBlocks.WHITE_CLOVER_SCENTED_CANDLE.getId(), pad_white_clover_scented_candle);
+		PlaceHandlerCandlePad.registerPlaceEntry(BBBlocks.PINK_CLOVER_SCENTED_CANDLE.getId(), pad_pink_clover_scented_candle);
 
 	}
 	

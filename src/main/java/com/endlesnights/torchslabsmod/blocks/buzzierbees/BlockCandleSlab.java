@@ -94,6 +94,9 @@ public class BlockCandleSlab extends Block implements IWaterLoggable
 	{		
 		if (!this.isValidPosition(state, worldIn, currentPos))
 		{
+			if(worldIn.getBlockState(currentPos.down()).getBlock() instanceof SlabBlock && worldIn.getBlockState(currentPos.down()).get(SlabBlock.TYPE) != SlabType.BOTTOM)
+				return Blocks.AIR.getDefaultState();
+			
 			worldIn.getPendingBlockTicks().scheduleTick(currentPos, this, this.tickRate(worldIn));
 			return super.updatePostPlacement(state, facing, facingState, worldIn, currentPos, facingPos);
 		}

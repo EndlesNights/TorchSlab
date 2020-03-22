@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.function.Supplier;
 
 import com.endlesnights.torchslabsmod.blocks.buzzierbees.BuzzierBeesCompat;
+import com.endlesnights.torchslabsmod.blocks.buzzierbees.tileentity.BBTileEntities;
 import com.endlesnights.torchslabsmod.blocks.vanilla.VanillaCompat;
 
 import net.minecraft.block.Block;
@@ -15,6 +16,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
 import net.minecraftforge.fml.event.lifecycle.InterModEnqueueEvent;
+import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
 @Mod(TorchSlabsMod.MODID)
 @EventBusSubscriber(bus=Bus.MOD)
@@ -32,6 +34,7 @@ public class TorchSlabsMod
 		{
 			System.out.println("BuzzierBees DETECTED AND LOADED TORCHSLAB COMPAT");
 			compatList.add(BuzzierBeesCompat::new);
+			BBTileEntities.TILE_ENTITY_TYPES.register(FMLJavaModLoadingContext.get().getModEventBus());
 		}
 	}
 

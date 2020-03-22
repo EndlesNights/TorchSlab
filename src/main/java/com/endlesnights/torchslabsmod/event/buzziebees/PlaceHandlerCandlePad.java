@@ -40,7 +40,6 @@ public class PlaceHandlerCandlePad
 	{		
 		BlockPos pos = event.getPos();
 		Direction face = event.getFace();
-		BlockPos placeAt = pos.offset(face);
 		World world = event.getWorld();		
 
 		
