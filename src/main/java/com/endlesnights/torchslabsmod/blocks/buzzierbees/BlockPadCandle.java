@@ -5,6 +5,7 @@ import java.util.Random;
 import javax.annotation.Nullable;
 
 import com.bagel.buzzierbees.common.blocks.CandleBlock;
+import com.endlesnights.torchslabsmod.blocks.buzzierbees.util.GetCandle;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -40,22 +41,22 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 
 public class BlockPadCandle extends Block
 {
-	public final Block PARENT_BLOCK;
-	public static final IntegerProperty CANDLES 	= CandleBlock.CANDLES;
-	public static final DirectionProperty FACING 	= CandleBlock.FACING;
+	public static final IntegerProperty CANDLES = CandleBlock.CANDLES;
+	public static final DirectionProperty FACING	= CandleBlock.FACING;
 	
-	public static final VoxelShape PAD_SHAPE 		= Block.makeCuboidShape(1.0D, 0.0D, 1.0D, 15.0D, 1.5D, 15.0D);
-	protected static final VoxelShape ONE_SHAPE 	= VoxelShapes.or( Block.makeCuboidShape(6.0D, 0.0D, 6.0D, 10.0D, 9.25D, 10.0D), PAD_SHAPE);
-	protected static final VoxelShape TWO_SHAPE 	= VoxelShapes.or( Block.makeCuboidShape(3.0D, 0.0D, 3.0D, 13.0D, 9.25D, 13.0D), PAD_SHAPE);
-	protected static final VoxelShape THREE_SHAPE 	= VoxelShapes.or( Block.makeCuboidShape(3.0D, 0.0D, 3.0D, 13.0D, 9.25D, 13.0D), PAD_SHAPE);
-	protected static final VoxelShape FOUR_SHAPE 	= VoxelShapes.or(Block.makeCuboidShape(3.0D, 0.0D, 3.0D, 13.0D, 9.25D, 13.0D), PAD_SHAPE);
+	public static final VoxelShape PAD_SHAPE = Block.makeCuboidShape(1.0D, 0.0D, 1.0D, 15.0D, 1.5D, 15.0D);
+	protected static final VoxelShape ONE_SHAPE = VoxelShapes.or( Block.makeCuboidShape(6.0D, 0.0D, 6.0D, 10.0D, 9.25D, 10.0D), PAD_SHAPE);
+	protected static final VoxelShape TWO_SHAPE = VoxelShapes.or( Block.makeCuboidShape(3.0D, 0.0D, 3.0D, 13.0D, 9.25D, 13.0D), PAD_SHAPE);
+	protected static final VoxelShape THREE_SHAPE = VoxelShapes.or( Block.makeCuboidShape(3.0D, 0.0D, 3.0D, 13.0D, 9.25D, 13.0D), PAD_SHAPE);
+	protected static final VoxelShape FOUR_SHAPE = VoxelShapes.or(Block.makeCuboidShape(3.0D, 0.0D, 3.0D, 13.0D, 9.25D, 13.0D), PAD_SHAPE);
 	
 	
-	public BlockPadCandle(Block.Properties properties, Block parentBlock)
+	public BlockPadCandle(Block.Properties properties)
 	{
 		super(properties);
-		this.PARENT_BLOCK = parentBlock;
-		this.setDefaultState(this.getDefaultState().with(CANDLES, 1));
+		this.setDefaultState(this.getDefaultState()
+				.with(CANDLES, 1)
+				.with(FACING, Direction.NORTH));
 	}
 	
 	protected void fillStateContainer(StateContainer.Builder<Block, BlockState> builder) {
@@ -121,7 +122,7 @@ public class BlockPadCandle extends Block
 	@Override
 	public ItemStack getPickBlock(BlockState state, RayTraceResult target, IBlockReader world, BlockPos pos, PlayerEntity player)
 	{
-		return new ItemStack( PARENT_BLOCK.asItem());
+		return new ItemStack( GetCandle.getPadParent(state).asItem());
 	}
 	
 	@Override

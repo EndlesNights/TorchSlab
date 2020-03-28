@@ -23,9 +23,9 @@ public class BlockPadScentedCandle extends BlockPadCandle
 	public int duration;
 	public int level;
 	
-	public BlockPadScentedCandle(Effect candleEffectInstance, int duration, int level, Block.Properties properties, Block parent_Block)
+	public BlockPadScentedCandle(Effect candleEffectInstance, int duration, int level, Block.Properties properties)
 	{
-		super(properties, parent_Block);
+		super(properties);
 		this.candleEffectInstance = candleEffectInstance;	
 		this.duration = duration;
 		this.level = level;

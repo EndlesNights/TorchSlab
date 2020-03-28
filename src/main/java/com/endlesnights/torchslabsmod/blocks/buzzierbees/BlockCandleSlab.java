@@ -4,6 +4,7 @@ import java.util.Random;
 
 import com.bagel.buzzierbees.common.blocks.CandleBlock;
 import com.endlesnights.torchslabsmod.blocks.buzzierbees.entities.FallingCandleSlabEntity;
+import com.endlesnights.torchslabsmod.blocks.buzzierbees.util.GetCandle;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -40,9 +41,6 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 
 public class BlockCandleSlab extends Block implements IWaterLoggable
 {
-	public final Block PARENT_BLOCK;
-	public final Block PAD_BLOCK;
-	
 	public static final IntegerProperty CANDLES 	= CandleBlock.CANDLES;
 	public static final BooleanProperty WATERLOGGED = CandleBlock.WATERLOGGED;
 	public static final DirectionProperty FACING 	= CandleBlock.FACING;
@@ -52,11 +50,9 @@ public class BlockCandleSlab extends Block implements IWaterLoggable
 	protected static final VoxelShape THREE_SHAPE 	= Block.makeCuboidShape(3.0D, -8.0D, 3.0D, 13.0D, 1.0D, 13.0D);
 	protected static final VoxelShape FOUR_SHAPE 	= Block.makeCuboidShape(3.0D, -8.0D, 3.0D, 13.0D, 1.0D, 13.0D);
 	
-	public BlockCandleSlab(Block.Properties properties, Block parentBlock, Block padBlock)
+	public BlockCandleSlab(Block.Properties properties)
 	{
 	      super(properties.hardnessAndResistance(0.1F));
-	      this.PARENT_BLOCK = parentBlock;
-	      this.PAD_BLOCK = padBlock;
 	      this.setDefaultState(this.getDefaultState().with(CANDLES, 1).with(WATERLOGGED, false));
 	}
 	
@@ -135,6 +131,7 @@ public class BlockCandleSlab extends Block implements IWaterLoggable
 
 	public void breakFall(World worldIn, BlockPos pos, BlockState fallingState, BlockState hitState, FallingCandleSlabEntity entity)
 	{
+		
 		if(worldIn.getBlockState(pos).getBlock() instanceof SlabBlock && worldIn.getBlockState(pos).get(SlabBlock.TYPE) == SlabType.BOTTOM
 				&& (worldIn.isAirBlock(pos.up()) || worldIn.getFluidState(pos.up()).getFluid() == Fluids.WATER || worldIn.getFluidState(pos.up()).getFluid() == Fluids.FLOWING_WATER))
 			{
@@ -144,19 +141,19 @@ public class BlockCandleSlab extends Block implements IWaterLoggable
 			|| worldIn.getBlockState(pos).getBlock() instanceof TallGrassBlock
 			|| worldIn.getBlockState(pos).getBlock() instanceof SnowBlock && worldIn.getBlockState(pos).get(SnowBlock.LAYERS) == 1)
 		{
-			worldIn.setBlockState(pos,PARENT_BLOCK.getDefaultState()
+			worldIn.setBlockState(pos,GetCandle.getParentSlab(fallingState).getDefaultState()
 					.with(CANDLES, fallingState.get(CANDLES))
 					.with(WATERLOGGED, fallingState.get(WATERLOGGED))
 					.with(FACING, fallingState.get(FACING))
 					,3);
 		}
 		else if(worldIn.getBlockState(pos).getBlock() instanceof LilyPadBlock)
-			worldIn.setBlockState(pos,PAD_BLOCK.getDefaultState()
+			worldIn.setBlockState(pos,GetCandle.getPadBlock(fallingState).getDefaultState()
 					.with(CANDLES, fallingState.get(CANDLES))
 					.with(FACING, fallingState.get(FACING))
 					,3);
 		else
-			entity.entityDropItem(new ItemStack(PARENT_BLOCK.asItem(),fallingState.get(CANDLES)));	
+			entity.entityDropItem(new ItemStack(GetCandle.getParentSlab(fallingState).asItem(),fallingState.get(CANDLES)));	
 	}
 	
 	public void onBroken(World worldIn, BlockPos pos){
@@ -195,7 +192,7 @@ public class BlockCandleSlab extends Block implements IWaterLoggable
 	@Override
 	public ItemStack getPickBlock(BlockState state, RayTraceResult target, IBlockReader world, BlockPos pos, PlayerEntity player)
 	{
-		return new ItemStack( PARENT_BLOCK.asItem());
+		return new ItemStack( GetCandle.getParentSlab(state).asItem());
 	}
 	
 	@Override

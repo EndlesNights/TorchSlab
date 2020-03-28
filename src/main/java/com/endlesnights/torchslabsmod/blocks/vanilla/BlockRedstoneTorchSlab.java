@@ -32,6 +32,7 @@ public class BlockRedstoneTorchSlab extends RedstoneTorchBlock
 	public BlockRedstoneTorchSlab(Block.Properties properties)
 	{
 		super(properties);
+		this.setDefaultState(this.stateContainer.getBaseState().with(LIT, Boolean.valueOf(true)));
 	}
 	
 	@Override
@@ -54,9 +55,9 @@ public class BlockRedstoneTorchSlab extends RedstoneTorchBlock
 	}
 	
 	@Override
-	public int getWeakPower(BlockState state, IBlockReader access, BlockPos pos, Direction side)
+	public int getWeakPower(BlockState blockState, IBlockReader access, BlockPos pos, Direction side)
 	{
-		return state.get(LIT) && Direction.DOWN != side ? 15 : 0;
+		return blockState.get(LIT) && Direction.UP != side ? 15 : 0;
 	}
 
 	@Override
@@ -66,9 +67,9 @@ public class BlockRedstoneTorchSlab extends RedstoneTorchBlock
 	}
 
 	@Override
-	protected boolean shouldBeOff(World world, BlockPos pos, BlockState state)
+	protected boolean shouldBeOff(World worldIn, BlockPos pos, BlockState state)
 	{
-		return world.isSidePowered(pos.up(), Direction.UP);
+		return worldIn.isSidePowered(pos.down(), Direction.DOWN);
 	}
 
 	@Override

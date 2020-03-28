@@ -7,6 +7,7 @@ import javax.annotation.Nullable;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
+import net.minecraft.block.HorizontalBlock;
 import net.minecraft.block.TorchBlock;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.color.IBlockColor;
@@ -18,6 +19,8 @@ import net.minecraft.fluid.IFluidState;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.particles.ParticleTypes;
+import net.minecraft.state.DirectionProperty;
+import net.minecraft.state.StateContainer;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
@@ -37,7 +40,9 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
 public class BlockPadTorch extends TorchBlock
-{
+{ 
+	public static final DirectionProperty HORIZONTAL_FACING	= HorizontalBlock.HORIZONTAL_FACING;;
+	
 	public static final VoxelShape PAD_SHAPE = Block.makeCuboidShape(1.0D, 0.0D, 1.0D, 15.0D, 1.5D, 15.0D);
 	public static final VoxelShape SHAPE = VoxelShapes.combine(
 			Block.makeCuboidShape(6.0D, 0.0D, 6.0D, 10.0D, 11.5D, 10.0D), //Torch
@@ -47,6 +52,7 @@ public class BlockPadTorch extends TorchBlock
 	public BlockPadTorch(Block.Properties properties)
 	{
 		super(properties);
+		this.setDefaultState(this.stateContainer.getBaseState().with(HORIZONTAL_FACING, Direction.NORTH));
 	}
 	
 	@Override
@@ -59,6 +65,11 @@ public class BlockPadTorch extends TorchBlock
 	public VoxelShape getCollisionShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context)
 	{
 		return PAD_SHAPE;
+	}
+	
+	@Override
+	protected void fillStateContainer(StateContainer.Builder<Block, BlockState> builder) {
+		builder.add(HORIZONTAL_FACING);	
 	}
 	
 	@Override

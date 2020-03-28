@@ -5,6 +5,7 @@ import javax.annotation.Nullable;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
+import net.minecraft.block.HorizontalBlock;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.color.IBlockColor;
 import net.minecraft.entity.Entity;
@@ -15,6 +16,7 @@ import net.minecraft.fluid.IFluidState;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.pathfinding.PathType;
+import net.minecraft.state.DirectionProperty;
 import net.minecraft.state.StateContainer;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
@@ -33,6 +35,8 @@ import net.minecraft.world.server.ServerWorld;
 
 public class BlockPadLantern extends Block
 {
+	public static final DirectionProperty HORIZONTAL_FACING = HorizontalBlock.HORIZONTAL_FACING;;
+
 	public static final VoxelShape PAD_SHAPE = Block.makeCuboidShape(1.0D, 0.0D, 1.0D, 15.0D, 1.5D, 15.0D);
 	public static final VoxelShape SHAPE =  VoxelShapes.or(
 			Block.makeCuboidShape(5.0D, 0.0D, 5.0D, 11.0D, 7.25D, 11.0D), //Lantern base
@@ -43,6 +47,12 @@ public class BlockPadLantern extends Block
 	public BlockPadLantern(Block.Properties properties)
 	{
 		super(properties);
+		this.setDefaultState(this.stateContainer.getBaseState().with(HORIZONTAL_FACING, Direction.NORTH));
+	}
+	
+	@Override
+	protected void fillStateContainer(StateContainer.Builder<Block, BlockState> builder) {
+		builder.add(HORIZONTAL_FACING);	
 	}
 	
 	@Override
@@ -55,10 +65,6 @@ public class BlockPadLantern extends Block
 	public VoxelShape getCollisionShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context)
 	{
 		return SHAPE;
-	}
-	
-	@Override
-	protected void fillStateContainer(StateContainer.Builder<Block, BlockState> builder) {
 	}
 
 	@Override

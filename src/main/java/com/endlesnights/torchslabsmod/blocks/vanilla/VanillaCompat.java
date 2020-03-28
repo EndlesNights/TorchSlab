@@ -52,7 +52,7 @@ public class VanillaCompat implements ITorchSlabCompat
 		end_rod_slab = registerBlock(new BlockEndRodSlab(Block.Properties.from(Blocks.END_ROD)), "end_rod_slab");
 		
 		pad_torch = registerBlock(new BlockPadTorch(Block.Properties.from(Blocks.TORCH)), "pad_torch");
-		pad_lantern = registerBlock(new BlockPadLantern(Block.Properties.from(Blocks.LANTERN).hardnessAndResistance(0.0F)), "pad_lantern");
+		pad_lantern = registerBlock(new BlockPadLantern(Block.Properties.create(Material.MISCELLANEOUS).doesNotBlockMovement().hardnessAndResistance(0.0F).sound(SoundType.LANTERN).lightValue(15).notSolid()), "pad_lantern");
 		
 		if (FMLEnvironment.dist == Dist.CLIENT)
         {

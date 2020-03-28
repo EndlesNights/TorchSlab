@@ -1,10 +1,9 @@
 {
-    "variants": {
-        "": [
-            { "model": "torchslabmod:block/pad_lantern" },
-            { "model": "torchslabmod:block/pad_lantern", "y": 90 },
-            { "model": "torchslabmod:block/pad_lantern", "y": 180 },
-            { "model": "torchslabmod:block/pad_lantern", "y": 270 }
-        ]
+    "variants":
+	{
+		"facing=north": { "model": "torchslabmod:block/pad_lantern" },
+		"facing=east": { "model": "torchslabmod:block/pad_lantern", "y": 90 },
+		"facing=south": { "model": "torchslabmod:block/pad_lantern", "y": 180 },
+		"facing=west": { "model": "torchslabmod:block/pad_lantern", "y": 270 }
     }
 }

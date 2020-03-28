@@ -24,9 +24,9 @@ public class BlockScentedCandleSlab extends BlockCandleSlab implements IWaterLog
 	public int duration;
 	public int level;
 	
-	public BlockScentedCandleSlab(Effect candleEffectInstance, int duration, int level, Block.Properties properties, Block parent_Block, Block padBlock)
+	public BlockScentedCandleSlab(Effect candleEffectInstance, int duration, int level, Block.Properties properties)
 	{
-		super(properties, parent_Block, padBlock);
+		super(properties);
 		this.candleEffectInstance = candleEffectInstance;	
 		this.duration = duration;
 		this.level = level;

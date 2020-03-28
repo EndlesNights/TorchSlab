@@ -6,6 +6,7 @@ import java.util.HashMap;
 import com.endlesnights.torchslabsmod.TorchSlabsMod;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.HorizontalBlock;
 import net.minecraft.block.LilyPadBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Direction;
@@ -42,7 +43,7 @@ public class PlaceHandlerPadLights
 		if(world.getBlockState(pos).getBlock() instanceof LilyPadBlock && face == Direction.UP)
 		{	
 			
-			world.setBlockState(pos, block.getDefaultState());
+			world.setBlockState(pos, block.getDefaultState().with(HorizontalBlock.HORIZONTAL_FACING, event.getPlayer().getHorizontalFacing()));
 			world.playSound(null, pos.getX(), pos.getY(), pos.getZ(), block.getSoundType(world.getBlockState(pos)).getPlaceSound(), SoundCategory.BLOCKS, 1.0F, 1.0F);
 			event.getPlayer().swingArm(event.getHand());
 			

@@ -16,7 +16,7 @@ plugins {
 apply plugin: 'net.minecraftforge.gradle'
 apply plugin: 'eclipse'
 
-version = '1.15.1_v1.6'
+version = '1.15.1_v1.6.3_TEST'
 group = 'com.endlesnights.torchslabmod'
 archivesBaseName = 'torchslabmod'
 
@@ -62,9 +62,9 @@ jar {
         attributes([
             "Specification-Title": "torchslabmod",
             "Specification-Vendor": "endlesnights",
-            "Specification-Version": "v1.6",
+            "Specification-Version": "v1.6.3",
             "Implementation-Title": "Torch Slab Mod",
-            "Implementation-Version": "v1.6",
+            "Implementation-Version": "v1.6.3",
             "Implementation-Vendor" :"torchslabmod",
             "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
         ])
