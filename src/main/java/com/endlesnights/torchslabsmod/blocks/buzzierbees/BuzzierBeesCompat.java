@@ -133,6 +133,12 @@ public class BuzzierBeesCompat implements ITorchSlabCompat
 	public static Block pad_white_clover_scented_candle = null;
 	public static Block pad_pink_clover_scented_candle = null;
 	
+//	public static Block warm_monkey_bush_scented_candle_slab = null;
+//	public static Block hot_monkey_brush_scented_candle_slab = null;
+//	public static Block scalding_monkey_brush_candle_slab = null;
+//	public static Block
+//	public static Block
+	
 	@Override
 	public void registerBlocks(RegistryEvent.Register<Block> event)
 	{	
@@ -417,18 +423,18 @@ public class BuzzierBeesCompat implements ITorchSlabCompat
 		
 		PlaceHandlerCandleSlab.registerPlaceEntry(BBBlocks.CARTWHEEL_SCENTED_CANDLE.getId(), cartwheel_scented_candle_slab);
 		PlaceHandlerCandleSlab.registerPlaceEntry(BBBlocks.BLUEBELL_SCENTED_CANDLE.getId(), bluebell_scented_candle_slab);
-		PlaceHandlerCandleSlab.registerPlaceEntry(BBBlocks.DAYBLOOM_SCENTED_CANDLE.getId(), daybloom_scented_candle_slab);
+		PlaceHandlerCandleSlab.registerPlaceEntry(BBBlocks.YELLOW_HIBISCUS_SCENTED_CANDLE.getId(), daybloom_scented_candle_slab);
 		PlaceHandlerCandleSlab.registerPlaceEntry(BBBlocks.VIOLET_SCENTED_CANDLE.getId(), violet_scented_candle_slab);
-		PlaceHandlerCandleSlab.registerPlaceEntry(BBBlocks.JOLYCE_SCENTED_CANDLE.getId(), jolyce_scented_candle_slab);
+		PlaceHandlerCandleSlab.registerPlaceEntry(BBBlocks.DIANTHUS_SCENTED_CANDLE.getId(), jolyce_scented_candle_slab);
 		PlaceHandlerCandleSlab.registerPlaceEntry(BBBlocks.COLUMBINE_SCENTED_CANDLE.getId(), columbine_scented_candle_slab);
 		PlaceHandlerCandleSlab.registerPlaceEntry(BBBlocks.WHITE_CLOVER_SCENTED_CANDLE.getId(), white_clover_scented_candle_slab);
 		PlaceHandlerCandleSlab.registerPlaceEntry(BBBlocks.PINK_CLOVER_SCENTED_CANDLE.getId(), pink_clover_scented_candle_slab);
 		
 		PlaceHandlerCandlePad.registerPlaceEntry(BBBlocks.CARTWHEEL_SCENTED_CANDLE.getId(), pad_cartwheel_scented_candle);
 		PlaceHandlerCandlePad.registerPlaceEntry(BBBlocks.BLUEBELL_SCENTED_CANDLE.getId(), pad_bluebell_scented_candle);
-		PlaceHandlerCandlePad.registerPlaceEntry(BBBlocks.DAYBLOOM_SCENTED_CANDLE.getId(), pad_daybloom_scented_candle);
+		PlaceHandlerCandlePad.registerPlaceEntry(BBBlocks.YELLOW_HIBISCUS_SCENTED_CANDLE.getId(), pad_daybloom_scented_candle);
 		PlaceHandlerCandlePad.registerPlaceEntry(BBBlocks.VIOLET_SCENTED_CANDLE.getId(), pad_violet_scented_candle);
-		PlaceHandlerCandlePad.registerPlaceEntry(BBBlocks.JOLYCE_SCENTED_CANDLE.getId(), pad_jolyce_scented_candle);
+		PlaceHandlerCandlePad.registerPlaceEntry(BBBlocks.DIANTHUS_SCENTED_CANDLE.getId(), pad_jolyce_scented_candle);
 		PlaceHandlerCandlePad.registerPlaceEntry(BBBlocks.COLUMBINE_SCENTED_CANDLE.getId(), pad_columbine_scented_candle);
 		PlaceHandlerCandlePad.registerPlaceEntry(BBBlocks.WHITE_CLOVER_SCENTED_CANDLE.getId(), pad_white_clover_scented_candle);
 		PlaceHandlerCandlePad.registerPlaceEntry(BBBlocks.PINK_CLOVER_SCENTED_CANDLE.getId(), pad_pink_clover_scented_candle);

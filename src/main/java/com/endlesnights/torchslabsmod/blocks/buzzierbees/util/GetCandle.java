@@ -107,11 +107,11 @@ public class GetCandle
 		if(state.getBlock() == BuzzierBeesCompat.pad_bluebell_scented_candle)
 			return BBBlocks.BLUEBELL_SCENTED_CANDLE.get();
 		if(state.getBlock() == BuzzierBeesCompat.pad_daybloom_scented_candle)
-			return BBBlocks.DAYBLOOM_SCENTED_CANDLE.get();
+			return BBBlocks.YELLOW_HIBISCUS_SCENTED_CANDLE.get();
 		if(state.getBlock() == BuzzierBeesCompat.pad_violet_scented_candle)
 			return BBBlocks.VIOLET_SCENTED_CANDLE.get();
 		if(state.getBlock() == BuzzierBeesCompat.pad_jolyce_scented_candle)
-			return BBBlocks.JOLYCE_SCENTED_CANDLE.get();
+			return BBBlocks.DIANTHUS_SCENTED_CANDLE.get();
 		if(state.getBlock() == BuzzierBeesCompat.pad_columbine_scented_candle)
 			return BBBlocks.COLUMBINE_SCENTED_CANDLE.get();
 		if(state.getBlock() == BuzzierBeesCompat.pad_white_clover_scented_candle)
@@ -221,11 +221,11 @@ public class GetCandle
 		if(state.getBlock() == BuzzierBeesCompat.bluebell_scented_candle_slab)
 			return BBBlocks.BLUEBELL_SCENTED_CANDLE.get();
 		if(state.getBlock() == BuzzierBeesCompat.daybloom_scented_candle_slab)
-			return BBBlocks.DAYBLOOM_SCENTED_CANDLE.get();
+			return BBBlocks.YELLOW_HIBISCUS_SCENTED_CANDLE.get();
 		if(state.getBlock() == BuzzierBeesCompat.violet_scented_candle_slab)
 			return BBBlocks.VIOLET_SCENTED_CANDLE.get();
 		if(state.getBlock() == BuzzierBeesCompat.jolyce_scented_candle_slab)
-			return BBBlocks.JOLYCE_SCENTED_CANDLE.get();
+			return BBBlocks.DIANTHUS_SCENTED_CANDLE.get();
 		if(state.getBlock() == BuzzierBeesCompat.columbine_scented_candle_slab)
 			return BBBlocks.COLUMBINE_SCENTED_CANDLE.get();
 		if(state.getBlock() == BuzzierBeesCompat.white_clover_scented_candle_slab)

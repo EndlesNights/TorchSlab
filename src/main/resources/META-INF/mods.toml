@@ -2,7 +2,7 @@ modLoader="javafml" #mandatory
 loaderVersion="[31,)" #mandatory
 [[mods]] #mandatory
 modId="torchslabmod" #mandatory
-version="1.6.3" #mandatory
+version="1.6.4" #mandatory
 displayName="Torch Slab Mod TEST" #mandatory
 displayURL="https://www.curseforge.com/minecraft/mc-mods/torchslabs-mod" #optional
 

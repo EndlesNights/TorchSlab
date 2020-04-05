@@ -92,9 +92,7 @@ public class ColorHandler
 					BuzzierBeesCompat.pad_violet_scented_candle
 
 					);
-		}
-		
-		
+		}		
 	}
 	
 //	@SubscribeEvent
