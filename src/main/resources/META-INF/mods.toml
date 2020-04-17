@@ -2,8 +2,8 @@ modLoader="javafml" #mandatory
 loaderVersion="[31,)" #mandatory
 [[mods]] #mandatory
 modId="torchslabmod" #mandatory
-version="1.6.4" #mandatory
-displayName="Torch Slab Mod TEST" #mandatory
+version="1.6.7" #mandatory
+displayName="Torch Slab Mod" #mandatory
 displayURL="https://www.curseforge.com/minecraft/mc-mods/torchslabs-mod" #optional
 
 # A file name (in the root of the mod JAR) containing a logo for display

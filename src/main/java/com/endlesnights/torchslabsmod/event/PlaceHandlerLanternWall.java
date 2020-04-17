@@ -5,6 +5,8 @@ import java.util.HashMap;
 
 import com.endlesnights.torchslabsmod.TorchSlabsMod;
 import com.endlesnights.torchslabsmod.blocks.vanilla.BlockWallTorchSlab;
+import com.endlesnights.torchslabsmod.config.Config;
+import com.endlesnights.torchslabsmod.config.TorchSlabConfig;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.FenceBlock;
@@ -25,6 +27,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent.RightClickBlock;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
+import net.minecraftforge.fml.loading.FMLPaths;
 
 @EventBusSubscriber(modid=TorchSlabsMod.MODID)
 public class PlaceHandlerLanternWall
@@ -49,11 +52,18 @@ private static final HashMap<ResourceLocation,Block> PLACE_ENTRIES = new HashMap
 		World world = event.getWorld();
 		PlayerEntity playerIn = event.getPlayer();
 		
+		Config.loadConfig(Config.SERVER, FMLPaths.CONFIGDIR.get().resolve("torchslabmod-server.toml").toString());
+		if(!TorchSlabConfig.wallLanternCheck.get()
+				|| (!playerIn.isSteppingCarefully() && TorchSlabConfig.interactiveCheckList.get().contains(world.getBlockState(pos).getBlock().getRegistryName().toString())))
+			return;
+		
 		if((face != Direction.UP && face != Direction.DOWN)
 				&& Block.hasSolidSide(world.getBlockState(pos), world, pos, face)
 				&& (world.isAirBlock(placeAt) || world.getFluidState(placeAt).getFluid() == Fluids.WATER || world.getFluidState(placeAt).getFluid() == Fluids.FLOWING_WATER) )
 		{
-			if(blockHalf(playerIn, pos, face) <= 0 && (!Block.hasSolidSide(world.getBlockState(placeAt.down()), world, placeAt.down(), face.getOpposite())))
+			
+			if(blockHalf(playerIn, pos, face) <= 0 && (!Block.hasSolidSide(world.getBlockState(placeAt.down()), world, placeAt.down(), face.getOpposite()))
+					&& TorchSlabConfig.lowerLanternCheck.get())
 			{
 				world.setBlockState(placeAt, block.getDefaultState().with(WallTorchBlock.HORIZONTAL_FACING, face).with(BlockWallTorchSlab.HALF, Half.BOTTOM));
 			}

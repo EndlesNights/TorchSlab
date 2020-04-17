@@ -5,10 +5,13 @@ import java.util.HashMap;
 
 import com.endlesnights.torchslabsmod.TorchSlabsMod;
 import com.endlesnights.torchslabsmod.blocks.vanilla.BlockWallTorchSlab;
+import com.endlesnights.torchslabsmod.config.Config;
+import com.endlesnights.torchslabsmod.config.TorchSlabConfig;
 
 import net.minecraft.block.AirBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
 import net.minecraft.block.EndRodBlock;
 import net.minecraft.block.FlowingFluidBlock;
 import net.minecraft.block.LadderBlock;
@@ -36,6 +39,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent.RightClickBlock;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
+import net.minecraftforge.fml.loading.FMLPaths;
 
 @EventBusSubscriber(modid=TorchSlabsMod.MODID)
 public class PlaceHandlerTorchWall
@@ -60,19 +64,27 @@ public class PlaceHandlerTorchWall
 		World world = event.getWorld();		
 		PlayerEntity playerIn = event.getPlayer();
 
+		Config.loadConfig(Config.SERVER, FMLPaths.CONFIGDIR.get().resolve("torchslabmod-server.toml").toString());
+		if(!playerIn.isSteppingCarefully() && TorchSlabConfig.interactiveCheckList.get().contains(world.getBlockState(pos).getBlock().getRegistryName().toString()) )
+			return;
+		
 		if((face != Direction.UP && face != Direction.DOWN)
 				&& Block.hasSolidSide(world.getBlockState(pos), world, pos, face)
 				&& (world.isAirBlock(placeAt) || world.getFluidState(placeAt).getFluid() == Fluids.WATER || world.getFluidState(placeAt).getFluid() == Fluids.FLOWING_WATER) )
-		{
-			
+		{	
+
+
 			if(blockHalf(playerIn, pos, face) >= 0 && validTop(world.getBlockState(placeAt.up()), block.getDefaultState().with(WallTorchBlock.HORIZONTAL_FACING, face).with(BlockWallTorchSlab.HALF, Half.TOP) ))
 			{ 
+				if(!TorchSlabConfig.upperBlockCheck.get())
+					return;
 				
 				world.setBlockState(placeAt, block.getDefaultState().with(WallTorchBlock.HORIZONTAL_FACING, face).with(BlockWallTorchSlab.HALF, Half.TOP));
 			}
 			else
 			{
-				world.setBlockState(placeAt, block.getDefaultState().with(WallTorchBlock.HORIZONTAL_FACING, face).with(BlockWallTorchSlab.HALF, Half.BOTTOM));
+				world.setBlockState(placeAt, Blocks.WALL_TORCH.getDefaultState().with(WallTorchBlock.HORIZONTAL_FACING, face));
+				//world.setBlockState(placeAt, block.getDefaultState().with(WallTorchBlock.HORIZONTAL_FACING, face).with(BlockWallTorchSlab.HALF, Half.BOTTOM));
 			}
 			
 			world.playSound(null, pos.getX(), pos.getY(), pos.getZ(), block.getSoundType(world.getBlockState(pos)).getPlaceSound(), SoundCategory.BLOCKS, 1.0F, 1.0F);
