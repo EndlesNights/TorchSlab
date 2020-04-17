@@ -1,5 +1,15 @@
 {
-    "variants": {
-        "": { "model": "torchslabmod:block/torch" }
-    }
+  "variants": {
+    "facing=up,half=bottom": { "model": "torchslabmod:normal_torch_slab" },
+    "facing=east,half=bottom": { "model": "minecraft:normal_torch_wall" },
+    "facing=south,half=bottom": { "model": "minecraft:normal_torch_wall", "y": 90 },
+    "facing=west,half=bottom": { "model": "minecraft:normal_torch_wall", "y": 180 },
+    "facing=north,half=bottom": { "model": "minecraft:normal_torch_wall", "y": 270 },
+	
+	"facing=up,half=top": { "model": "torchslabmod:normal_torch_slab" },
+    "facing=east,half=top": { "model": "torchslabmod:normal_torch_wall_upper" },
+    "facing=south,half=top": { "model": "torchslabmod:normal_torch_wall_upper", "y": 90 },
+    "facing=west,half=top": { "model": "torchslabmod:normal_torch_wall_upper", "y": 180 },
+    "facing=north,half=top": { "model": "torchslabmod:normal_torch_wall_upper", "y": 270}	
+  }
 }

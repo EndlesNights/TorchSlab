@@ -1,0 +1,16 @@
+[
+{
+  "modid": "torchslabmod",
+  "name": "Torch Slab Mod",
+  "description": "Allows for the placement of torches ontop of slab blocks and onto the walls of slabs. Port to 1.12.2",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "https://www.curseforge.com/minecraft/mc-mods/torchslabs-mod",
+  "updateUrl": "",
+  "authorList": ["EndlesNights"],
+  "credits": "",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]

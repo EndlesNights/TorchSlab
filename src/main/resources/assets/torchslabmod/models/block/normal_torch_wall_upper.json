@@ -1,0 +1,6 @@
+{
+    "parent": "torchslabmod:block/torchslab_wall_upper",
+    "textures": {
+        "torch": "blocks/torch_on"
+    }
+}

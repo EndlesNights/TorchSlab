@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "facing=east,top=false": { "model": "torchslabmod:lantern_wall_lower" },
+    "facing=south,top=false": { "model": "torchslabmod:lantern_wall_lower", "y": 90 },
+    "facing=west,top=false": { "model": "torchslabmod:lantern_wall_lower", "y": 180 },
+    "facing=north,top=false": { "model": "torchslabmod:lantern_wall_lower", "y": 270 },
+	
+    "facing=east,top=true": { "model": "torchslabmod:lantern_wall_upper" },
+    "facing=south,top=true": { "model": "torchslabmod:lantern_wall_upper", "y": 90 },
+    "facing=west,top=true": { "model": "torchslabmod:lantern_wall_upper", "y": 180 },
+    "facing=north,top=true": { "model": "torchslabmod:lantern_wall_upper", "y": 270}	
+  }
+}
