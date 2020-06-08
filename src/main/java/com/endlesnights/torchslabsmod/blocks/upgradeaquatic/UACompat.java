@@ -6,6 +6,7 @@ import com.endlesnights.torchslabsmod.event.PlaceHandlerTorchSlab;
 import com.endlesnights.torchslabsmod.event.PlaceHandlerTorchWall;
 import com.endlesnights.torchslabsmod.event.upgradeaquatic.PlaceHandlerToothLantern;
 import com.teamabnormals.upgrade_aquatic.core.registry.UABlocks;
+import com.teamabnormals.upgrade_aquatic.core.registry.UASounds;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.Block.Properties;
@@ -62,7 +63,9 @@ public class UACompat implements ITorchSlabCompat
 			event.getRegistry().register(JELLY_TORCH_WALL_SLAB_ORANGE = new BlockWallJellyTorchSlab(Properties.from(Blocks.WALL_TORCH).sound(SoundType.METAL), BlockWallJellyTorchSlab.JellyTorchType.ORANGE).setRegistryName(TorchSlabsMod.MODID, "upgrade_aquatic_jelly_torch_wall_orange"));
 			event.getRegistry().register(JELLY_TORCH_WALL_SLAB_RED = new BlockWallJellyTorchSlab(Properties.from(Blocks.WALL_TORCH).sound(SoundType.METAL), BlockWallJellyTorchSlab.JellyTorchType.RED).setRegistryName(TorchSlabsMod.MODID, "upgrade_aquatic_jelly_torch_wall_red"));
 			event.getRegistry().register(JELLY_TORCH_WALL_SLAB_WHITE = new BlockWallJellyTorchSlab(Properties.from(Blocks.WALL_TORCH).sound(SoundType.METAL), BlockWallJellyTorchSlab.JellyTorchType.WHITE).setRegistryName(TorchSlabsMod.MODID, "upgrade_aquatic_jelly_torch_wall_white"));		
-
+			
+			event.getRegistry().register(TOOTH_LANTERN = new BlockToothLanternSlab(Properties.from(Blocks.END_STONE).sound(UASounds.TOOTH_LANTERN).notSolid().lightValue(15)).setRegistryName(TorchSlabsMod.MODID, "upgrade_aquatic_tooth_lantern"));
+			
 			if (FMLEnvironment.dist == Dist.CLIENT)
 	        {
 	            RenderType translucentRenderType = RenderType.getTranslucent();
@@ -86,8 +89,6 @@ public class UACompat implements ITorchSlabCompat
 	            RenderTypeLookup.setRenderLayer(JELLY_TORCH_WALL_SLAB_WHITE, translucentRenderType);
 
 	        }
-			
-			event.getRegistry().register(TOOTH_LANTERN = new BlockToothLanternSlab(Properties.from(UABlocks.TOOTH_LANTERN.get()).lootFrom(UABlocks.TOOTH_LANTERN.get())).setRegistryName(TorchSlabsMod.MODID, "upgrade_aquatic_tooth_lantern"));
 		}
 		catch(Error e)
 		{
@@ -97,10 +98,6 @@ public class UACompat implements ITorchSlabCompat
 		{
 			System.out.println("Error while attpeing to load compatibility with TorchSlab & Upgrade Aquatic. Skipping Block:" + e.getMessage());
 		}
-		
-		
-
-	
 	}
 
 	@Override

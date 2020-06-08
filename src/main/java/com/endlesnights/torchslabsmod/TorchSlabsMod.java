@@ -65,6 +65,12 @@ public class TorchSlabsMod
 			System.out.println("Upgrade Aquatic Mod DETECTED AND LOADED TORCHSLAB COMPAT");
 			compatList.add(UACompat::new);
 		}
+		
+		if(ModList.get().isLoaded("druidcraft"))
+		{
+			System.out.println("druidcraft Mod DETECTED AND LOADED TORCHSLAB COMPAT");
+			//compatList.add(DruidcraftCompat::new);
+		}
 	}
 
 	@SubscribeEvent

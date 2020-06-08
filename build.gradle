@@ -57,6 +57,7 @@ dependencies {
 	compile "curse.maven:bambooblocks:2915926"
 	compile "curse.maven:quark:2944158"
 	compile "curse.maven:upgrade_aquatic:2958503"
+	compile "curse.maven:druidcraft:2975215"
 	
 	compile "curse.maven:naturalslabsmod:2950092"
 }

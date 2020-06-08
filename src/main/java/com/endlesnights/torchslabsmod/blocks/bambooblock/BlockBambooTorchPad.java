@@ -4,10 +4,11 @@ import java.util.Random;
 
 import com.endlesnights.torchslabsmod.blocks.vanilla.BlockPadTorch;
 import com.pugz.bambooblocks.core.registry.BambooBlocks;
-import com.pugz.bambooblocks.core.util.BlockProperties;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.SoundType;
+import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.particles.ParticleTypes;
@@ -32,7 +33,7 @@ public class BlockBambooTorchPad extends BlockPadTorch
 	
 	public BlockBambooTorchPad()
 	{
-		super(BlockProperties.BAMBOO_TORCH);
+		super(Block.Properties.create(Material.MISCELLANEOUS).doesNotBlockMovement().hardnessAndResistance(0.0F).lightValue(14).sound(SoundType.BAMBOO));
 		this.setDefaultState(this.stateContainer.getBaseState().with(HORIZONTAL_FACING, Direction.NORTH));
 	}
 	
