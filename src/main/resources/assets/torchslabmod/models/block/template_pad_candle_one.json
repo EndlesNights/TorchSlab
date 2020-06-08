@@ -1,0 +1,53 @@
+{
+	"credit": "Made with Blockbench",
+	"parent": "block/block",
+	"elements": [
+		{
+			"name": "candle_tcandle",
+			"from": [6, 0.25, 6],
+			"to": [10, 9.25, 10],
+			"rotation": {"angle": 0, "axis": "y", "origin": [6, 11, 10]},
+			"faces": {
+				"north": {"uv": [0, 7, 4, 16], "texture": "#all"},
+				"east": {"uv": [0, 7, 4, 16], "texture": "#all"},
+				"south": {"uv": [0, 7, 4, 16], "texture": "#all"},
+				"west": {"uv": [0, 7, 4, 16], "texture": "#all"},
+				"up": {"uv": [8, 0, 12, 4], "texture": "#all"}
+			}
+		},
+		{
+			"name": "wick1",
+			"from": [8, 9.25, 7.5],
+			"to": [8, 11.25, 8.5],
+			"rotation": {"angle": 45, "axis": "y", "origin": [8, 10, 8]},
+			"faces": {
+				"north": {"uv": [0, 0, 0, 2], "texture": "#all"},
+				"east": {"uv": [0, 0, 1, 2], "texture": "#all"},
+				"south": {"uv": [0, 0, 0, 2], "texture": "#all"},
+				"west": {"uv": [0, 0, 1, 2], "texture": "#all"},
+				"up": {"uv": [0, 0, 1, 0], "rotation": 90, "texture": "#all"}
+			}
+		},
+		{
+			"name": "wick2",
+			"from": [7.5, 9.25, 8],
+			"to": [8.5, 11.25, 8],
+			"rotation": {"angle": 45, "axis": "y", "origin": [8, 10, 8]},
+			"faces": {
+				"north": {"uv": [0, 0, 1, 2], "texture": "#all"},
+				"east": {"uv": [0, 0, 0, 2], "texture": "#all"},
+				"south": {"uv": [0, 0, 1, 2], "texture": "#all"},
+				"west": {"uv": [0, 0, 0, 2], "texture": "#all"},
+				"up": {"uv": [0, 0, 1, 0], "texture": "#all"}
+			}
+		}
+		,
+        {   "from": [ 0, 0.25, 0 ],
+            "to": [ 16, 0.25, 16 ],
+            "faces": {
+                "down":  { "uv": [ 16, 16, 0,  0 ], "texture": "#pad", "tintindex": 0 },
+                "up":    { "uv": [ 16,  0, 0, 16 ], "texture": "#pad", "tintindex": 0 }
+            }
+        }
+	]
+}

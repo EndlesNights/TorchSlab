@@ -1,0 +1,20 @@
+{
+    "variants": {
+        "facing=north,candles=1": { "model": "torchslabmod:block/pad_yellow_candle_one" },
+        "facing=south,candles=1": { "model": "torchslabmod:block/pad_yellow_candle_one", "y": 180 },
+        "facing=west,candles=1":  { "model": "torchslabmod:block/pad_yellow_candle_one", "y": 270 },
+        "facing=east,candles=1":  { "model": "torchslabmod:block/pad_yellow_candle_one", "y": 90 },
+        "facing=north,candles=2": { "model": "torchslabmod:block/pad_yellow_candle_two" },
+        "facing=south,candles=2": { "model": "torchslabmod:block/pad_yellow_candle_two", "y": 180 },
+        "facing=west,candles=2":  { "model": "torchslabmod:block/pad_yellow_candle_two", "y": 270 },
+        "facing=east,candles=2":  { "model": "torchslabmod:block/pad_yellow_candle_two", "y": 90 },
+        "facing=north,candles=3": { "model": "torchslabmod:block/pad_yellow_candle_three" },
+        "facing=south,candles=3": { "model": "torchslabmod:block/pad_yellow_candle_three", "y": 180 },
+        "facing=west,candles=3":  { "model": "torchslabmod:block/pad_yellow_candle_three", "y": 270 },
+        "facing=east,candles=3":  { "model": "torchslabmod:block/pad_yellow_candle_three", "y": 90 },
+        "facing=north,candles=4": { "model": "torchslabmod:block/pad_yellow_candle_four" },
+        "facing=south,candles=4": { "model": "torchslabmod:block/pad_yellow_candle_four", "y": 180 },
+        "facing=west,candles=4":  { "model": "torchslabmod:block/pad_yellow_candle_four", "y": 270 },
+        "facing=east,candles=4":  { "model": "torchslabmod:block/pad_yellow_candle_four", "y": 90 }
+  }
+}

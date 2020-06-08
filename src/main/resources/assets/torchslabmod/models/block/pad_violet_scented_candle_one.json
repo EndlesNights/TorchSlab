@@ -1,0 +1,9 @@
+{
+    "parent": "torchslabmod:block/template_pad_candle_one",
+    "textures": {
+        "all": "buzzierbees:block/violet_scented_candle",
+        "pad": "block/lily_pad",
+		"particle": "block/lily_pad"
+    }
+}
+

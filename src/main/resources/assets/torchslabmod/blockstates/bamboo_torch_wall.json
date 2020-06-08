@@ -1,0 +1,12 @@
+{
+    "variants": {
+		"half=bottom,facing=east": { "model": "bambooblocks:block/torch_wall" },
+        "half=bottom,facing=south": { "model": "bambooblocks:block/torch_wall", "y": 90 },
+        "half=bottom,facing=west": { "model": "bambooblocks:block/torch_wall", "y": 180 },
+        "half=bottom,facing=north": { "model": "bambooblocks:block/torch_wall", "y": 270 },
+		"half=top,facing=east": { "model": "torchslabmod:block/bamboo_wall_torch_slab_upper" },
+        "half=top,facing=south": { "model": "torchslabmod:block/bamboo_wall_torch_slab_upper", "y": 90 },
+        "half=top,facing=west": { "model": "torchslabmod:block/bamboo_wall_torch_slab_upper", "y": 180 },
+        "half=top,facing=north": { "model": "torchslabmod:block/bamboo_wall_torch_slab_upper", "y": 270 }
+    }
+}

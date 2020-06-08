@@ -1,0 +1,9 @@
+{
+    "variants":
+	{
+		"facing=north": { "model": "torchslabmod:block/quark_green_candle_pad" },
+		"facing=east": { "model": "torchslabmod:block/quark_green_candle_pad", "y": 90 },
+		"facing=south": { "model": "torchslabmod:block/quark_green_candle_pad", "y": 180 },
+		"facing=west": { "model": "torchslabmod:block/quark_green_candle_pad", "y": 270 }
+    }
+}

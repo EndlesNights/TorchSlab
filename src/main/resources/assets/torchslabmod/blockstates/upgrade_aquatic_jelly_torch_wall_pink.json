@@ -1,0 +1,12 @@
+{
+    "variants": {
+		"half=bottom,facing=east": { "model": "upgrade_aquatic:block/jelly_torch_wall_pink" },
+        "half=bottom,facing=south": { "model": "upgrade_aquatic:block/jelly_torch_wall_pink", "y": 90 },
+        "half=bottom,facing=west": { "model": "upgrade_aquatic:block/jelly_torch_wall_pink", "y": 180 },
+        "half=bottom,facing=north": { "model": "upgrade_aquatic:block/jelly_torch_wall_pink", "y": 270 },
+		"half=top,facing=east": { "model": "torchslabmod:block/jelly_torch_wall_pink_upper" },
+        "half=top,facing=south": { "model": "torchslabmod:block/jelly_torch_wall_pink_upper", "y": 90 },
+        "half=top,facing=west": { "model": "torchslabmod:block/jelly_torch_wall_pink_upper", "y": 180 },
+        "half=top,facing=north": { "model": "torchslabmod:block/jelly_torch_wall_pink_upper", "y": 270 }
+    }
+}

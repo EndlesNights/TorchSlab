@@ -1,0 +1,7 @@
+{
+    "parent": "torchslabmod:block/template_candle_two_slab",
+    "textures": {
+        "all": "buzzierbees:block/allium_scented_candle",
+		"particle": "buzzierbees:block/allium_scented_candle"
+    }
+}

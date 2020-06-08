@@ -1,0 +1,10 @@
+{
+    "variants": {
+        "facing=up,conditional=false": { "model": "torchslabmod:block/end_rod_slab" },
+        "facing=down,conditional=false": { "model": "torchslabmod:block/end_rod_slab", "x": 180 },
+		"facing=up,conditional=true": { "model": "torchslabmod:block/end_rod_double_slab" },
+		"facing=down,conditional=true": { "model": "torchslabmod:block/end_rod_double_slab" }
+    }
+}
+
+

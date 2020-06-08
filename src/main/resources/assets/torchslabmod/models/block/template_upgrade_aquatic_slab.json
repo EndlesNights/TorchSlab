@@ -1,0 +1,31 @@
+{
+	"elements": [
+		{
+			"name": "blob",
+			"from": [7, -8, 7],
+			"to": [9, 1, 9],
+			"shade": false,
+			"faces": {
+				"north": {"uv": [0, 0, 2, 9], "texture": "#torch"},
+				"east": {"uv": [6, 0, 8, 9], "texture": "#torch"},
+				"south": {"uv": [2, 0, 4, 9], "texture": "#torch"},
+				"west": {"uv": [4, 0, 6, 9], "texture": "#torch"},
+				"up": {"uv": [10, 0, 12, 2], "texture": "#torch"},
+				"down": {"uv": [10, 2, 12, 4], "texture": "#torch"}
+			}
+		},
+		{
+			"name": "rod",
+			"from": [6, -2, 6],
+			"to": [10, 2, 10],
+			"faces": {
+				"north": {"uv": [0, 0, 2, 9], "texture": "#torch"},
+				"east": {"uv": [6, 0, 8, 9], "texture": "#torch"},
+				"south": {"uv": [2, 0, 4, 9], "texture": "#torch"},
+				"west": {"uv": [4, 0, 6, 9], "texture": "#torch"},
+				"up": {"uv": [10, 0, 12, 2], "texture": "#torch"},
+				"down": {"uv": [10, 2, 12, 4], "texture": "#torch"}
+			}
+		}
+	]
+}
