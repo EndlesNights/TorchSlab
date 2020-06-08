@@ -57,7 +57,6 @@ public class BlockBambooTorchPad extends BlockPadTorch
 		double y = pos.getY() + 0.9D;
 		double z = pos.getZ() + 0.5D;
 		double offset = +0.025D;
-
 		world.addParticle(ParticleTypes.SMOKE, x, y + offset, z, 0.0D, 0.0D, 0.0D);
 		world.addParticle(ParticleTypes.FLAME, x, y + offset, z, 0.0D, 0.0D, 0.0D);
 	}

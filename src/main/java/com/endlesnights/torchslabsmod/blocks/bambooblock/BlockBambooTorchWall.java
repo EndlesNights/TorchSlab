@@ -6,14 +6,16 @@ import java.util.Random;
 import com.endlesnights.torchslabsmod.blocks.vanilla.BlockWallTorchSlab;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Maps;
-import com.pugz.bambooblocks.common.block.BambooWallTorchBlock;
 import com.pugz.bambooblocks.core.registry.BambooBlocks;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.SlabBlock;
+import net.minecraft.block.SoundType;
 import net.minecraft.block.StairsBlock;
+import net.minecraft.block.WallTorchBlock;
+import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.particles.ParticleTypes;
@@ -34,7 +36,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
-public class BlockBambooTorchWall extends BambooWallTorchBlock
+public class BlockBambooTorchWall extends WallTorchBlock
 {
 	private static final Map<Direction, VoxelShape> SHAPES_BOTTOM = Maps.newEnumMap(ImmutableMap.of(
 			   Direction.NORTH, Block.makeCuboidShape(5.5D, 3.0D, 11.0D, 10.5D, 13.0D, 16.0D), 
@@ -52,7 +54,7 @@ public class BlockBambooTorchWall extends BambooWallTorchBlock
 	
 	public BlockBambooTorchWall()
 	{
-		super();
+		super(Block.Properties.create(Material.MISCELLANEOUS).doesNotBlockMovement().hardnessAndResistance(0.0F).lightValue(14).sound(SoundType.BAMBOO));
 		this.setDefaultState(this.stateContainer.getBaseState().with(HORIZONTAL_FACING, Direction.NORTH).with(HALF, Half.BOTTOM));
 	}
 	

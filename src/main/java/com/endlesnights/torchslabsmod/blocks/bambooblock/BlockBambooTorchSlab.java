@@ -10,9 +10,13 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.SlabBlock;
+import net.minecraft.block.SoundType;
+import net.minecraft.block.TorchBlock;
+import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.particles.ParticleTypes;
+import net.minecraft.state.IntegerProperty;
 import net.minecraft.state.StateContainer;
 import net.minecraft.state.properties.SlabType;
 import net.minecraft.util.Direction;
@@ -29,14 +33,15 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.fml.ModList;
 
-public class BlockBambooTorchSlab extends BambooTorchBlock
+public class BlockBambooTorchSlab extends TorchBlock
 {
+	protected static final IntegerProperty SIZE = IntegerProperty.create("size", 0, 2);
 	protected static final VoxelShape SLAB_SHAPE = Block.makeCuboidShape(5.5D, -8.0D, 5.5D, 10.5D, 10.0D, 10.5D);
 	protected static final VoxelShape SLAB_SHAPE_LARGE = Block.makeCuboidShape(4.0D, -8.0D, 4.0D, 12.0D, 10.0D, 12.0D);
 	
 	public BlockBambooTorchSlab()
 	{
-		super();
+		super(Block.Properties.create(Material.MISCELLANEOUS).doesNotBlockMovement().hardnessAndResistance(0.0F).lightValue(14).sound(SoundType.BAMBOO));
 		setDefaultState(stateContainer.getBaseState().with(SIZE, 0));
 	}
 	

@@ -2,13 +2,17 @@ package com.endlesnights.torchslabsmod.blocks.bambooblock;
 
 import com.endlesnights.torchslabsmod.ITorchSlabCompat;
 import com.endlesnights.torchslabsmod.event.PlaceHandlerPadLights;
+//import com.endlesnights.torchslabsmod.event.PlaceHandlerPadLights;
+//import com.endlesnights.torchslabsmod.event.PlaceHandlerTorchSlab;
+//import com.endlesnights.torchslabsmod.event.PlaceHandlerTorchWall;
+//import com.pugz.bambooblocks.core.BambooBlocksRegistry;
 import com.endlesnights.torchslabsmod.event.PlaceHandlerTorchSlab;
 import com.endlesnights.torchslabsmod.event.PlaceHandlerTorchWall;
-import com.pugz.bambooblocks.core.registry.BambooBlocks;
 
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.RenderTypeLookup;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.event.RegistryEvent.Register;
 import net.minecraftforge.fml.loading.FMLEnvironment;
@@ -32,7 +36,7 @@ public class BambooBlockCompat implements ITorchSlabCompat
 			if (FMLEnvironment.dist == Dist.CLIENT)
 	        {
 	            RenderType transparentRenderType = RenderType.getCutoutMipped();
-	            
+	            RenderTypeLookup.setRenderLayer(bamboo_torch_slab, transparentRenderType);
 	            RenderTypeLookup.setRenderLayer(bamboo_torch_wall, transparentRenderType);
 	            RenderTypeLookup.setRenderLayer(bamboo_torch_pad, transparentRenderType);
 	        }
@@ -53,9 +57,9 @@ public class BambooBlockCompat implements ITorchSlabCompat
 	{
 		try
 		{
-			PlaceHandlerTorchSlab.registerPlaceEntry(BambooBlocks.BAMBOO_TORCH.get().asItem().getRegistryName(), bamboo_torch_slab);
-			PlaceHandlerTorchWall.registerPlaceEntry(BambooBlocks.BAMBOO_TORCH.get().asItem().getRegistryName(), bamboo_torch_wall);
-			PlaceHandlerPadLights.registerPlaceEntry(BambooBlocks.BAMBOO_TORCH.get().asItem().getRegistryName(), bamboo_torch_pad);
+			PlaceHandlerTorchSlab.registerPlaceEntry(ForgeRegistries.BLOCKS.getValue(new ResourceLocation("bambooblocks:bamboo_torch")).getRegistryName(), bamboo_torch_slab);
+			PlaceHandlerTorchWall.registerPlaceEntry(ForgeRegistries.BLOCKS.getValue(new ResourceLocation("bambooblocks:bamboo_torch")).getRegistryName(), bamboo_torch_wall);
+			PlaceHandlerPadLights.registerPlaceEntry(ForgeRegistries.BLOCKS.getValue(new ResourceLocation("bambooblocks:bamboo_torch")).getRegistryName(), bamboo_torch_pad);
 		}
 		catch(Error e)
 		{
