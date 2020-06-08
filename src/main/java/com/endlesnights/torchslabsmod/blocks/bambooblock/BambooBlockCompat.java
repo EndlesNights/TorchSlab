@@ -2,10 +2,6 @@ package com.endlesnights.torchslabsmod.blocks.bambooblock;
 
 import com.endlesnights.torchslabsmod.ITorchSlabCompat;
 import com.endlesnights.torchslabsmod.event.PlaceHandlerPadLights;
-//import com.endlesnights.torchslabsmod.event.PlaceHandlerPadLights;
-//import com.endlesnights.torchslabsmod.event.PlaceHandlerTorchSlab;
-//import com.endlesnights.torchslabsmod.event.PlaceHandlerTorchWall;
-//import com.pugz.bambooblocks.core.BambooBlocksRegistry;
 import com.endlesnights.torchslabsmod.event.PlaceHandlerTorchSlab;
 import com.endlesnights.torchslabsmod.event.PlaceHandlerTorchWall;
 
