@@ -12,7 +12,6 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.fluid.IFluidState;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
 import net.minecraft.state.BooleanProperty;
 import net.minecraft.state.StateContainer;
 import net.minecraft.state.properties.BlockStateProperties;
@@ -74,7 +73,7 @@ public class BlockFieryTorchSlab extends BlockTorchSlab implements IWaterLoggabl
 	@OnlyIn(Dist.CLIENT)
     public void animateTick(BlockState stateIn, World worldIn, BlockPos pos, Random rand) {
         double d0 = (double) pos.getX() + 0.5D;
-        double d1 = (double) pos.getY() + 0.7D;
+        double d1 = (double) pos.getY() + 0.7D - 0.5D;
         double d2 = (double) pos.getZ() + 0.5D;
         float limit = 0.05f;
         float offset0 = Math.min(limit, Math.max(-limit, rand.nextFloat() - 0.5f));
