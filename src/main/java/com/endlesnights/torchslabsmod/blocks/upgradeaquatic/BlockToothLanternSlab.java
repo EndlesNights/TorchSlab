@@ -1,6 +1,7 @@
 package com.endlesnights.torchslabsmod.blocks.upgradeaquatic;
 
 import com.endlesnights.naturalslabsmod.blocks.FenceSlabBlock;
+import com.endlesnights.torchslabsmod.blocks.quark.BlockChainSlab;
 import com.teamabnormals.upgrade_aquatic.core.registry.UABlocks;
 
 import net.minecraft.block.Block;
@@ -210,6 +211,7 @@ public class BlockToothLanternSlab extends Block implements IBucketPickupHandler
 				|| (world.getBlockState(blockpos).getBlock() instanceof StairsBlock && world.getBlockState(blockpos).get(StairsBlock.HALF) == Half.TOP )
 				|| (world.getBlockState(blockpos).getBlock() instanceof FenceBlock)
 				|| (ModList.get().isLoaded("naturalslabsmod") && world.getBlockState(blockpos).getBlock() instanceof FenceSlabBlock)
+				|| (world.getBlockState(pos.offset(Direction.UP)).getBlock() instanceof BlockChainSlab)
 				|| (Block.hasSolidSide(world.getBlockState(blockpos), world, blockpos, direction) )))
 					return true;
 		

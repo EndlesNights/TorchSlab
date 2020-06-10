@@ -1,0 +1,11 @@
+{
+    "variants": {
+        "type=top":  { "model": "torchslabmod:block/quark_chain_top" },
+        "type=middle":  { "model": "torchslabmod:block/quark_chain_middle" },
+        "type=bottom": [
+            { "model": "torchslabmod:block/quark_chain_bottom_1" },
+            { "model": "torchslabmod:block/quark_chain_bottom_2" },
+            { "model": "torchslabmod:block/quark_chain_bottom_3" }
+        ]
+    }
+}

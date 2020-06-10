@@ -1,6 +1,7 @@
 package com.endlesnights.torchslabsmod.blocks.vanilla;
 
 import com.endlesnights.naturalslabsmod.blocks.FenceSlabBlock;
+import com.endlesnights.torchslabsmod.blocks.quark.BlockChainSlab;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -70,7 +71,8 @@ public class BlockLanternSlab extends LanternBlock
 		else
 			return  ((world.getBlockState(pos.offset(Direction.UP)).getProperties().contains(SlabBlock.TYPE) 
 					&& world.getBlockState(pos.offset(Direction.UP)).get(SlabBlock.TYPE) == SlabType.TOP)
-					|| (ModList.get().isLoaded("naturalslabsmod") && world.getBlockState(pos.offset(Direction.UP)).getBlock() instanceof FenceSlabBlock));
+					|| (ModList.get().isLoaded("naturalslabsmod") && world.getBlockState(pos.offset(Direction.UP)).getBlock() instanceof FenceSlabBlock)
+					|| world.getBlockState(pos.offset(Direction.UP)).getBlock() instanceof BlockChainSlab);
 	}
 	
 	@Override

@@ -4,6 +4,7 @@ import com.endlesnights.torchslabsmod.ITorchSlabCompat;
 import com.endlesnights.torchslabsmod.TorchSlabsMod;
 import com.endlesnights.torchslabsmod.event.PlaceHandlerPadLights;
 import com.endlesnights.torchslabsmod.event.PlaceHandlerTorchSlab;
+import com.endlesnights.torchslabsmod.event.quark.PlaceHandlerChainSlab;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.Block.Properties;
@@ -68,6 +69,8 @@ public class QuarkCompat  implements ITorchSlabCompat
 	public static Block red_candle_pad = null;
 	public static Block white_candle_pad = null;
 	public static Block yellow_candle_pad = null;
+	
+	public static Block iron_chain_slab = null;
 	
 	@Override
 	public void registerBlocks(Register<Block> event)
@@ -141,6 +144,7 @@ public class QuarkCompat  implements ITorchSlabCompat
 			event.getRegistry().register(yellow_candle_pad = new BlockCandlePad(
 					Properties.from(quarkBlock("quark:yellow_candle")),DyeColor.YELLOW).setRegistryName(TorchSlabsMod.MODID, "quark_yellow_candle_pad"));
 			
+			event.getRegistry().register(iron_chain_slab = new BlockChainSlab().setRegistryName(TorchSlabsMod.MODID, "quark_iron_chain_slab"));
 			
 			if (FMLEnvironment.dist == Dist.CLIENT)
 	        {
@@ -163,6 +167,8 @@ public class QuarkCompat  implements ITorchSlabCompat
 	            RenderTypeLookup.setRenderLayer(red_candle_pad, transparentRenderType);
 	            RenderTypeLookup.setRenderLayer(white_candle_pad, transparentRenderType);
 	            RenderTypeLookup.setRenderLayer(yellow_candle_pad, transparentRenderType);
+	            
+	            RenderTypeLookup.setRenderLayer(iron_chain_slab, transparentRenderType);
 	        }
 		
 		}
@@ -216,6 +222,8 @@ public class QuarkCompat  implements ITorchSlabCompat
 			PlaceHandlerPadLights.registerPlaceEntry(quarkBlock("quark:red_candle").getRegistryName(), red_candle_pad);
 			PlaceHandlerPadLights.registerPlaceEntry(quarkBlock("quark:white_candle").getRegistryName(), white_candle_pad);
 			PlaceHandlerPadLights.registerPlaceEntry(quarkBlock("quark:yellow_candle").getRegistryName(), yellow_candle_pad);
+			
+			PlaceHandlerChainSlab.registerPlaceEntry(quarkBlock("quark:iron_chain").getRegistryName(), iron_chain_slab);
 		}
 		catch(Error e)
 		{
