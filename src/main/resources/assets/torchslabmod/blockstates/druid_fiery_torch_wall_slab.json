@@ -1,0 +1,12 @@
+{
+    "variants": {
+		"half=bottom,facing=east": { "model": "minecraft:block/druid_fiery_torch_wall_slab" },
+        "half=bottom,facing=south": { "model": "minecraft:block/druid_fiery_torch_wall_slab", "y": 90 },
+        "half=bottom,facing=west": { "model": "minecraft:block/druid_fiery_torch_wall_slab", "y": 180 },
+        "half=bottom,facing=north": { "model": "minecraft:block/druid_fiery_torch_wall_slab", "y": 270 },
+		"half=top,facing=east": { "model": "torchslabmod:block/druid_fiery_torch_wall_slab_upper" },
+        "half=top,facing=south": { "model": "torchslabmod:block/druid_fiery_torch_wall_slab_upper", "y": 90 },
+        "half=top,facing=west": { "model": "torchslabmod:block/druid_fiery_torch_wall_slab_upper", "y": 180 },
+        "half=top,facing=north": { "model": "torchslabmod:block/druid_fiery_torch_wall_slab_upper", "y": 270 }
+    }
+}

@@ -8,6 +8,7 @@ import com.endlesnights.torchslabsmod.config.Config;
 import com.endlesnights.torchslabsmod.blocks.bambooblock.BambooBlockCompat;
 import com.endlesnights.torchslabsmod.blocks.buzzierbees.BuzzierBeesCompat;
 import com.endlesnights.torchslabsmod.blocks.buzzierbees.tileentity.BBTileEntities;
+import com.endlesnights.torchslabsmod.blocks.druidcraft.DruidCraftCompat;
 import com.endlesnights.torchslabsmod.blocks.quark.QuarkCompat;
 import com.endlesnights.torchslabsmod.blocks.upgradeaquatic.UACompat;
 import com.endlesnights.torchslabsmod.blocks.vanilla.VanillaCompat;
@@ -68,8 +69,8 @@ public class TorchSlabsMod
 		
 		if(ModList.get().isLoaded("druidcraft"))
 		{
-			System.out.println("druidcraft Mod DETECTED AND LOADED TORCHSLAB COMPAT");
-			//compatList.add(DruidcraftCompat::new);
+			System.out.println("Druid Craft Mod DETECTED AND LOADED TORCHSLAB COMPAT");
+			compatList.add(DruidCraftCompat::new);
 		}
 	}
 

@@ -256,6 +256,7 @@ public class BuzzierBeesCompat implements ITorchSlabCompat
 		pad_columbine_scented_candle = registerBlock(new BlockPadScentedCandle(Effects.MINING_FATIGUE, 70, 0,Block.Properties.create(Material.CORAL).hardnessAndResistance(0.0F).notSolid().sound(SoundType.WOOD)), "pad_columbine_scented_candle");
 		pad_white_clover_scented_candle = registerBlock(new BlockPadScentedCandle(Effects.UNLUCK, 70, 0,Block.Properties.create(Material.CORAL).hardnessAndResistance(0.0F).notSolid().sound(SoundType.WOOD)), "pad_white_clover_scented_candle");
 		pad_pink_clover_scented_candle = registerBlock(new BlockPadScentedCandle(Effects.UNLUCK, 70, 0,Block.Properties.create(Material.CORAL).hardnessAndResistance(0.0F).notSolid().sound(SoundType.WOOD)), "pad_pink_clover_scented_candle");		
+		
 		if (FMLEnvironment.dist == Dist.CLIENT)
         {
             RenderType transparentRenderType = RenderType.getCutoutMipped();

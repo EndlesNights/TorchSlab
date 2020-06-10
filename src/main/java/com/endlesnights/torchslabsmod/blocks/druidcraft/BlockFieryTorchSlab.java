@@ -84,6 +84,12 @@ public class BlockFieryTorchSlab extends BlockTorchSlab implements IWaterLoggabl
     }
 	
 	@Override
+	public ResourceLocation getLootTable()
+	{
+		return ForgeRegistries.BLOCKS.getValue(new ResourceLocation("druidcraft:fiery_torch")).getLootTable();
+	}	
+	
+	@Override
 	public ItemStack getPickBlock(BlockState state, RayTraceResult target, IBlockReader world, BlockPos pos, PlayerEntity player)
 	{
 		return new ItemStack(ForgeRegistries.BLOCKS.getValue(new ResourceLocation("druidcraft:fiery_torch")));
