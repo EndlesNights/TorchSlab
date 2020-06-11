@@ -10,6 +10,7 @@ import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.RenderTypeLookup;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.block.Blocks;
+import net.minecraft.block.SoundType;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.loading.FMLEnvironment;
@@ -19,13 +20,15 @@ public class DruidCraftCompat implements ITorchSlabCompat
 {
 	public static Block fiery_torch_slab;
 	public static Block fiery_torch_wall_slab;
+	public static Block ceramic_lantern_slab;
 	
 	@Override
 	public void registerBlocks(RegistryEvent.Register<Block> event)
 	{	
-		fiery_torch_slab = registerBlock(new BlockFieryTorchSlab(Properties.from(Blocks.TORCH)), "druid_fiery_torch_slab");
-		fiery_torch_wall_slab = registerBlock(new BlockFieryTorchWallSlab(Properties.from(Blocks.TORCH)), "druid_fiery_torch_wall_slab");
-		
+		fiery_torch_slab = registerBlock(new BlockFieryTorchSlab(Properties.from(Blocks.TORCH).sound(SoundType.BAMBOO)), "druid_fiery_torch_slab");
+		fiery_torch_wall_slab = registerBlock(new BlockFieryTorchWallSlab(Properties.from(Blocks.TORCH).sound(SoundType.BAMBOO)), "druid_fiery_torch_wall_slab");
+		ceramic_lantern_slab = registerBlock(new BlockCeramicLanternSlab(Properties.from(Blocks.TORCH).sound(SoundType.BAMBOO)), "druid_ceramic_lantern_slab");
+
 		
 		if (FMLEnvironment.dist == Dist.CLIENT)
         {
@@ -33,6 +36,8 @@ public class DruidCraftCompat implements ITorchSlabCompat
             
             RenderTypeLookup.setRenderLayer(fiery_torch_slab, transparentRenderType);
             RenderTypeLookup.setRenderLayer(fiery_torch_wall_slab, transparentRenderType);
+            RenderTypeLookup.setRenderLayer(ceramic_lantern_slab, transparentRenderType);
+
         }
 	}
 	
