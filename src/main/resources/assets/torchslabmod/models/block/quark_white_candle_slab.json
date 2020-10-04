@@ -1,0 +1,6 @@
+{
+  "parent": "torchslabmod:block/template_quark_candle",
+  "textures": {
+    "candle": "quark:block/white_candle"
+  }
+}

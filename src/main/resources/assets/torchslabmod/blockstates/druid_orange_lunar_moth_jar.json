@@ -1,0 +1,6 @@
+{
+	"variants":{
+		"hanging=true":[{"model":"torchslabmod:block/druid_hanging_lunar_moth_jar_orange_1"},{"model":"torchslabmod:block/druid_hanging_lunar_moth_jar_orange_2"}],
+		"hanging=false":[{"model":"torchslabmod:block/druid_lunar_moth_jar_orange_1"},{"model":"torchslabmod:block/druid_lunar_moth_jar_orange_2"}]
+	}
+}

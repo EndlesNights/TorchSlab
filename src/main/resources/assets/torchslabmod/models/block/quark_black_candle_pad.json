@@ -1,0 +1,7 @@
+{
+	"parent": "torchslabmod:block/template_quark_pad_candle",
+    "textures": {
+        "candle": "quark:block/black_candle",
+        "pad": "block/lily_pad"
+	}
+}

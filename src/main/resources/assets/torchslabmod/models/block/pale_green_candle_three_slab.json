@@ -1,0 +1,7 @@
+{
+    "parent": "torchslabmod:block/template_candle_three_slab",
+    "textures": {
+        "all": "buzzierbees:block/pale_green_candle",
+		"particle": "buzzierbees:block/pale_green_candle"
+    }
+}

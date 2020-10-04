@@ -1,0 +1,18 @@
+{
+    "multipart": [
+	
+        {
+			"when": { "hanging": "false" },
+			"apply": { "model": "torchslabmod:block/chain_slab" }
+		},
+		{   "when": { "hanging": "true" },
+            "apply": { "model": "torchslabmod:block/chain_slab_hanging"}
+        },
+        {   "when": { "hanging_up": "true" },
+            "apply": { "model": "torchslabmod:block/chain_slab_hanging_up"}
+        },
+        {   "when": { "hanging_down": "true" },
+            "apply": { "model": "torchslabmod:block/chain_slab_hanging_down"}
+        }
+	]
+}

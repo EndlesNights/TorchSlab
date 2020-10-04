@@ -1,0 +1,16 @@
+{
+    "variants": {
+		"facing=up,half=bottom": { "model": "torchslabmod:block/tooth_lantern_floor_slab" },
+		"facing=east,half=bottom": { "model": "torchslabmod:block/tooth_lantern_wall_slab" },
+		"facing=south,half=bottom": { "model": "torchslabmod:block/tooth_lantern_wall_slab", "y": 90  },
+		"facing=west,half=bottom": { "model": "torchslabmod:block/tooth_lantern_wall_slab", "y": 180  },
+		"facing=north,half=bottom": { "model": "torchslabmod:block/tooth_lantern_wall_slab", "y": 270  },
+		
+		
+		"facing=down,half=top": { "model": "torchslabmod:block/tooth_lantern_ceiling_slab" },
+		"facing=east,half=top": { "model": "upgrade_aquatic:block/tooth_lantern_wall" },
+		"facing=south,half=top": { "model": "upgrade_aquatic:block/tooth_lantern_wall", "y": 90  },
+		"facing=west,half=top": { "model": "upgrade_aquatic:block/tooth_lantern_wall", "y": 180  },
+		"facing=north,half=top": { "model": "upgrade_aquatic:block/tooth_lantern_wall", "y": 270  }
+    }
+}

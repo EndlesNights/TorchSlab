@@ -1,0 +1,5 @@
+{
+    "variants": {
+        "": { "model": "torchslabmod:block/druid_fiery_torch_slab" }
+    }
+}

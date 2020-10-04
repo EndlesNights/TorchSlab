@@ -1,0 +1,9 @@
+{
+    "variants":
+	{
+		"facing=north": { "model": "torchslabmod:block/pad_torch" },
+		"facing=east": { "model": "torchslabmod:block/pad_torch", "y": 90 },
+		"facing=south": { "model": "torchslabmod:block/pad_torch", "y": 180 },
+		"facing=west": { "model": "torchslabmod:block/pad_torch", "y": 270 }
+    }
+}

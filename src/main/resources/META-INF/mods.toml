@@ -1,0 +1,19 @@
+modLoader="javafml" #mandatory
+loaderVersion="[32,)" #mandatory
+[[mods]] #mandatory
+modId="torchslabmod" #mandatory
+version="1.6.17" #mandatory
+displayName="Torch Slab Mod" #mandatory
+displayURL="https://www.curseforge.com/minecraft/mc-mods/torchslabs-mod" #optional
+
+# A file name (in the root of the mod JAR) containing a logo for display
+logoFile="examplemod.png" #optional
+
+# A text field displayed in the mod UI
+authors="EndlesNights" #optional
+
+# The description text for the mod (multi line!) (#mandatory)
+description='''
+A mod that allows the placement of torches & lanterns onto slab blocks, the sides of slab blocks, the top/bottom half of wall blocks as well as on top of lily pads. Lanterns can also now be placed on the side of fence blocks. For mc versions 1.15
+
+'''

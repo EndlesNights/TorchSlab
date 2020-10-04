@@ -1,0 +1,7 @@
+{
+    "parent": "torchslabmod:block/template_candle_one_slab",
+    "textures": {
+        "all": "buzzierbees:block/cream_candle",
+		"particle": "buzzierbees:block/cream_candle"
+    }
+}

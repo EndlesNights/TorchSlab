@@ -1,0 +1,9 @@
+{
+"variants":{
+	"hanging=true,waterlogged=false":[{"model":"torchslabmod:block/druid_hanging_ceramic_lantern"},{"model":"torchslabmod:block/druid_hanging_ceramic_lantern","y":90}],
+	"hanging=false,waterlogged=false":[{"model":"torchslabmod:block/druid_ceramic_lantern"},{"model":"torchslabmod:block/druid_ceramic_lantern","y":90}],
+	
+	"hanging=true,waterlogged=true":[{"model":"torchslabmod:block/druid_hanging_ceramic_lantern_wl"},{"model":"torchslabmod:block/druid_hanging_ceramic_lantern_wl","y":90}],
+	"hanging=false,waterlogged=true":[{"model":"torchslabmod:block/druid_ceramic_lantern_wl"},{"model":"torchslabmod:block/druid_ceramic_lantern_wl","y":90}]
+	}
+}
