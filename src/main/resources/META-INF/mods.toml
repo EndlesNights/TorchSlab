@@ -1,5 +1,5 @@
 modLoader="javafml" #mandatory
-loaderVersion="[32,)" #mandatory
+loaderVersion="[34,)" #mandatory
 license="AGPL-3.0"
 [[mods]] #mandatory
 modId="torchslabmod" #mandatory
