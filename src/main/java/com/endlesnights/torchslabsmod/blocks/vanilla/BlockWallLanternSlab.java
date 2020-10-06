@@ -81,14 +81,15 @@ public class BlockWallLanternSlab extends LanternBlock
 	public BlockWallLanternSlab(Block.Properties properties, Character type)
 	{
 		super(properties);
-		this.setDefaultState(this.stateContainer.getBaseState().with(HORIZONTAL_FACING, Direction.NORTH).with(HALF, Half.BOTTOM));
+		this.setDefaultState(this.stateContainer.getBaseState().with(HORIZONTAL_FACING, Direction.NORTH).with(HALF, Half.BOTTOM).with(WATERLOGGED, false));
 		this.TYPE = type;
 	}
 	
 	@Override
 	protected void fillStateContainer(StateContainer.Builder<Block, BlockState> builder)
 	{
-		builder.add(HORIZONTAL_FACING, HALF, HANGING);
+		super.fillStateContainer(builder);
+		builder.add(HORIZONTAL_FACING, HALF);
 	}
 	
 	@Override
@@ -128,7 +129,7 @@ public class BlockWallLanternSlab extends LanternBlock
 			|| (worldIn.getBlockState(pos.offset(direction)).getBlock() instanceof StairsBlock && worldIn.getBlockState(pos.offset(direction)).get(StairsBlock.HALF) == Half.BOTTOM )
 			|| (worldIn.getBlockState(pos.offset(direction)).getBlock() instanceof FenceBlock)
 			//|| (ModList.get().isLoaded("naturalslabsmod") && worldIn.getBlockState(pos.offset(direction)).getBlock() instanceof FenceSlabBlock)
-			|| (Block.hasSolidSide(worldIn.getBlockState(pos.offset(direction)), worldIn, pos.offset(direction), direction) )))
+			|| (Block.hasEnoughSolidSide(worldIn, pos.offset(direction), direction) )))
 		{
 			return validBot(worldIn.getBlockState(pos.down()), state);
 		}
@@ -137,7 +138,7 @@ public class BlockWallLanternSlab extends LanternBlock
 			|| (worldIn.getBlockState(pos.offset(direction)).getBlock() instanceof StairsBlock && worldIn.getBlockState(pos.offset(direction)).get(StairsBlock.HALF) == Half.TOP )
 			|| (worldIn.getBlockState(pos.offset(direction)).getBlock() instanceof FenceBlock)
 			//|| (ModList.get().isLoaded("naturalslabsmod") && worldIn.getBlockState(pos.offset(direction)).getBlock() instanceof FenceSlabBlock)
-			|| (Block.hasSolidSide(worldIn.getBlockState(pos.offset(direction)), worldIn, pos.offset(direction), direction) )))
+			|| (Block.hasEnoughSolidSide(worldIn, pos.offset(direction), direction) )))
 				return true;
 		
 		return false;
@@ -174,7 +175,7 @@ public class BlockWallLanternSlab extends LanternBlock
 	@Override
 	public ItemStack getPickBlock(BlockState state, RayTraceResult target, IBlockReader world, BlockPos pos, PlayerEntity player)
 	{
-		return new ItemStack( TYPE == 'l' ? Items.LANTERN : Items.field_234790_rk_);
+		return new ItemStack( TYPE == 'l' ? Items.LANTERN : Items.SOUL_LANTERN);
 	}
 	
 }

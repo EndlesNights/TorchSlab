@@ -79,6 +79,6 @@ public class BlockTorchSlab extends TorchBlock
 	@Override
 	public ItemStack getPickBlock(BlockState state, RayTraceResult target, IBlockReader world, BlockPos pos, PlayerEntity player)
 	{
-		return new ItemStack(TYPE == 't' ? Items.TORCH : Items.field_234737_dp_);
+		return new ItemStack(TYPE == 't' ? Items.TORCH : Items.SOUL_TORCH);
 	}
 }

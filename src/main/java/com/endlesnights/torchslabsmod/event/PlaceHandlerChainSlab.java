@@ -60,15 +60,15 @@ private static final HashMap<ResourceLocation,Block> PLACE_ENTRIES = new HashMap
 			if (block instanceof IWaterLoggable)
 				world.setBlockState(placeAt, block.getDefaultState()
 						.with(BlockChainSlab.HANGING, world.getBlockState(placeAt.up()).getBlock() instanceof SlabBlock && world.getBlockState(placeAt.up()).get(SlabBlock.TYPE) == SlabType.TOP)
-						.with(BlockChainSlab.HANGING_UP, Block.hasSolidSide(world.getBlockState(placeAt.up()), world, placeAt.up(), Direction.DOWN))
-						.with(BlockChainSlab.HANGING_DOWN, Block.hasSolidSide(world.getBlockState(placeAt.down()), world, placeAt.down(), Direction.DOWN))
+						.with(BlockChainSlab.HANGING_UP, Block.hasEnoughSolidSide(world, placeAt.up(), Direction.DOWN))
+						.with(BlockChainSlab.HANGING_DOWN, Block.hasEnoughSolidSide(world, placeAt.down(), Direction.DOWN))
 						.with(BlockStateProperties.WATERLOGGED, (world.getFluidState(placeAt).getFluid() == Fluids.WATER) )
 						);
 			else
 				world.setBlockState(placeAt, block.getDefaultState()
 						.with(BlockChainSlab.HANGING, world.getBlockState(placeAt.up()).getBlock() instanceof SlabBlock && world.getBlockState(placeAt.up()).get(SlabBlock.TYPE) == SlabType.TOP)
-						.with(BlockChainSlab.HANGING_UP, Block.hasSolidSide(world.getBlockState(placeAt.up()), world, placeAt.up(), Direction.DOWN))
-						.with(BlockChainSlab.HANGING_DOWN, Block.hasSolidSide(world.getBlockState(placeAt.down()), world, placeAt.down(), Direction.DOWN))
+						.with(BlockChainSlab.HANGING_UP, Block.hasEnoughSolidSide(world, placeAt.up(), Direction.DOWN))
+						.with(BlockChainSlab.HANGING_DOWN, Block.hasEnoughSolidSide(world, placeAt.down(), Direction.DOWN))
 						);
 
 			

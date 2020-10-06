@@ -83,6 +83,6 @@ public class BlockLanternSlab extends LanternBlock
 	@Override
 	public ItemStack getPickBlock(BlockState state, RayTraceResult target, IBlockReader world, BlockPos pos, PlayerEntity player)
 	{
-		return new ItemStack( TYPE == 'l' ? Items.LANTERN : Items.field_234790_rk_);
+		return new ItemStack( TYPE == 'l' ? Items.LANTERN : Items.SOUL_LANTERN);
 	}
 }

@@ -36,11 +36,11 @@ public class BlockChainSlab extends ChainBlock implements IWaterLoggable
 	}
 	protected void fillStateContainer(StateContainer.Builder<Block, BlockState> builder) {
 		
-		builder.add(HANGING, HANGING_UP, HANGING_DOWN, field_235484_b_);
+		builder.add(HANGING, HANGING_UP, HANGING_DOWN, WATERLOGGED);
 	}
 	public FluidState getFluidState(BlockState state) {
 		//WATERLOGGABLE
-		return state.get(field_235484_b_) ? Fluids.WATER.getStillFluidState(false) : super.getFluidState(state);
+		return state.get(WATERLOGGED) ? Fluids.WATER.getStillFluidState(false) : super.getFluidState(state);
 	}
 	
 	@Override
@@ -48,14 +48,14 @@ public class BlockChainSlab extends ChainBlock implements IWaterLoggable
 	{
 		return super.updatePostPlacement(stateIn
 				.with(HANGING, worldIn.getBlockState(currentPos.up()).getBlock() instanceof SlabBlock && worldIn.getBlockState(currentPos.up()).get(SlabBlock.TYPE) == SlabType.TOP)
-				.with(HANGING_UP, Block.hasSolidSide(worldIn.getBlockState(currentPos.up()), worldIn, currentPos.up(), Direction.DOWN))
-				.with(HANGING_DOWN, Block.hasSolidSide(worldIn.getBlockState(currentPos.down()), worldIn, currentPos.down(), Direction.UP)),
+				.with(HANGING_UP, Block.hasEnoughSolidSide(worldIn, currentPos.up(), Direction.DOWN))
+				.with(HANGING_DOWN, Block.hasEnoughSolidSide(worldIn, currentPos.down(), Direction.UP)),
 				facing, facingState, worldIn, currentPos, facingPos);
 	}
 	
 	@Override
 	public ItemStack getPickBlock(BlockState state, RayTraceResult target, IBlockReader world, BlockPos pos, PlayerEntity player)
 	{
-		return new ItemStack(Items.field_234729_dO_);
+		return new ItemStack(Items.CHAIN);
 	}
 }

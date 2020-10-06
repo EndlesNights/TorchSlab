@@ -8,11 +8,7 @@ import com.endlesnights.torchslabsmod.blocks.vanilla.BlockWallTorchSlab;
 import com.endlesnights.torchslabsmod.config.Config;
 import com.endlesnights.torchslabsmod.config.TorchSlabConfig;
 
-import net.minecraft.block.Block;
-import net.minecraft.block.FenceBlock;
-import net.minecraft.block.SlabBlock;
-import net.minecraft.block.StairsBlock;
-import net.minecraft.block.WallTorchBlock;
+import net.minecraft.block.*;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.item.ItemStack;
@@ -59,18 +55,18 @@ private static final HashMap<ResourceLocation,Block> PLACE_ENTRIES = new HashMap
 			return;
 		
 		if((face != Direction.UP && face != Direction.DOWN)
-				&& Block.hasSolidSide(world.getBlockState(pos), world, pos, face)
+				&& Block.hasEnoughSolidSide(world, pos, face)
 				&& (world.isAirBlock(placeAt) || world.getFluidState(placeAt).getFluid() == Fluids.WATER || world.getFluidState(placeAt).getFluid() == Fluids.FLOWING_WATER) )
 		{
 			
-			if(blockHalf(playerIn, pos, face) <= 0 && (!Block.hasSolidSide(world.getBlockState(placeAt.down()), world, placeAt.down(), face.getOpposite()))
+			if(blockHalf(playerIn, pos, face) <= 0 && (!Block.hasEnoughSolidSide(world, placeAt.down(), face.getOpposite()))
 					&& TorchSlabConfig.lowerLanternCheck.get())
 			{
-				world.setBlockState(placeAt, block.getDefaultState().with(WallTorchBlock.HORIZONTAL_FACING, face).with(BlockWallTorchSlab.HALF, Half.BOTTOM));
+				world.setBlockState(placeAt, block.getDefaultState().with(HorizontalBlock.HORIZONTAL_FACING, face).with(BlockWallTorchSlab.HALF, Half.BOTTOM));
 			}
 			else
 			{
-				world.setBlockState(placeAt, block.getDefaultState().with(WallTorchBlock.HORIZONTAL_FACING, face).with(BlockWallTorchSlab.HALF, Half.TOP));
+				world.setBlockState(placeAt, block.getDefaultState().with(HorizontalBlock.HORIZONTAL_FACING, face).with(BlockWallTorchSlab.HALF, Half.TOP));
 			}
 			
 			world.playSound(null, pos.getX(), pos.getY(), pos.getZ(), block.getSoundType(world.getBlockState(pos)).getPlaceSound(), SoundCategory.BLOCKS, 1.0F, 1.0F);
@@ -85,7 +81,7 @@ private static final HashMap<ResourceLocation,Block> PLACE_ENTRIES = new HashMap
 				|| (world.getBlockState(pos).getBlock() instanceof FenceBlock && blockHalf(playerIn, pos, face) <= 0))
 				&& (face != Direction.UP && face != Direction.DOWN)
 				&& (world.isAirBlock(placeAt) || world.getFluidState(placeAt).getFluid() == Fluids.WATER || world.getFluidState(placeAt).getFluid() == Fluids.FLOWING_WATER)
-				&& (!Block.hasSolidSide(world.getBlockState(placeAt.down()), world, placeAt.down(), face.getOpposite())) )
+				&& (!Block.hasEnoughSolidSide(world, placeAt.down(), face.getOpposite())) )
 		{
 			world.playSound(null, pos.getX(), pos.getY(), pos.getZ(), block.getSoundType(world.getBlockState(pos)).getPlaceSound(), SoundCategory.BLOCKS, 1.0F, 1.0F);
 			event.getPlayer().swingArm(event.getHand());
