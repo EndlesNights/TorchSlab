@@ -67,7 +67,8 @@ public class VanillaCompat implements ITorchSlabCompat
 		pad_lantern = registerBlock(new BlockPadLantern(Block.Properties.create(Material.MISCELLANEOUS).doesNotBlockMovement().hardnessAndResistance(0.0F).sound(SoundType.LANTERN).func_235838_a_((p_235454_0_) -> {return 15; }).notSolid(), 'l'), "pad_lantern");
 		pad_soul_lantern = registerBlock(new BlockPadLantern(Block.Properties.create(Material.MISCELLANEOUS).doesNotBlockMovement().hardnessAndResistance(0.0F).sound(SoundType.LANTERN).func_235838_a_((p_235454_0_) -> {return 15; }).notSolid(), 's'), "pad_soul_lantern");
 		
-		chain_slab = registerBlock(new BlockChainSlab(Block.Properties.from(Blocks.field_235341_dI_).lootFrom(Blocks.field_235341_dI_)),"chain_slab");
+		//chain_slab = registerBlock(new BlockChainSlab(Block.Properties.from(Blocks.field_235341_dI_).lootFrom(Blocks.field_235341_dI_)),"chain_slab");
+		
 		if (FMLEnvironment.dist == Dist.CLIENT)
         {
 			RenderType transparentRenderType = RenderType.getCutoutMipped();
@@ -108,7 +109,7 @@ public class VanillaCompat implements ITorchSlabCompat
 		PlaceHandlerPadLights.registerPlaceEntry(Items.LANTERN.getRegistryName(), pad_lantern);
 		PlaceHandlerPadLights.registerPlaceEntry(Items.field_234790_rk_.getRegistryName(), pad_soul_lantern);
 		
-		PlaceHandlerChainSlab.registerPlaceEntry(Items.field_234729_dO_.getRegistryName(), chain_slab);
+		//PlaceHandlerChainSlab.registerPlaceEntry(Items.field_234729_dO_.getRegistryName(), chain_slab);
 		PlaceHandlerEndRod.registerPlaceEntry(Items.END_ROD.getRegistryName(), end_rod_slab);
 	}
 	

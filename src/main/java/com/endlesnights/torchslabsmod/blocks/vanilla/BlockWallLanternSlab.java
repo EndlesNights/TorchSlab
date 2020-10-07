@@ -81,14 +81,14 @@ public class BlockWallLanternSlab extends LanternBlock
 	public BlockWallLanternSlab(Block.Properties properties, Character type)
 	{
 		super(properties);
-		this.setDefaultState(this.stateContainer.getBaseState().with(HORIZONTAL_FACING, Direction.NORTH).with(HALF, Half.BOTTOM));
+		this.setDefaultState(this.stateContainer.getBaseState().with(HORIZONTAL_FACING, Direction.NORTH).with(HALF, Half.BOTTOM).with(field_242675_b, false));
 		this.TYPE = type;
 	}
 	
 	@Override
 	protected void fillStateContainer(StateContainer.Builder<Block, BlockState> builder)
 	{
-		builder.add(HORIZONTAL_FACING, HALF, HANGING);
+		builder.add(HORIZONTAL_FACING, HALF, HANGING, field_242675_b);
 	}
 	
 	@Override
@@ -128,7 +128,7 @@ public class BlockWallLanternSlab extends LanternBlock
 			|| (worldIn.getBlockState(pos.offset(direction)).getBlock() instanceof StairsBlock && worldIn.getBlockState(pos.offset(direction)).get(StairsBlock.HALF) == Half.BOTTOM )
 			|| (worldIn.getBlockState(pos.offset(direction)).getBlock() instanceof FenceBlock)
 			//|| (ModList.get().isLoaded("naturalslabsmod") && worldIn.getBlockState(pos.offset(direction)).getBlock() instanceof FenceSlabBlock)
-			|| (Block.hasSolidSide(worldIn.getBlockState(pos.offset(direction)), worldIn, pos.offset(direction), direction) )))
+			|| (Block.hasEnoughSolidSide(worldIn, pos.offset(direction), direction) )))
 		{
 			return validBot(worldIn.getBlockState(pos.down()), state);
 		}
@@ -137,7 +137,7 @@ public class BlockWallLanternSlab extends LanternBlock
 			|| (worldIn.getBlockState(pos.offset(direction)).getBlock() instanceof StairsBlock && worldIn.getBlockState(pos.offset(direction)).get(StairsBlock.HALF) == Half.TOP )
 			|| (worldIn.getBlockState(pos.offset(direction)).getBlock() instanceof FenceBlock)
 			//|| (ModList.get().isLoaded("naturalslabsmod") && worldIn.getBlockState(pos.offset(direction)).getBlock() instanceof FenceSlabBlock)
-			|| (Block.hasSolidSide(worldIn.getBlockState(pos.offset(direction)), worldIn, pos.offset(direction), direction) )))
+			|| (Block.hasEnoughSolidSide( worldIn, pos.offset(direction), direction) )))
 				return true;
 		
 		return false;

@@ -72,7 +72,7 @@ public class PlaceHandlerTorchWall
 			return;
 		
 		if((face != Direction.UP && face != Direction.DOWN)
-				&& Block.hasSolidSide(world.getBlockState(pos), world, pos, face)
+				&& Block.hasEnoughSolidSide(world, pos, face)
 				&& (world.isAirBlock(placeAt) || world.getBlockState(placeAt).getBlock() == Blocks.WATER || world.getFluidState(placeAt).getFluid() == Fluids.FLOWING_WATER) )
 		{	
 

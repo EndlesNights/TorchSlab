@@ -48,10 +48,10 @@ public class BlockLanternSlab extends LanternBlock
 	@Override
 	public VoxelShape getShape(BlockState state, IBlockReader world, BlockPos pos, ISelectionContext context)
 	{
-		if(state == this.getDefaultState())
-			return SLAB_BOTTOM_SHAPE;
-		else
+		if(state.get(LanternBlock.HANGING))
 			return HANGING;
+		else
+			return SLAB_BOTTOM_SHAPE;
 	}
 	
 	@Override
