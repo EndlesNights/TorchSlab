@@ -1,0 +1,43 @@
+{
+	"variants": {
+		"facing=north,candles=1,lit=false": {"model": "torchslabmod:block/pad_candle_white_one_candle"},
+		"facing=east,candles=1,lit=false": {"model": "torchslabmod:block/pad_candle_white_one_candle", "y": 90 },
+		"facing=south,candles=1,lit=false": {"model": "torchslabmod:block/pad_candle_white_one_candle", "y": 180 },
+		"facing=west,candles=1,lit=false": {"model": "torchslabmod:block/pad_candle_white_one_candle", "y": 270 },
+
+		"facing=north,candles=1,lit=true": {"model": "torchslabmod:block/pad_candle_lit_white_one_candle"},
+		"facing=east,candles=1,lit=true": {"model": "torchslabmod:block/pad_candle_lit_white_one_candle", "y": 90 },
+		"facing=south,candles=1,lit=true": {"model": "torchslabmod:block/pad_candle_lit_white_one_candle", "y": 180 },
+		"facing=west,candles=1,lit=true": {"model": "torchslabmod:block/pad_candle_lit_white_one_candle", "y": 270 },
+
+		"facing=north,candles=2,lit=false": {"model": "torchslabmod:block/pad_candle_white_two_candles"},
+		"facing=east,candles=2,lit=false": {"model": "torchslabmod:block/pad_candle_white_two_candles", "y": 90 },
+		"facing=south,candles=2,lit=false": {"model": "torchslabmod:block/pad_candle_white_two_candles", "y": 180 },
+		"facing=west,candles=2,lit=false": {"model": "torchslabmod:block/pad_candle_white_two_candles", "y": 270 },
+
+		"facing=north,candles=2,lit=true": {"model": "torchslabmod:block/pad_candle_lit_white_two_candles"},
+		"facing=east,candles=2,lit=true": {"model": "torchslabmod:block/pad_candle_lit_white_two_candles", "y": 90 },
+		"facing=south,candles=2,lit=true": {"model": "torchslabmod:block/pad_candle_lit_white_two_candles", "y": 180 },
+		"facing=west,candles=2,lit=true": {"model": "torchslabmod:block/pad_candle_lit_white_two_candles", "y": 270 },
+
+		"facing=north,candles=3,lit=false": {"model": "torchslabmod:block/pad_candle_white_three_candles"},
+		"facing=east,candles=3,lit=false": {"model": "torchslabmod:block/pad_candle_white_three_candles", "y": 90 },
+		"facing=south,candles=3,lit=false": {"model": "torchslabmod:block/pad_candle_white_three_candles", "y": 180 },
+		"facing=west,candles=3,lit=false": {"model": "torchslabmod:block/pad_candle_white_three_candles", "y": 270 },
+
+		"facing=north,candles=3,lit=true": {"model": "torchslabmod:block/pad_candle_lit_white_three_candles"},
+		"facing=east,candles=3,lit=true": {"model": "torchslabmod:block/pad_candle_lit_white_three_candles", "y": 90 },
+		"facing=south,candles=3,lit=true": {"model": "torchslabmod:block/pad_candle_lit_white_three_candles", "y": 180 },
+		"facing=west,candles=3,lit=true": {"model": "torchslabmod:block/pad_candle_lit_white_three_candles", "y": 270 },
+
+		"facing=north,candles=4,lit=false": {"model": "torchslabmod:block/pad_candle_white_four_candles"},
+		"facing=east,candles=4,lit=false": {"model": "torchslabmod:block/pad_candle_white_four_candles", "y": 90 },
+		"facing=south,candles=4,lit=false": {"model": "torchslabmod:block/pad_candle_white_four_candles", "y": 180 },
+		"facing=west,candles=4,lit=false": {"model": "torchslabmod:block/pad_candle_white_four_candles", "y": 270 },
+
+		"facing=north,candles=4,lit=true": {"model": "torchslabmod:block/pad_candle_lit_white_four_candles"},
+		"facing=east,candles=4,lit=true": {"model": "torchslabmod:block/pad_candle_lit_white_four_candles", "y": 90 },
+		"facing=south,candles=4,lit=true": {"model": "torchslabmod:block/pad_candle_lit_white_four_candles", "y": 180 },
+		"facing=west,candles=4,lit=true": {"model": "torchslabmod:block/pad_candle_lit_white_four_candles", "y": 270 }	
+	}
+}

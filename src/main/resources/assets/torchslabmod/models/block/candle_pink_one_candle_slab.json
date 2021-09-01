@@ -1,7 +1,7 @@
 {
-			"parent": "torchslabmod:block/template_one_candle",
-			"textures": {
-			  "all": "block/pink_candle",
-			  "particle": "block/pink_candle"
-			}
-		  }
+	"parent": "torchslabmod:block/template_one_candle",
+	"textures": {
+		"all": "block/pink_candle",
+		"particle": "block/pink_candle"
+	}
+}

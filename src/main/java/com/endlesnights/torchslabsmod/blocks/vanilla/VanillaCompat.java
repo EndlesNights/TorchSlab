@@ -7,6 +7,7 @@ import com.endlesnights.torchslabsmod.event.PlaceHandlerChainSlab;
 import com.endlesnights.torchslabsmod.event.PlaceHandlerEndRod;
 import com.endlesnights.torchslabsmod.event.PlaceHandlerLanternSlab;
 import com.endlesnights.torchslabsmod.event.PlaceHandlerLanternWall;
+import com.endlesnights.torchslabsmod.event.PlaceHandlerPadCandle;
 import com.endlesnights.torchslabsmod.event.PlaceHandlerPadLights;
 import com.endlesnights.torchslabsmod.event.PlaceHandlerTorchSlab;
 import com.endlesnights.torchslabsmod.event.PlaceHandlerTorchWall;
@@ -77,6 +78,24 @@ public class VanillaCompat implements ITorchSlabCompat
 	public static Block candle_white_slab = null;
 	public static Block candle_yellow_slab = null;
 
+	public static Block pad_candle = null;
+	public static Block pad_candle_black = null;
+	public static Block pad_candle_blue = null;
+	public static Block pad_candle_brown = null;
+	public static Block pad_candle_cyan = null;
+	public static Block pad_candle_gray = null;
+	public static Block pad_candle_green = null;
+	public static Block pad_candle_light_blue = null;
+	public static Block pad_candle_light_gray = null;
+	public static Block pad_candle_lime = null;
+	public static Block pad_candle_magenta = null;
+	public static Block pad_candle_orange = null;
+	public static Block pad_candle_pink = null;
+	public static Block pad_candle_purple = null;
+	public static Block pad_candle_red = null;
+	public static Block pad_candle_white = null;
+	public static Block pad_candle_yellow = null;
+	
 	@SuppressWarnings("deprecation")
 	@Override
 	public void registerBlocks(RegistryEvent.Register<Block> event)
@@ -125,7 +144,23 @@ public class VanillaCompat implements ITorchSlabCompat
 		candle_white_slab = registerBlock(new BlockCandleSlab(Block.Properties.copy(Blocks.WHITE_CANDLE), Items.WHITE_CANDLE), "candle_white_slab");
 		candle_yellow_slab = registerBlock(new BlockCandleSlab(Block.Properties.copy(Blocks.YELLOW_CANDLE), Items.YELLOW_CANDLE), "candle_yellow_slab");
 
-
+		pad_candle = registerBlock(new BlockPadCandle(Block.Properties.copy(Blocks.CANDLE), Items.CANDLE), "pad_candle");
+		pad_candle_black = registerBlock(new BlockPadCandle(Block.Properties.copy(Blocks.BLACK_CANDLE), Items.BLACK_CANDLE), "pad_candle_black");
+		pad_candle_blue = registerBlock(new BlockPadCandle(Block.Properties.copy(Blocks.BLUE_CANDLE), Items.BLUE_CANDLE), "pad_candle_blue");
+		pad_candle_brown = registerBlock(new BlockPadCandle(Block.Properties.copy(Blocks.BROWN_CANDLE), Items.BROWN_CANDLE), "pad_candle_brown");
+		pad_candle_cyan = registerBlock(new BlockPadCandle(Block.Properties.copy(Blocks.CYAN_CANDLE), Items.CYAN_CANDLE), "pad_candle_cyan");
+		pad_candle_gray = registerBlock(new BlockPadCandle(Block.Properties.copy(Blocks.GRAY_CANDLE), Items.GRAY_CANDLE), "pad_candle_gray");
+		pad_candle_green = registerBlock(new BlockPadCandle(Block.Properties.copy(Blocks.GREEN_CANDLE), Items.GREEN_CANDLE), "pad_candle_green");
+		pad_candle_light_blue = registerBlock(new BlockPadCandle(Block.Properties.copy(Blocks.LIGHT_BLUE_CANDLE), Items.LIGHT_BLUE_CANDLE), "pad_candle_light_blue");
+		pad_candle_light_gray = registerBlock(new BlockPadCandle(Block.Properties.copy(Blocks.LIGHT_GRAY_CANDLE), Items.LIGHT_GRAY_CANDLE), "pad_candle_light_gray");
+		pad_candle_lime = registerBlock(new BlockPadCandle(Block.Properties.copy(Blocks.LIME_CANDLE), Items.LIME_CANDLE), "pad_candle_lime");
+		pad_candle_magenta = registerBlock(new BlockPadCandle(Block.Properties.copy(Blocks.MAGENTA_CANDLE), Items.MAGENTA_CANDLE), "pad_candle_magenta");
+		pad_candle_orange = registerBlock(new BlockPadCandle(Block.Properties.copy(Blocks.ORANGE_CANDLE), Items.ORANGE_CANDLE), "pad_candle_orange");
+		pad_candle_pink = registerBlock(new BlockPadCandle(Block.Properties.copy(Blocks.PINK_CANDLE), Items.PINK_CANDLE), "pad_candle_pink");
+		pad_candle_purple = registerBlock(new BlockPadCandle(Block.Properties.copy(Blocks.PURPLE_CANDLE), Items.PURPLE_CANDLE), "pad_candle_purple");
+		pad_candle_red = registerBlock(new BlockPadCandle(Block.Properties.copy(Blocks.RED_CANDLE), Items.RED_CANDLE), "pad_candle_red");
+		pad_candle_white = registerBlock(new BlockPadCandle(Block.Properties.copy(Blocks.WHITE_CANDLE), Items.WHITE_CANDLE), "pad_candle_white");
+		pad_candle_yellow = registerBlock(new BlockPadCandle(Block.Properties.copy(Blocks.YELLOW_CANDLE), Items.YELLOW_CANDLE), "pad_candle_yellow");
 				
 		if (FMLEnvironment.dist == Dist.CLIENT)
         {
@@ -144,6 +179,23 @@ public class VanillaCompat implements ITorchSlabCompat
 			ItemBlockRenderTypes.setRenderLayer(pad_soul_torch, transparentRenderType);
 			ItemBlockRenderTypes.setRenderLayer(pad_soul_lantern, transparentRenderType);
 			
+			ItemBlockRenderTypes.setRenderLayer(pad_candle, transparentRenderType);
+			ItemBlockRenderTypes.setRenderLayer(pad_candle_black, transparentRenderType);
+			ItemBlockRenderTypes.setRenderLayer(pad_candle_blue, transparentRenderType);
+			ItemBlockRenderTypes.setRenderLayer(pad_candle_brown, transparentRenderType);
+			ItemBlockRenderTypes.setRenderLayer(pad_candle_cyan, transparentRenderType);
+			ItemBlockRenderTypes.setRenderLayer(pad_candle_gray, transparentRenderType);
+			ItemBlockRenderTypes.setRenderLayer(pad_candle_green, transparentRenderType);
+			ItemBlockRenderTypes.setRenderLayer(pad_candle_light_blue, transparentRenderType);
+			ItemBlockRenderTypes.setRenderLayer(pad_candle_light_gray, transparentRenderType);
+			ItemBlockRenderTypes.setRenderLayer(pad_candle_lime, transparentRenderType);
+			ItemBlockRenderTypes.setRenderLayer(pad_candle_magenta, transparentRenderType);
+			ItemBlockRenderTypes.setRenderLayer(pad_candle_orange, transparentRenderType);
+			ItemBlockRenderTypes.setRenderLayer(pad_candle_pink, transparentRenderType);
+			ItemBlockRenderTypes.setRenderLayer(pad_candle_purple, transparentRenderType);
+			ItemBlockRenderTypes.setRenderLayer(pad_candle_red, transparentRenderType);
+			ItemBlockRenderTypes.setRenderLayer(pad_candle_white, transparentRenderType);
+			ItemBlockRenderTypes.setRenderLayer(pad_candle_yellow, transparentRenderType);
 //			ItemBlockRenderTypes.setRenderLayer(chain_slab, transparentRenderType);
         }
 	}
@@ -171,7 +223,6 @@ public class VanillaCompat implements ITorchSlabCompat
 		
 		
 		PlaceHandlerCandleSlab.registerPlaceEntry(Items.CANDLE.getRegistryName(), candle_slab);
-		
 		PlaceHandlerCandleSlab.registerPlaceEntry(Items.BLACK_CANDLE.getRegistryName(), candle_black_slab);
 		PlaceHandlerCandleSlab.registerPlaceEntry(Items.BLUE_CANDLE.getRegistryName(), candle_blue_slab);
 		PlaceHandlerCandleSlab.registerPlaceEntry(Items.BROWN_CANDLE.getRegistryName(), candle_brown_slab);
@@ -189,6 +240,24 @@ public class VanillaCompat implements ITorchSlabCompat
 		PlaceHandlerCandleSlab.registerPlaceEntry(Items.WHITE_CANDLE.getRegistryName(), candle_white_slab);
 		PlaceHandlerCandleSlab.registerPlaceEntry(Items.YELLOW_CANDLE.getRegistryName(), candle_yellow_slab);
 
+		
+		PlaceHandlerPadCandle.registerPlaceEntry(Items.CANDLE.getRegistryName(), pad_candle);
+		PlaceHandlerPadCandle.registerPlaceEntry(Items.BLACK_CANDLE.getRegistryName(), pad_candle_black);
+		PlaceHandlerPadCandle.registerPlaceEntry(Items.BLUE_CANDLE.getRegistryName(), pad_candle_blue);
+		PlaceHandlerPadCandle.registerPlaceEntry(Items.BROWN_CANDLE.getRegistryName(), pad_candle_brown);
+		PlaceHandlerPadCandle.registerPlaceEntry(Items.CYAN_CANDLE.getRegistryName(), pad_candle_cyan);
+		PlaceHandlerPadCandle.registerPlaceEntry(Items.GRAY_CANDLE.getRegistryName(), pad_candle_gray);
+		PlaceHandlerPadCandle.registerPlaceEntry(Items.GREEN_CANDLE.getRegistryName(), pad_candle_green);
+		PlaceHandlerPadCandle.registerPlaceEntry(Items.LIGHT_BLUE_CANDLE.getRegistryName(), pad_candle_light_blue);
+		PlaceHandlerPadCandle.registerPlaceEntry(Items.LIGHT_GRAY_CANDLE.getRegistryName(), pad_candle_light_gray);
+		PlaceHandlerPadCandle.registerPlaceEntry(Items.LIME_CANDLE.getRegistryName(), pad_candle_lime);
+		PlaceHandlerPadCandle.registerPlaceEntry(Items.MAGENTA_CANDLE.getRegistryName(), pad_candle_magenta);
+		PlaceHandlerPadCandle.registerPlaceEntry(Items.ORANGE_CANDLE.getRegistryName(), pad_candle_orange);
+		PlaceHandlerPadCandle.registerPlaceEntry(Items.PINK_CANDLE.getRegistryName(), pad_candle_pink);
+		PlaceHandlerPadCandle.registerPlaceEntry(Items.PURPLE_CANDLE.getRegistryName(), pad_candle_purple);
+		PlaceHandlerPadCandle.registerPlaceEntry(Items.RED_CANDLE.getRegistryName(), pad_candle_red);
+		PlaceHandlerPadCandle.registerPlaceEntry(Items.WHITE_CANDLE.getRegistryName(), pad_candle_white);
+		PlaceHandlerPadCandle.registerPlaceEntry(Items.YELLOW_CANDLE.getRegistryName(), pad_candle_yellow);		
 	}
 	
     public static Block registerBlock(Block block, String name)

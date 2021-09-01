@@ -33,7 +33,26 @@ public class ColorHandler
 					VanillaCompat.pad_torch,
 					VanillaCompat.pad_soul_torch,
 					VanillaCompat.pad_lantern,
-					VanillaCompat.pad_soul_lantern
+					VanillaCompat.pad_soul_lantern,
+					
+					VanillaCompat.pad_candle,
+					VanillaCompat.pad_candle_black,
+					VanillaCompat.pad_candle_blue,
+					VanillaCompat.pad_candle_brown,
+					VanillaCompat.pad_candle_cyan,
+					VanillaCompat.pad_candle_gray,
+					VanillaCompat.pad_candle_green,
+					VanillaCompat.pad_candle_light_blue,
+					VanillaCompat.pad_candle_light_gray,
+					VanillaCompat.pad_candle_lime,
+					VanillaCompat.pad_candle_magenta,
+					VanillaCompat.pad_candle_orange,
+					VanillaCompat.pad_candle_pink,
+					VanillaCompat.pad_candle_purple,
+					VanillaCompat.pad_candle_red,
+					VanillaCompat.pad_candle_white,
+					VanillaCompat.pad_candle_yellow
+					
 					);
 		}
 		catch(Error e)

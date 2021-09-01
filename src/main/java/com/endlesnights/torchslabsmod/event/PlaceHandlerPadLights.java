@@ -32,11 +32,10 @@ public class PlaceHandlerPadLights
 		ResourceLocation rl = held.getItem().getRegistryName();
 
 		if(PLACE_ENTRIES.containsKey(rl))
-			placeTorch(event, held, PLACE_ENTRIES.get(rl));
+			placeLight(event, held, PLACE_ENTRIES.get(rl));
 	}
 
-	@SuppressWarnings("deprecation")
-	private static void placeTorch(RightClickBlock event, ItemStack held, Block block)
+	private static void placeLight(RightClickBlock event, ItemStack held, Block block)
 	{		
 		BlockPos pos = event.getPos();
 		Direction face = event.getFace();
