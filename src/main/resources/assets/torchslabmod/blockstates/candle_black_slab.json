@@ -1,0 +1,28 @@
+{
+		"variants": {
+		  "candles=1,lit=false": {
+			"model": "torchslabmod:block/candle_black_one_candle_slab"
+		  },
+		  "candles=1,lit=true": {
+			"model": "torchslabmod:block/candle_black_one_candle_lit_slab"
+		  },
+		  "candles=2,lit=false": {
+			"model": "torchslabmod:block/candle_black_two_candles_slab"
+		  },
+		  "candles=2,lit=true": {
+			"model": "torchslabmod:block/candle_black_two_candles_lit_slab"
+		  },
+		  "candles=3,lit=false": {
+			"model": "torchslabmod:block/candle_black_three_candles_slab"
+		  },
+		  "candles=3,lit=true": {
+			"model": "torchslabmod:block/candle_black_three_candles_lit_slab"
+		  },
+		  "candles=4,lit=false": {
+			"model": "torchslabmod:block/candle_black_four_candles_slab"
+		  },
+		  "candles=4,lit=true": {
+			"model": "torchslabmod:block/candle_black_four_candles_lit_slab"
+		  }
+		}
+	  }

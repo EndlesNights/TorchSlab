@@ -1,6 +1,6 @@
 package com.endlesnights.torchslabsmod;
 
-import net.minecraft.block.Block;
+import net.minecraft.world.level.block.Block;
 import net.minecraftforge.event.RegistryEvent;
 
 public interface ITorchSlabCompat 

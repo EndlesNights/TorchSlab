@@ -1,0 +1,6 @@
+{
+    "variants": {
+        "hanging=true": { "model": "torchslabmod:block/soul_hanging_lantern"},
+        "hanging=false": { "model": "torchslabmod:block/soul_lantern"}
+  }
+}

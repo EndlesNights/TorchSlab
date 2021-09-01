@@ -1,0 +1,12 @@
+{
+    "variants": {
+		"half=bottom,facing=east": { "model": "minecraft:block/soul_wall_torch" },
+        "half=bottom,facing=south": { "model": "minecraft:block/soul_wall_torch", "y": 90 },
+        "half=bottom,facing=west": { "model": "minecraft:block/soul_wall_torch", "y": 180 },
+        "half=bottom,facing=north": { "model": "minecraft:block/soul_wall_torch", "y": 270 },
+		"half=top,facing=east": { "model": "torchslabmod:block/wall_soul_torch_slab_upper" },
+        "half=top,facing=south": { "model": "torchslabmod:block/wall_soul_torch_slab_upper", "y": 90 },
+        "half=top,facing=west": { "model": "torchslabmod:block/wall_soul_torch_slab_upper", "y": 180 },
+        "half=top,facing=north": { "model": "torchslabmod:block/wall_soul_torch_slab_upper", "y": 270 }
+    }
+}

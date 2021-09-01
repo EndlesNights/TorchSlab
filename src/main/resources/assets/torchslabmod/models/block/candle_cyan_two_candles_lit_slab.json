@@ -1,0 +1,7 @@
+{
+	"parent": "torchslabmod:block/template_two_candles",
+	"textures": {
+		"all": "block/cyan_candle_lit",
+		"particle": "block/cyan_candle_lit"
+	}
+}

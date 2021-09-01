@@ -6,20 +6,22 @@ import java.util.HashMap;
 import com.endlesnights.torchslabsmod.TorchSlabsMod;
 import com.endlesnights.torchslabsmod.blocks.vanilla.BlockEndRodSlab;
 
-import net.minecraft.block.Block;
-import net.minecraft.block.Blocks;
-import net.minecraft.block.DirectionalBlock;
-import net.minecraft.block.EndRodBlock;
-import net.minecraft.block.SlabBlock;
-import net.minecraft.fluid.Fluids;
-import net.minecraft.item.ItemStack;
-import net.minecraft.state.properties.BlockStateProperties;
-import net.minecraft.state.properties.SlabType;
-import net.minecraft.util.Direction;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.SoundCategory;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.DirectionalBlock;
+import net.minecraft.world.level.block.EndRodBlock;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.block.state.properties.SlabType;
+import net.minecraft.world.level.material.Fluids;
+import net.minecraft.world.level.block.SlabBlock;
+import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.core.Direction;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.level.Level;
+
 import net.minecraftforge.event.entity.player.PlayerInteractEvent.RightClickBlock;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
@@ -44,112 +46,113 @@ public class PlaceHandlerEndRod
 	{		
 		BlockPos pos = event.getPos();
 		Direction face = event.getFace();
-		BlockPos placeAt = pos.offset(face);
-		World world = event.getWorld();		
-
+		BlockPos placeAt = pos.relative(face);
+		Level world = event.getWorld();		
+		SoundType soundType;
+		
 		if(world.getBlockState(pos).getBlock() instanceof SlabBlock && face == Direction.UP 
-				&& world.getBlockState(pos).get(SlabBlock.TYPE) == SlabType.BOTTOM 
-				&& (world.isAirBlock(placeAt) || world.getFluidState(placeAt).getFluid() == Fluids.WATER || world.getFluidState(placeAt).getFluid() == Fluids.FLOWING_WATER) )
+				&& world.getBlockState(pos).getValue(SlabBlock.TYPE) == SlabType.BOTTOM 
+				&& (world.isEmptyBlock(placeAt) || world.getFluidState(placeAt).getType() == Fluids.WATER || world.getFluidState(placeAt).getType() == Fluids.FLOWING_WATER) )
 		{	
 
-			world.setBlockState(placeAt, block.getDefaultState());
-			world.setBlockState(pos, world.getBlockState(pos).with(BlockStateProperties.WATERLOGGED, false));
+			world.setBlockAndUpdate(placeAt, block.defaultBlockState());
+			world.setBlockAndUpdate(pos, world.getBlockState(pos).setValue(BlockStateProperties.WATERLOGGED, false));
 			
 			rodPlaced(event, held, block, pos);
 		}
 		else if(world.getBlockState(pos).getBlock() instanceof SlabBlock && face == Direction.DOWN 
-				&& world.getBlockState(pos).get(SlabBlock.TYPE) == SlabType.TOP 
-				&& (world.isAirBlock(placeAt) || world.getFluidState(placeAt).getFluid() == Fluids.WATER || world.getFluidState(placeAt).getFluid() == Fluids.FLOWING_WATER) )
+				&& world.getBlockState(pos).getValue(SlabBlock.TYPE) == SlabType.TOP 
+				&& (world.isEmptyBlock(placeAt) || world.getFluidState(placeAt).getType() == Fluids.WATER || world.getFluidState(placeAt).getType() == Fluids.FLOWING_WATER) )
 		{	
 
-			world.setBlockState(placeAt, block.getDefaultState().with(DirectionalBlock.FACING, Direction.DOWN));
-			world.setBlockState(pos, world.getBlockState(pos).with(BlockStateProperties.WATERLOGGED, false));
+			world.setBlockAndUpdate(placeAt, block.defaultBlockState().setValue(DirectionalBlock.FACING, Direction.DOWN));
+			world.setBlockAndUpdate(pos, world.getBlockState(pos).setValue(BlockStateProperties.WATERLOGGED, false));
 			
 			rodPlaced(event, held, block, pos);
 		}
 		else if( (face == Direction.UP || face == Direction.DOWN)
 				&& world.getBlockState(pos).getBlock() instanceof BlockEndRodSlab)
 		{
-			if(world.getBlockState(pos).get(DirectionalBlock.FACING) == Direction.DOWN && face == Direction.DOWN )
+			if(world.getBlockState(pos).getValue(DirectionalBlock.FACING) == Direction.DOWN && face == Direction.DOWN )
 			{
-				if(!world.getBlockState(pos).get(BlockEndRodSlab.CONDITIONAL)
-						&& ((world.getBlockState(pos.down()).getBlock() instanceof SlabBlock && world.getBlockState(pos.down()).get(SlabBlock.TYPE) == SlabType.BOTTOM)
-						|| (world.isAirBlock(pos.down()) || world.getFluidState(pos.down()).getFluid() == Fluids.WATER || world.getFluidState(pos.down()).getFluid() == Fluids.FLOWING_WATER)))
+				if(!world.getBlockState(pos).getValue(BlockEndRodSlab.CONDITIONAL)
+						&& ((world.getBlockState(pos.below()).getBlock() instanceof SlabBlock && world.getBlockState(pos.below()).getValue(SlabBlock.TYPE) == SlabType.BOTTOM)
+						|| (world.isEmptyBlock(pos.below()) || world.getFluidState(pos.below()).getType() == Fluids.WATER || world.getFluidState(pos.below()).getType() == Fluids.FLOWING_WATER)))
 					{
-						world.setBlockState(pos, block.getDefaultState().with(DirectionalBlock.FACING, Direction.DOWN).with(BlockEndRodSlab.CONDITIONAL, true));
+						world.setBlockAndUpdate(pos, block.defaultBlockState().setValue(DirectionalBlock.FACING, Direction.DOWN).setValue(BlockEndRodSlab.CONDITIONAL, true));
 						
-						if(world.getBlockState(pos.down()).getBlock() instanceof SlabBlock)
-							world.setBlockState(pos.down(), world.getBlockState(pos.down()).with(BlockStateProperties.WATERLOGGED, false));
+						if(world.getBlockState(pos.below()).getBlock() instanceof SlabBlock)
+							world.setBlockAndUpdate(pos.below(), world.getBlockState(pos.below()).setValue(BlockStateProperties.WATERLOGGED, false));
 						else
-							world.setBlockState(pos.down(), Blocks.AIR.getDefaultState());
+							world.setBlockAndUpdate(pos.below(), Blocks.AIR.defaultBlockState());
 						
 						rodPlaced(event, held, block, pos);
 						return;
 					}
-				else if((world.isAirBlock(placeAt.down()) || world.getFluidState(placeAt.down()).getFluid() == Fluids.WATER || world.getFluidState(placeAt.down()).getFluid() == Fluids.FLOWING_WATER)
-						&&(world.isAirBlock(placeAt)))
+				else if((world.isEmptyBlock(placeAt.below()) || world.getFluidState(placeAt.below()).getType() == Fluids.WATER || world.getFluidState(placeAt.below()).getType() == Fluids.FLOWING_WATER)
+						&&(world.isEmptyBlock(placeAt)))
 				{
-					world.setBlockState(placeAt.down(), block.getDefaultState().with(DirectionalBlock.FACING, Direction.DOWN));
-					rodPlaced(event, held, block, placeAt.down());
+					world.setBlockAndUpdate(placeAt.below(), block.defaultBlockState().setValue(DirectionalBlock.FACING, Direction.DOWN));
+					rodPlaced(event, held, block, placeAt.below());
 					return;
 				}
 			}
-			else if(world.getBlockState(pos).get(DirectionalBlock.FACING) == Direction.UP && face == Direction.UP)
+			else if(world.getBlockState(pos).getValue(DirectionalBlock.FACING) == Direction.UP && face == Direction.UP)
 			{
-				if(!world.getBlockState(pos).get(BlockEndRodSlab.CONDITIONAL) 
-						&& ((world.getBlockState(pos.up()).getBlock() instanceof SlabBlock && world.getBlockState(pos.up()).get(SlabBlock.TYPE) == SlabType.TOP)
-						|| (world.isAirBlock(pos.up()) || world.getFluidState(pos.up()).getFluid() == Fluids.WATER || world.getFluidState(pos.up()).getFluid() == Fluids.FLOWING_WATER)))
+				if(!world.getBlockState(pos).getValue(BlockEndRodSlab.CONDITIONAL) 
+						&& ((world.getBlockState(pos.above()).getBlock() instanceof SlabBlock && world.getBlockState(pos.above()).getValue(SlabBlock.TYPE) == SlabType.TOP)
+						|| (world.isEmptyBlock(pos.above()) || world.getFluidState(pos.above()).getType() == Fluids.WATER || world.getFluidState(pos.above()).getType() == Fluids.FLOWING_WATER)))
 					{
-						world.setBlockState(pos, block.getDefaultState().with(BlockEndRodSlab.CONDITIONAL, true));
+						world.setBlockAndUpdate(pos, block.defaultBlockState().setValue(BlockEndRodSlab.CONDITIONAL, true));
 						
-						if(world.getBlockState(pos.up()).getBlock() instanceof SlabBlock)
-							world.setBlockState(pos.up(), world.getBlockState(pos.up()).with(BlockStateProperties.WATERLOGGED, false));
+						if(world.getBlockState(pos.above()).getBlock() instanceof SlabBlock)
+							world.setBlockAndUpdate(pos.above(), world.getBlockState(pos.above()).setValue(BlockStateProperties.WATERLOGGED, false));
 						else
-							world.setBlockState(pos.up(), Blocks.AIR.getDefaultState());
+							world.setBlockAndUpdate(pos.above(), Blocks.AIR.defaultBlockState());
 						rodPlaced(event, held, block, pos);
 						return;
 					}
-				else if((world.isAirBlock(placeAt.up()) || world.getFluidState(placeAt.up()).getFluid() == Fluids.WATER || world.getFluidState(placeAt.up()).getFluid() == Fluids.FLOWING_WATER)
-						&&(world.isAirBlock(placeAt) ))
+				else if((world.isEmptyBlock(placeAt.above()) || world.getFluidState(placeAt.above()).getType() == Fluids.WATER || world.getFluidState(placeAt.above()).getType() == Fluids.FLOWING_WATER)
+						&&(world.isEmptyBlock(placeAt) ))
 					{
-						world.setBlockState(placeAt.up(), block.getDefaultState().with(DirectionalBlock.FACING, Direction.UP));
-						rodPlaced(event, held, block, placeAt.up());
+						world.setBlockAndUpdate(placeAt.above(), block.defaultBlockState().setValue(DirectionalBlock.FACING, Direction.UP));
+						rodPlaced(event, held, block, placeAt.above());
 						return;
 					}
 			}
-			else if(world.getBlockState(pos).get(DirectionalBlock.FACING) == Direction.DOWN && face == Direction.UP
-					&& (world.isAirBlock(placeAt.up()) || world.getFluidState(placeAt.up()).getFluid() == Fluids.WATER || world.getFluidState(placeAt.up()).getFluid() == Fluids.FLOWING_WATER))
+			else if(world.getBlockState(pos).getValue(DirectionalBlock.FACING) == Direction.DOWN && face == Direction.UP
+					&& (world.isEmptyBlock(placeAt.above()) || world.getFluidState(placeAt.above()).getType() == Fluids.WATER || world.getFluidState(placeAt.above()).getType() == Fluids.FLOWING_WATER))
 			{
 				{	
-					world.setBlockState(placeAt.up(), block.getDefaultState().with(DirectionalBlock.FACING, Direction.UP));
-					rodPlaced(event, held, block, placeAt.up());
+					world.setBlockAndUpdate(placeAt.above(), block.defaultBlockState().setValue(DirectionalBlock.FACING, Direction.UP));
+					rodPlaced(event, held, block, placeAt.above());
 					return;
 				}
 			}
-			else if(world.getBlockState(pos).get(DirectionalBlock.FACING) == Direction.UP && face == Direction.DOWN 
-					&& (world.isAirBlock(placeAt.down()) || world.getFluidState(placeAt.down()).getFluid() == Fluids.WATER || world.getFluidState(placeAt.down()).getFluid() == Fluids.FLOWING_WATER))
+			else if(world.getBlockState(pos).getValue(DirectionalBlock.FACING) == Direction.UP && face == Direction.DOWN 
+					&& (world.isEmptyBlock(placeAt.below()) || world.getFluidState(placeAt.below()).getType() == Fluids.WATER || world.getFluidState(placeAt.below()).getType() == Fluids.FLOWING_WATER))
 			{
 				{	
-					world.setBlockState(placeAt.down(), block.getDefaultState().with(DirectionalBlock.FACING, Direction.DOWN));
-					rodPlaced(event, held, block, placeAt.down());
+					world.setBlockAndUpdate(placeAt.below(), block.defaultBlockState().setValue(DirectionalBlock.FACING, Direction.DOWN));
+					rodPlaced(event, held, block, placeAt.below());
 					return;
 				}
 			}
 			
-			if(face == Direction.DOWN && world.getBlockState(pos).get(BlockEndRodSlab.CONDITIONAL) == true
-					&& world.getBlockState(placeAt.down()).getBlock() instanceof BlockEndRodSlab
-					&& world.getBlockState(placeAt.down()).get(BlockEndRodSlab.CONDITIONAL) == false)
+			if(face == Direction.DOWN && world.getBlockState(pos).getValue(BlockEndRodSlab.CONDITIONAL) == true
+					&& world.getBlockState(placeAt.below()).getBlock() instanceof BlockEndRodSlab
+					&& world.getBlockState(placeAt.below()).getValue(BlockEndRodSlab.CONDITIONAL) == false)
 			{
-				world.setBlockState(placeAt.down(), world.getBlockState(placeAt.down()).with(BlockEndRodSlab.CONDITIONAL, true));
-				rodPlaced(event, held, block, placeAt.down());
+				world.setBlockAndUpdate(placeAt.below(), world.getBlockState(placeAt.below()).setValue(BlockEndRodSlab.CONDITIONAL, true));
+				rodPlaced(event, held, block, placeAt.below());
 				return;
 			}
-			else if (face == Direction.UP && world.getBlockState(pos).get(BlockEndRodSlab.CONDITIONAL) == true
-					&& world.getBlockState(placeAt.up()).getBlock() instanceof BlockEndRodSlab
-					&& world.getBlockState(placeAt.up()).get(BlockEndRodSlab.CONDITIONAL) == false)
+			else if (face == Direction.UP && world.getBlockState(pos).getValue(BlockEndRodSlab.CONDITIONAL) == true
+					&& world.getBlockState(placeAt.above()).getBlock() instanceof BlockEndRodSlab
+					&& world.getBlockState(placeAt.above()).getValue(BlockEndRodSlab.CONDITIONAL) == false)
 			{
-				world.setBlockState(placeAt.up(), world.getBlockState(placeAt.up()).with(BlockEndRodSlab.CONDITIONAL, true));
-				rodPlaced(event, held, block, placeAt.up());
+				world.setBlockAndUpdate(placeAt.above(), world.getBlockState(placeAt.above()).setValue(BlockEndRodSlab.CONDITIONAL, true));
+				rodPlaced(event, held, block, placeAt.above());
 				return;
 			}
 			
@@ -157,29 +160,32 @@ public class PlaceHandlerEndRod
 			event.setCanceled(true);
 		}
 		else if(face == Direction.UP &&
-				world.getBlockState(pos).getBlock() instanceof SlabBlock && world.getBlockState(pos).get(SlabBlock.TYPE) == SlabType.BOTTOM 
+				world.getBlockState(pos).getBlock() instanceof SlabBlock && world.getBlockState(pos).getValue(SlabBlock.TYPE) == SlabType.BOTTOM 
 				&& (world.getBlockState(placeAt).getBlock() instanceof BlockEndRodSlab
-				&& !world.getBlockState(placeAt).get(BlockEndRodSlab.CONDITIONAL)
-				&& world.getBlockState(placeAt).get(EndRodBlock.FACING) == Direction.DOWN))
+				&& !world.getBlockState(placeAt).getValue(BlockEndRodSlab.CONDITIONAL)
+				&& world.getBlockState(placeAt).getValue(EndRodBlock.FACING) == Direction.DOWN))
 		{
-			world.setBlockState(placeAt, block.getDefaultState().with(DirectionalBlock.FACING, Direction.DOWN).with(BlockEndRodSlab.CONDITIONAL, true));
+			world.setBlockAndUpdate(placeAt, block.defaultBlockState().setValue(DirectionalBlock.FACING, Direction.DOWN).setValue(BlockEndRodSlab.CONDITIONAL, true));
 			rodPlaced(event, held, block, placeAt);
 		}
 		else if(face == Direction.DOWN &&
-				world.getBlockState(pos).getBlock() instanceof SlabBlock && world.getBlockState(pos).get(SlabBlock.TYPE) == SlabType.TOP 
+				world.getBlockState(pos).getBlock() instanceof SlabBlock && world.getBlockState(pos).getValue(SlabBlock.TYPE) == SlabType.TOP 
 				&& (world.getBlockState(placeAt).getBlock() instanceof BlockEndRodSlab
-				&& !world.getBlockState(placeAt).get(BlockEndRodSlab.CONDITIONAL)
-				&& world.getBlockState(placeAt).get(EndRodBlock.FACING) == Direction.UP))
+				&& !world.getBlockState(placeAt).getValue(BlockEndRodSlab.CONDITIONAL)
+				&& world.getBlockState(placeAt).getValue(EndRodBlock.FACING) == Direction.UP))
 		{
-			world.setBlockState(placeAt, block.getDefaultState().with(DirectionalBlock.FACING, Direction.UP).with(BlockEndRodSlab.CONDITIONAL, true));
+			world.setBlockAndUpdate(placeAt, block.defaultBlockState().setValue(DirectionalBlock.FACING, Direction.UP).setValue(BlockEndRodSlab.CONDITIONAL, true));
 			rodPlaced(event, held, block, placeAt);
 		}
 	}
 	public static void rodPlaced(RightClickBlock event, ItemStack held, Block block, BlockPos pos)
 	{
-		World world = event.getWorld();
-		world.playSound(null, pos, block.getSoundType(world.getBlockState(pos)).getPlaceSound(), SoundCategory.BLOCKS, 1.0F, 1.0F);
-		event.getPlayer().swingArm(event.getHand());
+		Level world = event.getWorld();
+		SoundType soundType;
+		
+		soundType = block.getSoundType(block.defaultBlockState(), world, pos, event.getPlayer());
+		world.playSound(null, pos.getX(), pos.getY(), pos.getZ(), soundType.getPlaceSound(), SoundSource.BLOCKS, soundType.getVolume(), soundType.getPitch() - 0.2F);
+		event.getPlayer().swing(event.getHand());
 		
 		if(!event.getPlayer().isCreative())
 			held.shrink(1);

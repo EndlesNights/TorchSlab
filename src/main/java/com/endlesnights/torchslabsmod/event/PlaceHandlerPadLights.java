@@ -5,15 +5,17 @@ import java.util.HashMap;
 
 import com.endlesnights.torchslabsmod.TorchSlabsMod;
 
-import net.minecraft.block.Block;
-import net.minecraft.block.HorizontalBlock;
-import net.minecraft.block.LilyPadBlock;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.Direction;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.SoundCategory;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.HorizontalDirectionalBlock;
+import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.WaterlilyBlock;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.core.Direction;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.level.Level;
+
 import net.minecraftforge.event.entity.player.PlayerInteractEvent.RightClickBlock;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
@@ -38,14 +40,16 @@ public class PlaceHandlerPadLights
 	{		
 		BlockPos pos = event.getPos();
 		Direction face = event.getFace();
-		World world = event.getWorld();		
+		Level world = event.getWorld();
+		SoundType soundType;
 
-		if(world.getBlockState(pos).getBlock() instanceof LilyPadBlock && face == Direction.UP)
+		if(world.getBlockState(pos).getBlock() instanceof WaterlilyBlock && face == Direction.UP)
 		{	
 			
-			world.setBlockState(pos, block.getDefaultState().with(HorizontalBlock.HORIZONTAL_FACING, event.getPlayer().getHorizontalFacing()));
-			world.playSound(null, pos.getX(), pos.getY(), pos.getZ(), block.getSoundType(world.getBlockState(pos)).getPlaceSound(), SoundCategory.BLOCKS, 1.0F, 1.0F);
-			event.getPlayer().swingArm(event.getHand());
+			world.setBlockAndUpdate(pos, block.defaultBlockState().setValue(HorizontalDirectionalBlock.FACING, event.getPlayer().getDirection()));
+			soundType = block.getSoundType(block.defaultBlockState(), world, pos, event.getPlayer());
+			world.playSound(null, pos.getX(), pos.getY(), pos.getZ(), soundType.getPlaceSound(), SoundSource.BLOCKS, soundType.getVolume(), soundType.getPitch() - 0.2F);
+			event.getPlayer().swing(event.getHand());
 			
 			if(!event.getPlayer().isCreative())
 				held.shrink(1);

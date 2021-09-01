@@ -5,11 +5,12 @@ import com.endlesnights.torchslabsmod.TorchSlabsMod;
 //import com.endlesnights.torchslabsmod.blocks.buzzierbees.BuzzierBeesCompat;
 //import com.endlesnights.torchslabsmod.blocks.quark.QuarkCompat;
 
-import net.minecraft.client.renderer.color.BlockColors;
+//import net.minecraft.client.renderer.color.BlockColors;
+import net.minecraft.client.color.block.BlockColors;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.ColorHandlerEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.ModList;
+//import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
 
@@ -183,7 +184,7 @@ public class ColorHandler
 //		ItemColors itemColors = event.getItemColors();
 //		
 //		final IItemColor itemBlockColourHandler = (stack, tintIndex) -> {
-//		    final BlockState state = ((BlockItem) stack.getItem()).getBlock().getDefaultState();
+//		    final BlockState state = ((BlockItem) stack.getItem()).getBlock().defaultBlockState();
 //		    return  blockColors.func_228054_a_(state, null, null, tintIndex);
 //		};
 //		

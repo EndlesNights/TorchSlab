@@ -1,20 +1,28 @@
 {
-    "variants": {
-        "facing=north,candles=1": { "model": "torchslabmod:block/candle_one_slab" },
-        "facing=south,candles=1": { "model": "torchslabmod:block/candle_one_slab", "y": 180 },
-        "facing=west,candles=1":  { "model": "torchslabmod:block/candle_one_slab", "y": 270 },
-        "facing=east,candles=1":  { "model": "torchslabmod:block/candle_one_slab", "y": 90 },
-        "facing=north,candles=2": { "model": "torchslabmod:block/candle_two_slab" },
-        "facing=south,candles=2": { "model": "torchslabmod:block/candle_two_slab", "y": 180 },
-        "facing=west,candles=2":  { "model": "torchslabmod:block/candle_two_slab", "y": 270 },
-        "facing=east,candles=2":  { "model": "torchslabmod:block/candle_two_slab", "y": 90 },
-        "facing=north,candles=3": { "model": "torchslabmod:block/candle_three_slab" },
-        "facing=south,candles=3": { "model": "torchslabmod:block/candle_three_slab", "y": 180 },
-        "facing=west,candles=3":  { "model": "torchslabmod:block/candle_three_slab", "y": 270 },
-        "facing=east,candles=3":  { "model": "torchslabmod:block/candle_three_slab", "y": 90 },
-        "facing=north,candles=4": { "model": "torchslabmod:block/candle_four_slab" },
-        "facing=south,candles=4": { "model": "torchslabmod:block/candle_four_slab", "y": 180 },
-        "facing=west,candles=4":  { "model": "torchslabmod:block/candle_four_slab", "y": 270 },
-        "facing=east,candles=4":  { "model": "torchslabmod:block/candle_four_slab", "y": 90 }
+  "variants": {
+    "candles=1,lit=false": {
+      "model": "torchslabmod:block/candle_one_candle"
+    },
+    "candles=1,lit=true": {
+      "model": "torchslabmod:block/candle_one_candle_lit"
+    },
+    "candles=2,lit=false": {
+      "model": "torchslabmod:block/candle_two_candles"
+    },
+    "candles=2,lit=true": {
+      "model": "torchslabmod:block/candle_two_candles_lit"
+    },
+    "candles=3,lit=false": {
+      "model": "torchslabmod:block/candle_three_candles"
+    },
+    "candles=3,lit=true": {
+      "model": "torchslabmod:block/candle_three_candles_lit"
+    },
+    "candles=4,lit=false": {
+      "model": "torchslabmod:block/candle_four_candles"
+    },
+    "candles=4,lit=true": {
+      "model": "torchslabmod:block/candle_four_candles_lit"
+    }
   }
 }

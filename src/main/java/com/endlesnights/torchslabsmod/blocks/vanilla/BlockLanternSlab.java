@@ -3,39 +3,39 @@ package com.endlesnights.torchslabsmod.blocks.vanilla;
 //import com.endlesnights.naturalslabsmod.blocks.FenceSlabBlock;
 //import com.endlesnights.torchslabsmod.blocks.quark.BlockChainSlab;
 
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
-import net.minecraft.block.LanternBlock;
-import net.minecraft.block.SlabBlock;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
-import net.minecraft.state.properties.SlabType;
-import net.minecraft.util.Direction;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.RayTraceResult;
-import net.minecraft.util.math.shapes.ISelectionContext;
-import net.minecraft.util.math.shapes.VoxelShape;
-import net.minecraft.util.math.shapes.VoxelShapes;
-import net.minecraft.util.math.shapes.IBooleanFunction;
-import net.minecraft.world.IBlockReader;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.SlabType;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.LanternBlock;
+import net.minecraft.world.level.block.SlabBlock;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import net.minecraft.core.Direction;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.phys.HitResult;
+import net.minecraft.world.phys.shapes.BooleanOp;
+import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.Shapes;
+import net.minecraft.world.phys.shapes.VoxelShape;
+import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.LevelReader;
 
-import net.minecraft.world.IWorld;
-import net.minecraft.world.IWorldReader;
 //import net.minecraftforge.fml.ModList;
 
 public class BlockLanternSlab extends LanternBlock
 {
-	protected static final VoxelShape SLAB_BOTTOM_SHAPE = VoxelShapes.combine(
-			Block.makeCuboidShape(5.0D, -8.0D, 5.0D, 11.0D, -1.0D, 11.0D), 
-			Block.makeCuboidShape(6.0D, -1.0D, 6.0D, 10.0D, 1.0D, 10.0D), 
-			IBooleanFunction.OR);
+	protected static final VoxelShape SLAB_BOTTOM_SHAPE = Shapes.join(
+			Block.box(5.0D, -8.0D, 5.0D, 11.0D, -1.0D, 11.0D), 
+			Block.box(6.0D, -1.0D, 6.0D, 10.0D, 1.0D, 10.0D), 
+			BooleanOp.OR);
 	
-	protected static final VoxelShape HANGING = VoxelShapes.combine(
-			Block.makeCuboidShape(5.0D, 9.0D, 5.0D, 11.0D, 16.0D, 11.0D),
-			Block.makeCuboidShape(6.0D, 16.0D, 6.0D, 10.0D, 18.0D, 10.0D),
-			IBooleanFunction.OR);
+	protected static final VoxelShape HANGING = Shapes.join(
+			Block.box(5.0D, 9.0D, 5.0D, 11.0D, 16.0D, 11.0D),
+			Block.box(6.0D, 16.0D, 6.0D, 10.0D, 18.0D, 10.0D),
+			BooleanOp.OR);
 	
 	final Character TYPE;
 	
@@ -46,43 +46,43 @@ public class BlockLanternSlab extends LanternBlock
 	}
 	
 	@Override
-	public VoxelShape getShape(BlockState state, IBlockReader world, BlockPos pos, ISelectionContext context)
+	public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context)
 	{
-		if(state.get(LanternBlock.HANGING))
+		if(state.getValue(LanternBlock.HANGING))
 			return HANGING;
 		else
 			return SLAB_BOTTOM_SHAPE;
 	}
 	
 	@Override
-	public BlockState updatePostPlacement(BlockState state, Direction facing, BlockState facingState, IWorld world, BlockPos currentPos, BlockPos facingPos)
+	public BlockState updateShape(BlockState state, Direction facing, BlockState facingState, LevelAccessor world, BlockPos currentPos, BlockPos facingPos)
 	{
-		if(state == this.getDefaultState())
-			return facing == Direction.DOWN && !isValidPosition(state, world, currentPos) ? Blocks.AIR.getDefaultState() : super.updatePostPlacement(state, facing, facingState, world, currentPos, facingPos);
+		if(state == this.defaultBlockState())
+			return facing == Direction.DOWN && !canSurvive(state, world, currentPos) ? Blocks.AIR.defaultBlockState() : super.updateShape(state, facing, facingState, world, currentPos, facingPos);
 		else
-			return facing == Direction.UP && !isValidPosition(state, world, currentPos) ? Blocks.AIR.getDefaultState() : super.updatePostPlacement(state, facing, facingState, world, currentPos, facingPos);
+			return facing == Direction.UP && !canSurvive(state, world, currentPos) ? Blocks.AIR.defaultBlockState() : super.updateShape(state, facing, facingState, world, currentPos, facingPos);
 				
 	}
 
 	@Override
-	public boolean isValidPosition(BlockState state, IWorldReader world, BlockPos pos)
+	public boolean canSurvive(BlockState state, LevelReader world, BlockPos pos)
 	{
-		if(state == this.getDefaultState())
-			return ((world.getBlockState(pos.offset(Direction.DOWN)).getBlock() instanceof SlabBlock 
-				&& world.getBlockState(pos.offset(Direction.DOWN)).get(SlabBlock.TYPE) == SlabType.BOTTOM)
-					//|| (ModList.get().isLoaded("naturalslabsmod") && world.getBlockState(pos.offset(Direction.DOWN)).getBlock() instanceof FenceSlabBlock)
+		if(state == this.defaultBlockState())
+			return ((world.getBlockState(pos.relative(Direction.DOWN)).getBlock() instanceof SlabBlock 
+				&& world.getBlockState(pos.relative(Direction.DOWN)).getValue(SlabBlock.TYPE) == SlabType.BOTTOM)
+					//|| (ModList.get().isLoaded("naturalslabsmod") && world.getBlockState(pos.relative(Direction.DOWN)).getBlock() instanceof FenceSlabBlock)
 					);		
 		else
-			return  ((world.getBlockState(pos.offset(Direction.UP)).getBlock() instanceof SlabBlock
-					&& world.getBlockState(pos.offset(Direction.UP)).get(SlabBlock.TYPE) == SlabType.TOP)
-					//|| (ModList.get().isLoaded("naturalslabsmod") && world.getBlockState(pos.offset(Direction.UP)).getBlock() instanceof FenceSlabBlock)
-					//|| world.getBlockState(pos.offset(Direction.UP)).getBlock() instanceof BlockChainSlab
+			return  ((world.getBlockState(pos.relative(Direction.UP)).getBlock() instanceof SlabBlock
+					&& world.getBlockState(pos.relative(Direction.UP)).getValue(SlabBlock.TYPE) == SlabType.TOP)
+					//|| (ModList.get().isLoaded("naturalslabsmod") && world.getBlockState(pos.relative(Direction.UP)).getBlock() instanceof FenceSlabBlock)
+					//|| world.getBlockState(pos.relative(Direction.UP)).getBlock() instanceof BlockChainSlab
 					);
 	}
 	
 	@Override
-	public ItemStack getPickBlock(BlockState state, RayTraceResult target, IBlockReader world, BlockPos pos, PlayerEntity player)
+	public ItemStack getPickBlock(BlockState state, HitResult target, BlockGetter world, BlockPos pos, Player player)
 	{
-		return new ItemStack( TYPE == 'l' ? Items.LANTERN : Items.field_234790_rk_);
+		return new ItemStack( TYPE == 'l' ? Items.LANTERN : Items.AIR);
 	}
 }

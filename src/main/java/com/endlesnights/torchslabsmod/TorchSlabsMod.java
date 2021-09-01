@@ -13,7 +13,7 @@ import com.endlesnights.torchslabsmod.config.Config;
 //import com.endlesnights.torchslabsmod.blocks.upgradeaquatic.UACompat;
 import com.endlesnights.torchslabsmod.blocks.vanilla.VanillaCompat;
 
-import net.minecraft.block.Block;
+import net.minecraft.world.level.block.Block;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.ModList;

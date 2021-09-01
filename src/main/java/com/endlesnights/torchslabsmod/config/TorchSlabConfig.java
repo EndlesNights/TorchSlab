@@ -26,7 +26,7 @@ public class TorchSlabConfig
 		
 		upperBlockCheck = server
 				.comment("Allow the placemnet of torchs on upper half of wall blocks. Does not effect the placement on upper slabs sides, or the sides/front of stairs. [True / False]")
-				.define("torchslabmodconfig.TorchUpperBlockCheck", true)
+				.define("torchslabmodconfig.TorchUpperBlockCheck", false)
 				;
 		
 		interactiveCheckList = server

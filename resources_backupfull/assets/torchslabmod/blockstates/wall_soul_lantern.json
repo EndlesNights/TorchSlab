@@ -1,0 +1,12 @@
+{
+    "variants": {
+		"half=bottom,facing=east": { "model": "torchslabmod:block/wall_soul_lantern_lower" },
+        "half=bottom,facing=south": { "model": "torchslabmod:block/wall_soul_lantern_lower", "y": 90 },
+        "half=bottom,facing=west": { "model": "torchslabmod:block/wall_soul_lantern_lower", "y": 180 },
+        "half=bottom,facing=north": { "model": "torchslabmod:block/wall_soul_lantern_lower", "y": 270 },
+		"half=top,facing=east": { "model": "torchslabmod:block/wall_soul_lantern_upper" },
+        "half=top,facing=south": { "model": "torchslabmod:block/wall_soul_lantern_upper", "y": 90 },
+        "half=top,facing=west": { "model": "torchslabmod:block/wall_soul_lantern_upper", "y": 180 },
+        "half=top,facing=north": { "model": "torchslabmod:block/wall_soul_lantern_upper", "y": 270 }
+  }
+}
