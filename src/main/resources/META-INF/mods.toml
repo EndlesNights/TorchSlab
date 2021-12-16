@@ -1,9 +1,9 @@
 modLoader="javafml" #mandatory
-loaderVersion="[37,)" #mandatory
+loaderVersion="[39,)" #mandatory
 license="AGPL-3.0"
 [[mods]] #mandatory
 modId="torchslabmod" #mandatory
-version="1.7.1" #mandatory
+version="1.7.2" #mandatory
 displayName="Torch Slab Mod" #mandatory
 displayURL="https://www.curseforge.com/minecraft/mc-mods/torchslabs-mod" #optional
 
