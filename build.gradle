@@ -13,7 +13,7 @@ apply plugin: 'net.minecraftforge.gradle'
 apply plugin: 'eclipse'
 apply plugin: 'maven-publish'
 
-version = '1.18.1_v1.7.2'
+version = '1.18.1_v1.7.3'
 group = 'com.endlesnights.torchslabmod'
 archivesBaseName = 'torchslabmod'
 
@@ -149,7 +149,7 @@ jar {
         attributes([
                 "Specification-Title"     : "torchslabmod",
                 "Specification-Vendor"    : "endlesnights",
-                "Specification-Version"   : "v1.7.2",
+                "Specification-Version"   : "v1.7.3",
                 "Implementation-Title"    : project.name,
                 "Implementation-Version"  : project.jar.archiveVersion,
                 "Implementation-Vendor"   : "torchslabmod",
