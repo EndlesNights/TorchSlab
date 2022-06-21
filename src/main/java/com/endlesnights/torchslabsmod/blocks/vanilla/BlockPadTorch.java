@@ -1,9 +1,8 @@
 package com.endlesnights.torchslabsmod.blocks.vanilla;
 
-import java.util.Random;
-
 import javax.annotation.Nullable;
 
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
@@ -81,10 +80,10 @@ public class BlockPadTorch extends TorchBlock
 	protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
 		builder.add(FACING);	
 	}
-	
+
 	@Override
 	@OnlyIn(Dist.CLIENT)
-	public void animateTick(BlockState stateIn, Level world, BlockPos pos, Random rand)
+	public void animateTick(BlockState stateIn, Level world, BlockPos pos, RandomSource rand)
 	{
 		double x = pos.getX() + 0.5D;
 		double y = pos.getY() + 0.7D;

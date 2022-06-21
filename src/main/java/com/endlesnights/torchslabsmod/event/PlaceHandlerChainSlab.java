@@ -26,6 +26,7 @@ import net.minecraft.world.level.Level;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent.RightClickBlock;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
+import net.minecraftforge.registries.ForgeRegistries;
 
 @EventBusSubscriber(modid=TorchSlabsMod.MODID)
 public class PlaceHandlerChainSlab 
@@ -36,7 +37,7 @@ private static final HashMap<ResourceLocation,Block> PLACE_ENTRIES = new HashMap
 	public static void onBlockEntityPlace(RightClickBlock event)
 	{	
 		ItemStack held = event.getItemStack();
-		ResourceLocation rl = held.getItem().getRegistryName();
+		ResourceLocation rl = ForgeRegistries.ITEMS.getKey(held.getItem());
 
 		if(PLACE_ENTRIES.containsKey(rl))
 			placeChain(event, held, PLACE_ENTRIES.get(rl));
@@ -94,10 +95,5 @@ private static final HashMap<ResourceLocation,Block> PLACE_ENTRIES = new HashMap
 	{
 		if(!PLACE_ENTRIES.containsKey(itemName) && chainSlab != null)
 			PLACE_ENTRIES.put(itemName, chainSlab);
-	}
-
-	public static Collection<Block> getPlaceEntryBlocks()
-	{
-		return PLACE_ENTRIES.values();
 	}
 }
