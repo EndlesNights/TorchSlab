@@ -2,6 +2,7 @@ package com.endlesnights.torchslabsmod.event;
 
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.function.Supplier;
 
 import com.endlesnights.torchslabsmod.TorchSlabsMod;
 import com.endlesnights.torchslabsmod.blocks.vanilla.BlockEndRodSlab;
@@ -25,21 +26,22 @@ import net.minecraft.world.level.Level;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent.RightClickBlock;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
+import net.minecraftforge.registries.ForgeRegistries;
 
 @SuppressWarnings("deprecation")
 @EventBusSubscriber(modid=TorchSlabsMod.MODID)
 public class PlaceHandlerEndRod
 {
-	private static final HashMap<ResourceLocation,Block> PLACE_ENTRIES = new HashMap<>();
+	private static final HashMap<ResourceLocation, Supplier<Block>> PLACE_ENTRIES = new HashMap<>();
 	
 	@SubscribeEvent
 	public static void onBlockEntityPlace(RightClickBlock event)
 	{	
 		ItemStack held = event.getItemStack();
-		ResourceLocation rl = held.getItem().getRegistryName();
+		ResourceLocation rl = ForgeRegistries.ITEMS.getKey(held.getItem());
 
 		if(PLACE_ENTRIES.containsKey(rl))
-			placeRod(event, held, PLACE_ENTRIES.get(rl));
+			placeRod(event, held, PLACE_ENTRIES.get(rl).get());
 	}
 
 	private static void placeRod(RightClickBlock event, ItemStack held, Block block)
@@ -193,14 +195,9 @@ public class PlaceHandlerEndRod
 	}
 	
 	
-	public static void registerPlaceEntry(ResourceLocation itemName, Block endRod)
+	public static void registerPlaceEntry(ResourceLocation itemName, Supplier<Block> endRodSupplier)
 	{
-		if(!PLACE_ENTRIES.containsKey(itemName) && endRod != null)
-			PLACE_ENTRIES.put(itemName, endRod);
-	}
-
-	public static Collection<Block> getPlaceEntryBlocks()
-	{
-		return PLACE_ENTRIES.values();
+		if(!PLACE_ENTRIES.containsKey(itemName) && endRodSupplier != null)
+			PLACE_ENTRIES.put(itemName, endRodSupplier);
 	}
 }

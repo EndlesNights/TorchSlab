@@ -1,10 +1,10 @@
 package com.endlesnights.torchslabsmod;
 
-import net.minecraft.world.level.block.Block;
-import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.eventbus.api.IEventBus;
 
 public interface ITorchSlabCompat 
 {
-	public void registerBlocks(RegistryEvent.Register<Block> event);
-	public void registerPlaceEntries();
+	void registerBlocks(IEventBus bus);
+	void registerPlaceEntries();
+	void registerRenderTypes();
 }

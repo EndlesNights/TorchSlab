@@ -28,6 +28,7 @@ import java.util.Random;
 //import net.minecraftforge.api.distmarker.OnlyIn;
 //import net.minecraftforge.fml.ModList;
 
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.SlabType;
@@ -91,7 +92,7 @@ public class BlockTorchSlab extends TorchBlock
 
 	@Override
 	@OnlyIn(Dist.CLIENT)
-	public void animateTick(BlockState stateIn, Level world, BlockPos pos, Random rand)
+	public void animateTick(BlockState stateIn, Level world, BlockPos pos, RandomSource rand)
 	{
 		double x = pos.getX() + 0.5D;
 		double y = pos.getY() + 0.7D;

@@ -2,6 +2,7 @@ package com.endlesnights.torchslabsmod.event;
 
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.function.Supplier;
 
 import com.endlesnights.torchslabsmod.TorchSlabsMod;
 import com.endlesnights.torchslabsmod.blocks.vanilla.BlockWallTorchSlab;
@@ -44,21 +45,22 @@ import net.minecraftforge.event.entity.player.PlayerInteractEvent.RightClickBloc
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.loading.FMLPaths;
+import net.minecraftforge.registries.ForgeRegistries;
 
 @SuppressWarnings("deprecation")
 @EventBusSubscriber(modid=TorchSlabsMod.MODID)
 public class PlaceHandlerTorchWall
 {
-	private static final HashMap<ResourceLocation,Block> PLACE_ENTRIES = new HashMap<>();
+	private static final HashMap<ResourceLocation, Supplier<Block>> PLACE_ENTRIES = new HashMap<>();
 	
 	@SubscribeEvent
 	public static void onBlockEntityPlace(RightClickBlock event)
 	{	
 		ItemStack held = event.getItemStack();
-		ResourceLocation rl = held.getItem().getRegistryName();
+		ResourceLocation rl = ForgeRegistries.ITEMS.getKey(held.getItem());
 
 		if(PLACE_ENTRIES.containsKey(rl))
-			placeTorch(event, held, PLACE_ENTRIES.get(rl));
+			placeTorch(event, held, PLACE_ENTRIES.get(rl).get());
 	}
 
 	private static void placeTorch(RightClickBlock event, ItemStack held, Block block)
@@ -71,7 +73,7 @@ public class PlaceHandlerTorchWall
 		SoundType soundType;
 
 		Config.loadConfig(Config.SERVER, FMLPaths.CONFIGDIR.get().resolve("torchslabmod-server.toml").toString());
-		if(!playerIn.isSteppingCarefully() && TorchSlabConfig.interactiveCheckList.get().contains(world.getBlockState(pos).getBlock().getRegistryName().toString()) )
+		if(!playerIn.isSteppingCarefully() && TorchSlabConfig.interactiveCheckList.get().contains(ForgeRegistries.BLOCKS.getKey(world.getBlockState(pos).getBlock()).toString()) )
 			return;
 		
 		if((face != Direction.UP && face != Direction.DOWN)
@@ -221,14 +223,9 @@ public class PlaceHandlerTorchWall
 		return 0;
 	}
 	
-	public static void registerPlaceEntry(ResourceLocation itemName, Block torchSlab)
+	public static void registerPlaceEntry(ResourceLocation itemName, Supplier<Block> torchSlabSupplier)
 	{
-		if(!PLACE_ENTRIES.containsKey(itemName) && torchSlab != null)
-			PLACE_ENTRIES.put(itemName, torchSlab);
-	}
-
-	public static Collection<Block> getPlaceEntryBlocks()
-	{
-		return PLACE_ENTRIES.values();
+		if(!PLACE_ENTRIES.containsKey(itemName) && torchSlabSupplier != null)
+			PLACE_ENTRIES.put(itemName, torchSlabSupplier);
 	}
 }
