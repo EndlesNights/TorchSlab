@@ -49,7 +49,7 @@ public class PlaceHandlerEndRod
 		BlockPos pos = event.getPos();
 		Direction face = event.getFace();
 		BlockPos placeAt = pos.relative(face);
-		Level world = event.getWorld();		
+		Level world = event.getLevel();
 		SoundType soundType;
 		
 		if(world.getBlockState(pos).getBlock() instanceof SlabBlock && face == Direction.UP 
@@ -182,14 +182,14 @@ public class PlaceHandlerEndRod
 	}
 	public static void rodPlaced(RightClickBlock event, ItemStack held, Block block, BlockPos pos)
 	{
-		Level world = event.getWorld();
+		Level world = event.getLevel();
 		SoundType soundType;
 		
-		soundType = block.getSoundType(block.defaultBlockState(), world, pos, event.getPlayer());
+		soundType = block.getSoundType(block.defaultBlockState(), world, pos, event.getEntity());
 		world.playSound(null, pos.getX(), pos.getY(), pos.getZ(), soundType.getPlaceSound(), SoundSource.BLOCKS, soundType.getVolume(), soundType.getPitch() - 0.2F);
-		event.getPlayer().swing(event.getHand());
+		event.getEntity().swing(event.getHand());
 		
-		if(!event.getPlayer().isCreative())
+		if(!event.getEntity().isCreative())
 			held.shrink(1);
 		event.setCanceled(true);
 	}

@@ -8,7 +8,7 @@ import com.endlesnights.torchslabsmod.TorchSlabsMod;
 //import net.minecraft.client.renderer.color.BlockColors;
 import net.minecraft.client.color.block.BlockColors;
 import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.client.event.ColorHandlerEvent;
+import net.minecraftforge.client.event.RegisterColorHandlersEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 //import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
@@ -19,7 +19,7 @@ public class ColorHandler
 {
 	
 	@SubscribeEvent
-	public static void registerBlockColorHandler(final ColorHandlerEvent.Block event)
+	public static void registerBlockColorHandler(final RegisterColorHandlersEvent.Block event)
 	{
 		final BlockColors blockColors = event.getBlockColors();
 		

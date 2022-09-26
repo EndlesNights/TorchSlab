@@ -68,8 +68,8 @@ public class PlaceHandlerTorchWall
 		BlockPos pos = event.getPos();
 		Direction face = event.getFace();
 		BlockPos placeAt = pos.relative(face);
-		Level world = event.getWorld();		
-		Player playerIn = event.getPlayer();
+		Level world = event.getLevel();		
+		Player playerIn = event.getEntity();
 		SoundType soundType;
 
 		Config.loadConfig(Config.SERVER, FMLPaths.CONFIGDIR.get().resolve("torchslabmod-server.toml").toString());
@@ -106,11 +106,11 @@ public class PlaceHandlerTorchWall
 				//world.setBlockAndUpdate(placeAt, block.defaultBlockState().setValue(WallTorchBlock.FACING, face).setValue(BlockWallTorchSlab.HALF, Half.BOTTOM));
 			}
 			
-			soundType = block.getSoundType(block.defaultBlockState(), world, pos, event.getPlayer());
+			soundType = block.getSoundType(block.defaultBlockState(), world, pos, event.getEntity());
 			world.playSound(null, pos.getX(), pos.getY(), pos.getZ(), soundType.getPlaceSound(), SoundSource.BLOCKS, soundType.getVolume(), soundType.getPitch() - 0.2F);
-			event.getPlayer().swing(event.getHand());
+			event.getEntity().swing(event.getHand());
 			
-			if(!event.getPlayer().isCreative())
+			if(!event.getEntity().isCreative())
 				held.shrink(1);
 			event.setCanceled(true);
 
@@ -120,9 +120,9 @@ public class PlaceHandlerTorchWall
 				&& (face != Direction.UP && face != Direction.DOWN)
 				&& (world.isEmptyBlock(placeAt) || world.getBlockState(placeAt).getBlock() == Blocks.WATER || world.getFluidState(placeAt).getType() == Fluids.FLOWING_WATER) )
 		{
-			soundType = block.getSoundType(block.defaultBlockState(), world, pos, event.getPlayer());
+			soundType = block.getSoundType(block.defaultBlockState(), world, pos, event.getEntity());
 			world.playSound(null, pos.getX(), pos.getY(), pos.getZ(), soundType.getPlaceSound(), SoundSource.BLOCKS, soundType.getVolume(), soundType.getPitch() - 0.2F);
-			event.getPlayer().swing(event.getHand());
+			event.getEntity().swing(event.getHand());
 			
 			if (block instanceof SimpleWaterloggedBlock)
 			{
@@ -134,7 +134,7 @@ public class PlaceHandlerTorchWall
 			else
 				world.setBlockAndUpdate(placeAt, block.defaultBlockState().setValue(WallTorchBlock.FACING, face).setValue(BlockWallTorchSlab.HALF, Half.BOTTOM));		
 			
-			if(!event.getPlayer().isCreative())
+			if(!event.getEntity().isCreative())
 				held.shrink(1);
 			event.setCanceled(true);
 		}
@@ -145,9 +145,9 @@ public class PlaceHandlerTorchWall
 				&& validTop(world.getBlockState(placeAt.above()), block.defaultBlockState().setValue(WallTorchBlock.FACING, face).setValue(BlockWallTorchSlab.HALF, Half.TOP) ))
 		{
 
-			soundType = block.getSoundType(block.defaultBlockState(), world, pos, event.getPlayer());
+			soundType = block.getSoundType(block.defaultBlockState(), world, pos, event.getEntity());
 			world.playSound(null, pos.getX(), pos.getY(), pos.getZ(), soundType.getPlaceSound(), SoundSource.BLOCKS, soundType.getVolume(), soundType.getPitch() - 0.2F);
-			event.getPlayer().swing(event.getHand());
+			event.getEntity().swing(event.getHand());
 			
 			if (block instanceof SimpleWaterloggedBlock)
 			{
@@ -159,7 +159,7 @@ public class PlaceHandlerTorchWall
 			else
 				world.setBlockAndUpdate(placeAt, block.defaultBlockState().setValue(WallTorchBlock.FACING, face).setValue(BlockWallTorchSlab.HALF, Half.TOP));
 			
-			if(!event.getPlayer().isCreative())
+			if(!event.getEntity().isCreative())
 				held.shrink(1);
 			event.setCanceled(true);
 		}
