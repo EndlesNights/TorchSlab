@@ -228,9 +228,8 @@ public class VanillaCompat implements ITorchSlabCompat
 	@Override
 	public void registerRenderTypes()
 	{
-		//RenderType transparentRenderType = RenderType.cutoutMipped();
+		RenderType transparentRenderType = RenderType.cutoutMipped();
 
-		Predicate<RenderType> transparentRenderType = renderType -> Minecraft.useFancyGraphics() ? renderType == RenderType.cutoutMipped() : renderType == RenderType.solid();
 
 		ItemBlockRenderTypes.setRenderLayer(torch.get(), transparentRenderType);
 		ItemBlockRenderTypes.setRenderLayer(lantern.get(), transparentRenderType);
