@@ -1,5 +1,5 @@
 modLoader="javafml" #mandatory
-loaderVersion="[39,)" #mandatory
+loaderVersion="[43,)" #mandatory
 license="AGPL-3.0"
 [[mods]] #mandatory
 modId="torchslabmod" #mandatory
@@ -15,6 +15,5 @@ authors="EndlesNights" #optional
 
 # The description text for the mod (multi line!) (#mandatory)
 description='''
-A mod that allows the placement of torches & lanterns onto slab blocks, the sides of slab blocks, the top/bottom half of wall blocks as well as on top of lily pads. Lanterns can also now be placed on the side of fence blocks. For mc versions 1.15
-
+A mod that allows the placement of torches & lanterns onto slab blocks, the sides of slab blocks, the top/bottom half of wall blocks as well as on top of lily pads. Lanterns can also now be placed on the side of fence blocks. For MC versions 1.15+
 '''
