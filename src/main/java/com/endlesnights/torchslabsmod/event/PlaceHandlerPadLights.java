@@ -41,18 +41,18 @@ public class PlaceHandlerPadLights
 	{		
 		BlockPos pos = event.getPos();
 		Direction face = event.getFace();
-		Level world = event.getWorld();
+		Level world = event.getLevel();
 		SoundType soundType;
 
 		if(world.getBlockState(pos).getBlock() instanceof WaterlilyBlock && face == Direction.UP)
 		{	
 			
-			world.setBlockAndUpdate(pos, block.defaultBlockState().setValue(HorizontalDirectionalBlock.FACING, event.getPlayer().getDirection()));
-			soundType = block.getSoundType(block.defaultBlockState(), world, pos, event.getPlayer());
+			world.setBlockAndUpdate(pos, block.defaultBlockState().setValue(HorizontalDirectionalBlock.FACING, event.getEntity().getDirection()));
+			soundType = block.getSoundType(block.defaultBlockState(), world, pos, event.getEntity());
 			world.playSound(null, pos.getX(), pos.getY(), pos.getZ(), soundType.getPlaceSound(), SoundSource.BLOCKS, soundType.getVolume(), soundType.getPitch() - 0.2F);
-			event.getPlayer().swing(event.getHand());
+			event.getEntity().swing(event.getHand());
 			
-			if(!event.getPlayer().isCreative())
+			if(!event.getEntity().isCreative())
 				held.shrink(1);
 			event.setCanceled(true);
 		}

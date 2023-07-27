@@ -49,7 +49,7 @@ public class PlaceHandlerCandleSlab {
 			BlockPos pos = event.getPos();
 			Direction face = event.getFace();
 			BlockPos placeAt = pos.relative(face);
-			Level world = event.getWorld();
+			Level world = event.getLevel();
 			SoundType soundType;
 					
 			
@@ -64,11 +64,11 @@ public class PlaceHandlerCandleSlab {
 					world.setBlockAndUpdate(placeAt, block.defaultBlockState());
 				}
 				
-				soundType = block.getSoundType(block.defaultBlockState(), world, pos, event.getPlayer());
+				soundType = block.getSoundType(block.defaultBlockState(), world, pos, event.getEntity());
 				world.playSound(null, pos.getX(), pos.getY(), pos.getZ(), soundType.getPlaceSound(), SoundSource.BLOCKS, soundType.getVolume(), soundType.getPitch() - 0.2F);
-				event.getPlayer().swing(event.getHand());
+				event.getEntity().swing(event.getHand());
 
-				if(!event.getPlayer().isCreative())
+				if(!event.getEntity().isCreative())
 					held.shrink(1);
 				event.setCanceled(true);			
 			}
@@ -88,11 +88,11 @@ public class PlaceHandlerCandleSlab {
 						.setValue(CandleBlock.WATERLOGGED, placeState.getValue(CandleBlock.WATERLOGGED))
 						);
 
-				soundType = block.getSoundType(block.defaultBlockState(), world, pos, event.getPlayer());
+				soundType = block.getSoundType(block.defaultBlockState(), world, pos, event.getEntity());
 				world.playSound(null, pos.getX(), pos.getY(), pos.getZ(), soundType.getPlaceSound(), SoundSource.BLOCKS, soundType.getVolume(), soundType.getPitch() - 0.2F);
-				event.getPlayer().swing(event.getHand());
+				event.getEntity().swing(event.getHand());
 				
-				if(!event.getPlayer().isCreative())
+				if(!event.getEntity().isCreative())
 					held.shrink(1);
 				event.setCanceled(true);		
 				

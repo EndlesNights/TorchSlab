@@ -10,7 +10,7 @@ import com.endlesnights.torchslabsmod.event.PlaceHandlerPadCandle;
 import com.endlesnights.torchslabsmod.event.PlaceHandlerPadLights;
 import com.endlesnights.torchslabsmod.event.PlaceHandlerTorchSlab;
 import com.endlesnights.torchslabsmod.event.PlaceHandlerTorchWall;
-
+import net.minecraft.client.Minecraft;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.SoundType;
@@ -34,6 +34,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
 import java.util.function.Supplier;
+import java.util.function.Predicate;
 
 public class VanillaCompat implements ITorchSlabCompat
 {
@@ -228,6 +229,8 @@ public class VanillaCompat implements ITorchSlabCompat
 	public void registerRenderTypes()
 	{
 		RenderType transparentRenderType = RenderType.cutoutMipped();
+
+
 		ItemBlockRenderTypes.setRenderLayer(torch.get(), transparentRenderType);
 		ItemBlockRenderTypes.setRenderLayer(lantern.get(), transparentRenderType);
 		ItemBlockRenderTypes.setRenderLayer(wall_torch_slab.get(), transparentRenderType);
@@ -259,6 +262,7 @@ public class VanillaCompat implements ITorchSlabCompat
 		ItemBlockRenderTypes.setRenderLayer(pad_candle_red.get(), transparentRenderType);
 		ItemBlockRenderTypes.setRenderLayer(pad_candle_white.get(), transparentRenderType);
 		ItemBlockRenderTypes.setRenderLayer(pad_candle_yellow.get(), transparentRenderType);
+
 	}
 
 	public static RegistryObject<Block> registerBlock(String name, Supplier<Block> blockSupplier)
