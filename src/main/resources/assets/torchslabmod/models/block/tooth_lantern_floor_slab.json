@@ -1,6 +1,7 @@
 {
 	"credit": "Made with Blockbench",
 	"texture_size": [32, 32],
+	"render_type": "cutout_mipped",
 	"textures": {
 		"0": "upgrade_aquatic:block/tooth_lantern",
 		"particle": "upgrade_aquatic:block/tooth_lantern"

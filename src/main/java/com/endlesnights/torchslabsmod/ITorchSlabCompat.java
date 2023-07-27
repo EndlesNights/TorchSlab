@@ -6,5 +6,4 @@ public interface ITorchSlabCompat
 {
 	void registerBlocks(IEventBus bus);
 	void registerPlaceEntries();
-	void registerRenderTypes();
 }

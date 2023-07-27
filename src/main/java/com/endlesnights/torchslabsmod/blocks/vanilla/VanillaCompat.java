@@ -10,7 +10,6 @@ import com.endlesnights.torchslabsmod.event.PlaceHandlerPadCandle;
 import com.endlesnights.torchslabsmod.event.PlaceHandlerPadLights;
 import com.endlesnights.torchslabsmod.event.PlaceHandlerTorchSlab;
 import com.endlesnights.torchslabsmod.event.PlaceHandlerTorchWall;
-import net.minecraft.client.Minecraft;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.SoundType;
@@ -18,23 +17,17 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.Material;
 import net.minecraft.world.item.Items;
 import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.client.renderer.ItemBlockRenderTypes;
 //import net.minecraft.block.Blocks;
 //import net.minecraft.block.SoundType;
 //import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.RenderType;
-//import net.minecraft.client.renderer.ItemBlockRenderTypes; RIP?
 //import net.minecraft.item.Items;
 //import net.minecraft.particles.ParticleTypes;
-import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.fml.loading.FMLEnvironment;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
 import java.util.function.Supplier;
-import java.util.function.Predicate;
 
 public class VanillaCompat implements ITorchSlabCompat
 {
@@ -45,7 +38,7 @@ public class VanillaCompat implements ITorchSlabCompat
 	public static RegistryObject<Block> lantern = null;
 	public static RegistryObject<Block> soul_lantern = null;
 
-	public static RegistryObject<Block> chain_slab = null;
+	//public static RegistryObject<Block> chain_slab = null;
 
 	public static RegistryObject<Block> wall_torch_slab = null;
 	public static RegistryObject<Block> wall_soul_torch_slab = null;
@@ -223,46 +216,6 @@ public class VanillaCompat implements ITorchSlabCompat
 		PlaceHandlerPadCandle.registerPlaceEntry(ForgeRegistries.ITEMS.getKey(Items.RED_CANDLE), pad_candle_red);
 		PlaceHandlerPadCandle.registerPlaceEntry(ForgeRegistries.ITEMS.getKey(Items.WHITE_CANDLE), pad_candle_white);
 		PlaceHandlerPadCandle.registerPlaceEntry(ForgeRegistries.ITEMS.getKey(Items.YELLOW_CANDLE), pad_candle_yellow);
-	}
-
-	@Override
-	public void registerRenderTypes()
-	{
-		RenderType transparentRenderType = RenderType.cutoutMipped();
-
-
-		ItemBlockRenderTypes.setRenderLayer(torch.get(), transparentRenderType);
-		ItemBlockRenderTypes.setRenderLayer(lantern.get(), transparentRenderType);
-		ItemBlockRenderTypes.setRenderLayer(wall_torch_slab.get(), transparentRenderType);
-		ItemBlockRenderTypes.setRenderLayer(wall_lantern.get(), transparentRenderType);
-		ItemBlockRenderTypes.setRenderLayer(pad_torch.get(), transparentRenderType);
-		ItemBlockRenderTypes.setRenderLayer(pad_lantern.get(), transparentRenderType);
-
-		ItemBlockRenderTypes.setRenderLayer(soul_torch.get(), transparentRenderType);
-		ItemBlockRenderTypes.setRenderLayer(soul_lantern.get(), transparentRenderType);
-		ItemBlockRenderTypes.setRenderLayer(wall_soul_torch_slab.get(), transparentRenderType);
-		ItemBlockRenderTypes.setRenderLayer(wall_soul_lantern.get(), transparentRenderType);
-		ItemBlockRenderTypes.setRenderLayer(pad_soul_torch.get(), transparentRenderType);
-		ItemBlockRenderTypes.setRenderLayer(pad_soul_lantern.get(), transparentRenderType);
-
-		ItemBlockRenderTypes.setRenderLayer(pad_candle.get(), transparentRenderType);
-		ItemBlockRenderTypes.setRenderLayer(pad_candle_black.get(), transparentRenderType);
-		ItemBlockRenderTypes.setRenderLayer(pad_candle_blue.get(), transparentRenderType);
-		ItemBlockRenderTypes.setRenderLayer(pad_candle_brown.get(), transparentRenderType);
-		ItemBlockRenderTypes.setRenderLayer(pad_candle_cyan.get(), transparentRenderType);
-		ItemBlockRenderTypes.setRenderLayer(pad_candle_gray.get(), transparentRenderType);
-		ItemBlockRenderTypes.setRenderLayer(pad_candle_green.get(), transparentRenderType);
-		ItemBlockRenderTypes.setRenderLayer(pad_candle_light_blue.get(), transparentRenderType);
-		ItemBlockRenderTypes.setRenderLayer(pad_candle_light_gray.get(), transparentRenderType);
-		ItemBlockRenderTypes.setRenderLayer(pad_candle_lime.get(), transparentRenderType);
-		ItemBlockRenderTypes.setRenderLayer(pad_candle_magenta.get(), transparentRenderType);
-		ItemBlockRenderTypes.setRenderLayer(pad_candle_orange.get(), transparentRenderType);
-		ItemBlockRenderTypes.setRenderLayer(pad_candle_pink.get(), transparentRenderType);
-		ItemBlockRenderTypes.setRenderLayer(pad_candle_purple.get(), transparentRenderType);
-		ItemBlockRenderTypes.setRenderLayer(pad_candle_red.get(), transparentRenderType);
-		ItemBlockRenderTypes.setRenderLayer(pad_candle_white.get(), transparentRenderType);
-		ItemBlockRenderTypes.setRenderLayer(pad_candle_yellow.get(), transparentRenderType);
-
 	}
 
 	public static RegistryObject<Block> registerBlock(String name, Supplier<Block> blockSupplier)

@@ -1,5 +1,6 @@
 {
 	"parent": "torchslabmod:block/template_four_candles",
+	"render_type": "cutout_mipped",
 	"textures": {
 		"all": "block/brown_candle_lit",
 		"particle": "block/brown_candle_lit"

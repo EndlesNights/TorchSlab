@@ -1,5 +1,6 @@
 {
   "parent": "torchslabmod:block/template_three_candles",
+  "render_type": "cutout_mipped",
   "textures": {
     "all": "minecraft:block/candle_lit",
     "particle": "minecraft:block/candle_lit"

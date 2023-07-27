@@ -1,5 +1,6 @@
 {
     "parent": "torchslabmod:block/template_pad_lantern",
+    "render_type": "cutout_mipped",
     "textures": {
         "lamp": "block/lantern",
         "pad": "block/lily_pad",

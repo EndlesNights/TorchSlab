@@ -21,7 +21,6 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
 import net.minecraftforge.fml.config.ModConfig;
-import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.InterModEnqueueEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.fml.loading.FMLPaths;
@@ -32,9 +31,9 @@ public class TorchSlabsMod
 {
 	public static final String MODID = "torchslabmod";
 	public static final String NAME = "Torch Slab Mod";
-	private static final List<Supplier<ITorchSlabCompat>> compatList = new ArrayList<>(Arrays.asList(
-			VanillaCompat::new
-	));
+	private static final List<Supplier<ITorchSlabCompat>> compatList = new ArrayList<>(List.of(
+            VanillaCompat::new
+    ));
 
 	public TorchSlabsMod()
 	{
@@ -79,15 +78,6 @@ public class TorchSlabsMod
 //			System.out.println("Druid Craft Mod DETECTED AND LOADED TORCHSLAB COMPAT");
 //			compatList.add(DruidCraftCompat::new);
 //		}
-	}
-
-	@SubscribeEvent
-	public static void onClientSetup(FMLClientSetupEvent event)
-	{
-		for(Supplier<ITorchSlabCompat> compat : compatList)
-		{
-			compat.get().registerRenderTypes();
-		}
 	}
 
 	@SubscribeEvent
